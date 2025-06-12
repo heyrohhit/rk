@@ -6,6 +6,7 @@ const nextConfig = {
       images: {
         domains: ["drive.google.com","images.unsplash.com"],
       },
+      assetPrefix: "/rk",
 };
 
 export default nextConfig;
