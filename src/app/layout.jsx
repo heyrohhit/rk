@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StyledJsxRegistry from "./registry";
-import Loader from "./Components/Loader/page";
+import Loader from "./Components/loader/page";
 import Navbar from "./Components/navbar/page";
 import HeaderSection from "./Components/headerSection/page";
 import FooterPage from "./Components/footer/page";
