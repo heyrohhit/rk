@@ -285,7 +285,7 @@ export default function Page() {
           <Header>
             <ProfileImageWrapper>
               <Image
-                src="/img/pic02.png"
+                src="/rk/img/pic02.png"
                 alt="Profile"
                 width={100}
                 height={100}
