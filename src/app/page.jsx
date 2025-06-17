@@ -4,6 +4,8 @@ import styled, { keyframes } from 'styled-components'
 import Image from 'next/image'
 import { FaShareAlt } from 'react-icons/fa'
 import {motion} from 'framer-motion'
+import ProjectShowcase from './projects/ProjectShow'
+import {projectsLive,projects} from "./Components/myservices/apis"
 
 // 🔥 KEYFRAMES for animated gradient-like color
 const colorShift = keyframes`
@@ -258,6 +260,7 @@ const Button = styled.button`
 
 export default function Page() {
   return (
+    <>
     <Container>
       <InnerWrapper 
       initial={{opacity:0}}
@@ -335,5 +338,8 @@ export default function Page() {
         </ProfileCard>
       </InnerWrapper>
     </Container>
+    <ProjectShowcase apis={projectsLive} showOnly={3} title="Live Projects"/>
+    <ProjectShowcase apis={projects} showOnly={3} title="Projects"/>
+    </>
   )
 }
