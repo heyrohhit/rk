@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { FaHeart, FaCoffee } from "react-icons/fa";
@@ -15,10 +15,11 @@ const FooterContainer = styled(motion.footer)`
   position: relative;
   bottom: 0;
   left: 0;
-  font-size: 0.5rem;
   font-weight: 500;
+  // font-family: 'Papyrus', 'Comic Sans MS', cursive;
   box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.3);
   display: flex;
+  overflow-x:hidden;
   flex-direction: column;
   align-items: center;
   gap: 30px;
@@ -46,15 +47,20 @@ const Section = styled.div`
 const SectionTitle = styled.h2`
   margin-bottom: 15px;
   font-size:1.5rem;
-  color: rgb(${()=>  Math.random() * 255},${()=>  Math.random() * 255},${()=>  Math.random() * 255});
+  font-weight: bold;
+  color:#a0a0a0;
 font-family:'Papyrus', 'Comic Sans MS', cursive;
 `;
 
 const SectionItem = styled.h2`
   margin: 5px 0;
-  color: #f8f9fa;
+  color: #ccc;
   cursor:pointer;
   transition:all 0.3s ease-in-out;
+  font-size:0.8rem;
+  font-family:sans-serif;
+  // font-style:italic;
+  font-weight:500;
   &:hover{
     color: #ffcc70;
   }
@@ -88,6 +94,15 @@ const IconContainer = styled.span`
 
 const FooterPage = () => {
   const pathname = usePathname()
+
+  const randomColor = () => {
+    const r = Math.floor(Math.random() * 150);
+    const g = Math.floor(Math.random() * 150);
+    const b = Math.floor(Math.random() * 150);
+    return `rgba(${r}, ${g}, ${b}, 1)`;
+  }
+
+
   return (
     <FooterContainer
       initial={{ opacity: 0 }}
@@ -96,18 +111,18 @@ const FooterPage = () => {
     >
       <SectionsContainer>
         <Section>
-          <SectionTitle>Portfolio</SectionTitle>
-          <SectionItem>Innovating the web, one pixel at a time.</SectionItem>
+          <SectionTitle >Portfolio</SectionTitle>
+          <SectionItem>Reimagining the digital frontier—crafting stunning web experiences, one pixel at a time. Where innovation meets design, and every click brings your vision closer to reality.</SectionItem>
         </Section>
         <Section>
-          <SectionTitle>Quick Links</SectionTitle>
+          <SectionTitle >Quick Links</SectionTitle>
           <SectionItem><Link href="/">Home</Link></SectionItem>
           <SectionItem><Link href="/services">Services</Link></SectionItem>
           <SectionItem><Link href="/about">About</Link></SectionItem>
           <SectionItem><Link href="/contact">Contact</Link></SectionItem>
         </Section>
         <Section>
-          <SectionTitle>Services</SectionTitle>
+          <SectionTitle >Services</SectionTitle>
           <SectionItem><Link href={pathname === "/services" ? "#excelDataManagement" : "/services#excelDataManagement"}>Excel Data Management</Link></SectionItem>
           <SectionItem><Link href={pathname === "/services" ? "#emailScraping" : "/services#emailScraping"}>Email Scraping</Link></SectionItem>
           <SectionItem><Link href={pathname ===  "/services" ? "#socialMediaAdsCampaigns" : "/services#socialMediaAdsCampaigns"}>Social Media Ads Campaigns</Link></SectionItem>
@@ -117,7 +132,7 @@ const FooterPage = () => {
          
         </Section>
         <Section>
-          <SectionTitle>Contact Info</SectionTitle>
+          <SectionTitle >Contact Info</SectionTitle>
           <SectionItem ><Link href="https://www.google.com/maps/place/Delhi,+India" target="_blank">Delhi, India</Link></SectionItem>
           <SectionItem><Link href="mailto:rohitfolio8700@gmail.com" target="_blank">rohitfolio8700@gmail.com</Link></SectionItem>
           <SectionItem><Link href="tel:+918700750589" target="_blank">+91 8700750589</Link></SectionItem>

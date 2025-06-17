@@ -13,7 +13,8 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  position: relative;
 }
 html > * h1,body > * h1,html > * button,body > * button{
   font-family: 'Papyrus', 'Comic Sans MS', cursive;

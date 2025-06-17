@@ -1,30 +1,29 @@
-"use client"
-import styled from "styled-components"
+"use client";
+import styled from "styled-components";
 
+// 🔧 Styled header with sticky behavior
 const HeaderSection = styled.div`
-width: 100vw;
-height: max-content;
-padding: 10px;
-background-color: transparent;
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-font-family: "Papyrus", "Comic Sans MS", cursive;
-text-align: center;
-font-size: 0.8rem;
-z-index: 99;
-backdrop-filter: blur(10px);
-`
+  width: 100%;
+  height:max-content;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.6);
+  position: sticky;
+  top: 0;
+  font-family: "Papyrus", "Comic Sans MS", cursive;
+  text-align: center;
+  font-size: 0.8rem;
+  z-index: 99;
+  backdrop-filter: blur(10px);
+`;
 
-const page = () => {
+
+const Page = () => {
   return (
-    <HeaderSection>
-        <h1>
-            Rk.. Portfolio
-        </h1>
-    </HeaderSection>
-  )
-}
+  
+      <HeaderSection>
+        <h1>Rk.. Portfolio</h1>
+      </HeaderSection>
+  );
+};
 
-export default page
+export default Page;

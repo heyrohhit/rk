@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled, { keyframes } from 'styled-components'
 import Image from 'next/image'
 import { FaShareAlt } from 'react-icons/fa'
+import {motion} from 'framer-motion'
 
 // 🔥 KEYFRAMES for animated gradient-like color
 const colorShift = keyframes`
@@ -29,9 +30,12 @@ const Container = styled.div`
   background-position: right;
   background-repeat: no-repeat;
   padding: 2rem;
+  overflow-x:hidden;
+  position:relative;
+ 
 `
 
-const InnerWrapper = styled.div`
+const InnerWrapper = styled(motion.div)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -44,9 +48,6 @@ const InnerWrapper = styled.div`
   @media (max-width: 768px) {
     flex-direction: column-reverse;
   }
-    @media (max-width: 450px) {
-      padding-top:2rem;
-    }
 `
 
 const ContentContainer = styled.div`
@@ -118,10 +119,10 @@ const ProfileCard = styled.div`
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   position: relative;
-    
+  max-height: 550px;
 @media (max-width: 450px) {
   max-width: 260px;
-  max-height: 450px;
+  max-height: 400px;
 }
 `
 
@@ -135,16 +136,16 @@ const Corve = styled.div`
   background: #fff;
   border-radius: 50%;
   width: 640px;
-  height: 540px;
+  height: 440px;
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
 `
 
 const ProfileImageWrapper = styled.div`
   position: absolute;
-  top: 25%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   width: 200px;
@@ -152,7 +153,7 @@ const ProfileImageWrapper = styled.div`
   z-index: 1;
   border-radius: 50%;
     @media (max-width: 450px) {
-    top: 20%;
+    top: 10%;
       width: 140px;
       height: 140px;
     }
@@ -168,7 +169,7 @@ const Stats = styled.div`
   color: #555;
   position: absolute;
   z-index: 5;
-  top: 35%;
+  top: 26%;
   left: 50%;
   transform: translate(-50%, -50%);
   gap: 100px;
@@ -202,10 +203,11 @@ const Name = styled.h1`
   font-size: 38px;
   font-weight: 700;
   color: #222;
-  margin-top: -120px;
+  margin-top: -180px;
   
   @media (max-width: 450px) {
-    margin-top: -180px;
+    font-size: 24px;
+    margin-top: -100%;
   }
 `
 
@@ -257,15 +259,20 @@ const Button = styled.button`
 export default function Page() {
   return (
     <Container>
-      <InnerWrapper>
+      <InnerWrapper 
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      transition={{duration:1}}
+      delay={0.1}
+      >
         <ContentContainer>
           <h1>
             Transforming Ideas into Stunning
             <AnimatedSpan> Digital Realities</AnimatedSpan>
           </h1>
           <p>
-            Passionate about web design, branding, and UI/UX – let’s create something
-            <AnimatedSpan> amazing together!</AnimatedSpan>
+          Driven by creativity and precision in web design, branding, and UI/UX. Let’s blend strategy with style to craft digital experiences that <AnimatedSpan>truly stand out</AnimatedSpan>—together, we
+            <AnimatedSpan> build brilliance.</AnimatedSpan>
           </p>
           <ButtonsWrapper>
             <button>
@@ -308,13 +315,13 @@ export default function Page() {
               <span style={{ fontWeight: 400 }}>Years</span>
             </div>
             <div>
-              687<br />
-              <span style={{ fontWeight: 400 }}>Follower</span>
+              100+<br />
+              <span style={{ fontWeight: 400 }}>Projects</span>
             </div>
           </Stats>
           <Content>
             <Name>Rohit Kumar</Name>
-            <Bio>Passionate about web design, branding, and UI/UX – let’s create something</Bio>
+            <Bio>Crafting bold brands and stunning UI/UX—let’s build something unforgettable together!</Bio>
             <StyleLink href="https://behance.net/anlygl" target="_blank">
               behance.net/anlygl
             </StyleLink>
