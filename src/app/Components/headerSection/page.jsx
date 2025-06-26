@@ -6,13 +6,13 @@ const HeaderSection = styled.div`
   width: 100%;
   height:max-content;
   padding: 10px;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.2);
   position: sticky;
   top: 0;
   font-family: "Papyrus", "Comic Sans MS", cursive;
   text-align: center;
   font-size: 0.8rem;
-  z-index: 99;
+  z-index: 9999;
   backdrop-filter: blur(10px);
 `;
 

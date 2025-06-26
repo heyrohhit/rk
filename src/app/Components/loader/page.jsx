@@ -1,8 +1,12 @@
-'use client'
+'use client';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const LoaderWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
   position: fixed;
   inset: 0;
   background: #000;
@@ -48,6 +52,12 @@ export default function GlobalLoader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Block scroll when loader is active
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    }
+
     let interval;
 
     if (progress < 100) {
@@ -74,13 +84,16 @@ export default function GlobalLoader() {
     return () => {
       clearInterval(interval);
       window.removeEventListener('load', handleLoad);
+      // Restore scroll after loader is gone
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
-  }, [progress]);
+  }, [progress, loading]);
 
   if (!loading) return null;
 
   return (
-    <LoaderWrapper style={{display: loading ? "flex" : "none",justifyContent: "center",alignItems: "center",zIndex: 9999,width: "100vw",height: "100vh",}}>
+    <LoaderWrapper style={{display: loading ? "flex" : "none",justifyContent: "center",alignItems: "center",zIndex: 9999,width: "100%",height: "90vh",overflow: "hidden",}}>
       <ProgressText>Loading {progress}%</ProgressText>
       <ProgressBarContainer>
         <ProgressBar $percent={progress} />

@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StyledJsxRegistry from "./registry";
-import Loader from "./Components/loader/page";
 import Components from "./Components/page";
 import HeaderSection from "./Components/headerSection/page";
 import FooterPage from "./Components/footer/page";
@@ -26,14 +25,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-      <StyledJsxRegistry>
-      <Loader/>
-      <HeaderSection/>
-        {children}
-        <FooterPage/>
-        <Components/>
-      </StyledJsxRegistry>
-     
+        <StyledJsxRegistry>
+          <HeaderSection/>
+            {children}
+            <FooterPage />
+            <Components />
+        </StyledJsxRegistry>
+
       </body>
     </html>
   );

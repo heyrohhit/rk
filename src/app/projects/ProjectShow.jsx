@@ -1,14 +1,23 @@
 "use client";
-import styled from "styled-components";
+import styled,{createGlobalStyle} from "styled-components";
 import { motion } from "framer-motion";
 
 // 🟡 Styled Components
-
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    overflow-x:hidden;
+  }
+`;
 const Container = styled.div`
   padding: 60px 20px;
   overflow-x: hidden;
   width: 100%;
-  background: #0e0e0e;
+  background:#000;
   font-family: 'Poppins', sans-serif;
 `;
 
@@ -18,7 +27,7 @@ const Title = styled.h2`
   color: #fff;
   font-weight: 600;
   text-align: center;
-
+  font-family: 'Poppins',cursive;
   @media (max-width: 768px) {
     font-size: 2rem;
   }
@@ -58,7 +67,7 @@ const IframeWrapper = styled.div`
 `;
 
 const IframeImage = styled.iframe`
-  width: 250%;
+  width: 260%;
   height: 250%;
   border: none;
   transform: scale(0.4); /* Zoom out effect */
@@ -82,10 +91,19 @@ const Content = styled.div`
   flex-direction: column;
   gap: 10px;
   color: #ccc;
-
+  span{
+    font-size: 0.8rem;
+    text-align: right;
+    font-family: 'Poppins',cursive;
+    font-weight: 500;
+    color: #fff;
+  }
   h3 {
     font-size: 1.4rem;
     color: #fff;
+    text-transform: uppercase;
+    font-family: 'Poppins',cursive;
+    font-weight: 500;
   }
 
   p {
@@ -126,6 +144,7 @@ export default function ProjectShowcase({ apis = [], showOnly = 0 ,title}) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
+      <GlobalStyle />
       <Container>
         <Title>{title}</Title>
         <ProjectList>
@@ -141,6 +160,7 @@ export default function ProjectShowcase({ apis = [], showOnly = 0 ,title}) {
                   <IframeImage src={project.image} />
                 </IframeWrapper>
                 <Content>
+                  <span>Date:{project.date}</span>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
                   <a href={project.image} target="_blank" rel="noopener noreferrer">

@@ -8,7 +8,7 @@ import Link from "next/link";
 import {usePathname } from 'next/navigation';
 
 const FooterContainer = styled(motion.footer)`
-  width: 100%;
+  width: 100vw;
   color: white;
   padding: 40px 5px 0px 20px;
   text-align: left;
@@ -16,7 +16,6 @@ const FooterContainer = styled(motion.footer)`
   bottom: 0;
   left: 0;
   font-weight: 500;
-  // font-family: 'Papyrus', 'Comic Sans MS', cursive;
   box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.3);
   display: flex;
   overflow-x:hidden;
@@ -32,6 +31,7 @@ const SectionsContainer = styled.div`
   gap: 50px;
   width: 100%;
   max-width: 1200px;
+  overflow-x:hidden;
   margin-bottom: 3.5rem;
   padding-right:15px;
 `;
@@ -40,8 +40,6 @@ const Section = styled.div`
   flex: 1;
   min-width: 150px;
   max-width: 300px;
-
-  // background:red;
 `;
 
 const SectionTitle = styled.h2`
@@ -59,7 +57,6 @@ const SectionItem = styled.h2`
   transition:all 0.3s ease-in-out;
   font-size:0.8rem;
   font-family:sans-serif;
-  // font-style:italic;
   font-weight:500;
   &:hover{
     color: #ffcc70;
@@ -94,13 +91,6 @@ const IconContainer = styled.span`
 
 const FooterPage = () => {
   const pathname = usePathname()
-
-  const randomColor = () => {
-    const r = Math.floor(Math.random() * 150);
-    const g = Math.floor(Math.random() * 150);
-    const b = Math.floor(Math.random() * 150);
-    return `rgba(${r}, ${g}, ${b}, 1)`;
-  }
 
 
   return (
