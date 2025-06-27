@@ -48,7 +48,7 @@ export default function Design() {
         geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
-        size={Math.floor(Math.random() * 2)+4}
+        size={Math.floor(Math.random() * 2)+2}
         top="0%"
         left="0%"
         wireframe
