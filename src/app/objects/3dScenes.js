@@ -21,9 +21,14 @@ export default function ThreeDObject({
     const height = mount.clientHeight;
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ 
+      alpha: true, 
+      antialias: true,
+      powerPreference: "high-performance", // For mobile WebGL compatibility
+      preserveDrawingBuffer: false // Avoid buffer issues
+    });
     renderer.setSize(width, height);
-    renderer.setClearColor(0x000000, 0);
+    renderer.setClearColor(0x000000, 0); // Transparent background
     mount.appendChild(renderer.domElement);
 
     // Scene and Camera
@@ -39,7 +44,7 @@ export default function ThreeDObject({
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
-    // ✅ Geometry Creation (Correct params for each type)
+    // ✅ Geometry Creation
     let objectGeometry;
     switch (geometry) {
       case "BoxGeometry":
@@ -71,11 +76,12 @@ export default function ThreeDObject({
       wireframe,
     });
 
+    // ✅ Mesh Creation (Fixed: Use objectMaterial instead of material)
     const mesh = new THREE.Mesh(objectGeometry, objectMaterial);
 
     // ✅ Scaling based on container size
     const minDimension = Math.min(width, height);
-    const scaleFactor = (minDimension / 100) * (size / 3);  // Fine-tuned
+    const scaleFactor = (minDimension / 100) * (size / 3); // Fine-tuned
     mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
     // ✅ Position (Centered)
@@ -142,6 +148,7 @@ export default function ThreeDObject({
         height: "100%",
         overflow: "hidden",
         backgroundColor: "transparent",
+        position: "relative", // Ensure canvas fits container
       }}
     />
   );
