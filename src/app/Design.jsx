@@ -153,6 +153,7 @@ const MainImageSection = styled(motion.div)`
 const ShapeOne = styled(motion.div)`
   width:200px;
   height:200px;
+  background:transparent;
   position:absolute;
   overflow:hidden;
 `
@@ -160,17 +161,20 @@ const ShapeTwo = styled(motion.div)`
   width:200px;
   height:200px;
   position:absolute;
+  background:transparent;
   overflow:hidden;
 `
 const ShapeThree = styled(motion.div)`
   width:200px;
   height:200px;
+  background:transparent;
   position:absolute;
   overflow:hidden;
 `
 const ShapeFour = styled(motion.div)`
   width:200px;
   height:200px;
+  background:transparent;
   position:absolute;
   overflow:hidden;
 `
@@ -178,6 +182,7 @@ const ShapeFour = styled(motion.div)`
 const ShapeFive = styled(motion.div)`
   width:200px;
   height:200px;
+  background:transparent;
   position:absolute;
   overflow:hidden;
 `
