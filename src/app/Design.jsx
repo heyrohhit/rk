@@ -28,7 +28,7 @@ export default function Design() {
           transition={{ duration: 1 }}
           >
          <ThreeDObject 
-        geometry="TetrahedronGeometry"
+        geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
         size={Math.floor(Math.random() * 2)+4}
@@ -45,7 +45,7 @@ export default function Design() {
           transition={{ duration: 1 }}
           >
             <ThreeDObject 
-        geometry="OctahedronGeometry"
+        geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
         size={Math.floor(Math.random() * 2)+4}
@@ -62,7 +62,7 @@ export default function Design() {
           transition={{ duration: 1 }}
           >
        <ThreeDObject 
-        geometry="TorusKnotGeometry"
+        geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
         size={Math.floor(Math.random() * 2)+2}
@@ -95,7 +95,7 @@ export default function Design() {
           delay={1.5}
           transition={{ duration: 1 }}>
        <ThreeDObject 
-        geometry="TorusKnotGeometry"
+        geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)},0.8)`}  
         size={Math.floor(Math.random() * 2)+3}
