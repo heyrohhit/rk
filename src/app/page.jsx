@@ -38,32 +38,48 @@ export default function Home() {
     <>
       <Wrapper>
         <Design />
-        <LeftTestSection 
-        initial={{ opacity: 0,x:"-250px",y:"-250px" }}
-        animate={{ opacity: 1,x:"0px",y:"0px" }}
-        delay={1}
-        transition={{ duration: 1 }}>
-            <h3>Hi,</h3>
-            <h1>Rk..
-            <span>Web Developer..</span></h1>
-            <p>Thank you for visiting my portfolio. I'm a passionate developer with a keen eye for detail and a love for creating innovative solutions. Let's connect and explore how we can bring your ideas to life.</p>
-            <button>
-              <Link href="/contact">Let's Chat</Link>
-            </button>
-        </LeftTestSection>
-        <RightTestSection
-        initial={{ opacity: 0,x:"250px",y:"250px" }}
-        animate={{ opacity: 1,x:"0px",y:"0px" }}
-        delay={1.2}
-        transition={{ duration: 1 }}>
-            <h3>Hello,</h3>
-            <h1>RK.... 
-            <span> DCA Trainee..</span></h1>
-            <p>Thank you for visiting my portfolio. I'm a passionate designer with a keen eye for detail and a love for creating innovative solutions. Let's connect and explore how we can bring your ideas to life.</p>
-            <button>
-              <Link href="/contact">Let's Chat</Link>
-            </button>
-        </RightTestSection>
+        <LeftTestSection
+  initial={{ opacity: 0, x: "-250px", y: "-250px" }}
+  animate={{ opacity: 1, x: "0px", y: "0px" }}
+  transition={{ duration: 1, delay: 1 }}
+>
+  <h3>Welcome!</h3>
+  <h1>
+    Hi, I'm <span>Rk</span>
+  </h1>
+  <h2>Frontend Web Developer</h2>
+  <p>
+    Thank you for stopping by! I specialize in building responsive and
+    user-friendly web interfaces. With a strong focus on clean code and modern
+    design principles, I help bring digital ideas to life. Let’s work together
+    and make something great!
+  </p>
+  <button>
+    <Link href="/contact">Start a Conversation</Link>
+  </button>
+</LeftTestSection>
+
+<RightTestSection
+  initial={{ opacity: 0, x: "250px", y: "250px" }}
+  animate={{ opacity: 1, x: "0px", y: "0px" }}
+  transition={{ duration: 1, delay: 1.2 }}
+>
+  <h3>Hello There!</h3>
+  <h1>
+    I'm <span>RK</span>
+  </h1>
+  <h2>DCA Trainee | Creative Designer</h2>
+  <p>
+    I'm currently expanding my skills in design and development through the
+    DCA program. I enjoy crafting visually engaging designs and turning ideas
+    into reality with creative solutions. Feel free to reach out and discuss
+    your next project!
+  </p>
+  <button>
+    <Link href="/contact">Let's Connect</Link>
+  </button>
+</RightTestSection>
+
       </Wrapper>
       <ServicePageItem/>
       <ProjectShowcase apis={projectsLive} showOnly={3} title="Live Projects"/>
@@ -75,7 +91,7 @@ export default function Home() {
 
 const Wrapper = styled.div`
   width: 100vw;
-  height: max-content;
+  height:100vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -85,16 +101,17 @@ const Wrapper = styled.div`
 `;
 
 const LeftTestSection = styled(motion.div)`
-width:350px;
+width:450px;
 height:max-content;
 padding:20px;
 background:rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)},0.1);
 position:absolute;
-bottom:320px;
+top:0px;
 left:0;
 z-index:1;
 border-radius:20px;
 padding:20px;
+backdrop-filter:blur(10px);
 h3{
     font-size:0.8rem;
     font-family:'Papyrus', 'Comic Sans MS', cursive;
@@ -125,10 +142,12 @@ button{
     }
 }
 @media(min-width:990px){
-left:15%;
+top:10%;
+left:10%;
 }
-@media(min-width:780px){
-top:20%;
+@media(max-width:990px){
+width:350px;
+top:10%;
 }
 @media(max-width:660px){
 top:15px;
@@ -142,12 +161,12 @@ p{
 `
 
 const RightTestSection = styled(motion.div)`
-width:350px;
+width:450px;
 height:max-content;
 padding:20px;
 position:absolute;
-bottom:100px;
-right:-25px;
+bottom:-100px;
+right:-20px;
 z-index:1;
 border-radius:20px;
 padding:20px;
@@ -186,14 +205,17 @@ button{
 }
 
 @media(min-width:990px){
-right:10%;
+top:45%;
+right:5%;
 font-size:1rem;
 }
-@media(min-width:780px){
+@media(max-width:990px){
+width:270px;
 top:60%;
+right:0%;
 }
 @media(max-width:660px){
-top:65vh;
+top:60vh;
 right:0%;
 border-radius:20px 0px 0px 20px;
 p{

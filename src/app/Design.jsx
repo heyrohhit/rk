@@ -31,7 +31,7 @@ export default function Design() {
         geometry="TetrahedronGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
-        size={5}
+        size={Math.floor(Math.random() * 2)+4}
         top="0%"
         left="0%"
         wireframe
@@ -48,7 +48,7 @@ export default function Design() {
         geometry="OctahedronGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
-        size={5}
+        size={Math.floor(Math.random() * 2)+4}
         top="0%"
         left="0%"
         wireframe
@@ -62,10 +62,10 @@ export default function Design() {
           transition={{ duration: 1 }}
           >
        <ThreeDObject 
-        geometry="SphereGeometry"
+        geometry="TorusKnotGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
-        size={10}
+        size={Math.floor(Math.random() * 2)+2}
         top="0%"
         left="0%"
         wireframe
@@ -82,7 +82,7 @@ export default function Design() {
         geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
-        size={7}
+        size={Math.floor(Math.random() * 2)+3}
         top="0%"
         left="0%"
         wireframe
@@ -98,10 +98,10 @@ export default function Design() {
         geometry="TorusKnotGeometry"
         material="MeshPhongMaterial"
         color={`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)},0.8)`}  
-        size={5}
+        size={Math.floor(Math.random() * 2)+3}
         top="0%"
         left="0%"
-        // wireframe
+        wireframe
           // Random animation for object 1
       />
           </ShapeFive>
@@ -151,34 +151,33 @@ const MainImageSection = styled(motion.div)`
   }
 `
 const ShapeOne = styled(motion.div)`
-  width:100px;
-  height:100px;
+  width:${Math.floor(Math.random() * 200)+100}px;
+  height:${Math.floor(Math.random() * 200)+100}px;
   position:absolute;
   overflow:hidden;
 `
 const ShapeTwo = styled(motion.div)`
-  width:100px;
-  height:100px;
+  width:${Math.floor(Math.random() * 160)+100}px;
+  height:${Math.floor(Math.random() * 160)+100}px;
   position:absolute;
   overflow:hidden;
 `
 const ShapeThree = styled(motion.div)`
-  width:100px;
-  height:100px;
+  width:${Math.floor(Math.random() * 120)+100}px;
+  height:${Math.floor(Math.random() * 120)+100}px;
   position:absolute;
-  border-radius:50%;
   overflow:hidden;
 `
 const ShapeFour = styled(motion.div)`
-  width:100px;
-  height:100px;
+  width:${Math.floor(Math.random() * 80)+100}px;
+  height:${Math.floor(Math.random() * 80)+100}px;
   position:absolute;
   overflow:hidden;
 `
 
 const ShapeFive = styled(motion.div)`
-  width:100px;
-  height:100px;
+  width:${Math.floor(Math.random() * 40)+100}px;
+  height:${Math.floor(Math.random() * 40)+100}px;
   position:absolute;
   overflow:hidden;
 `
