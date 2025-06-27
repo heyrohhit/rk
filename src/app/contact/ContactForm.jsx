@@ -83,11 +83,11 @@ const ErrorMessage = styled.p`
 `;
 
 const ContactForm = () => {
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Submitting...");
+    setStatus('Submitting...');
 
     const formData = {
       name: e.target.name.value,
@@ -96,24 +96,34 @@ const ContactForm = () => {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbynfAm088aTKAZQLAZD0BzjFHFx-AiiL2tL_DdZQ3l2T_gfdJJHOLQSo9lqjEohKiHN/exec", {
-        method: "POST",
+      const res = await fetch('/api/submit-form', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+        mode: 'cors',
+        redirect: 'follow',
       });
 
-      if (res.ok) {
-        setStatus("✅ Message sent successfully!");
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Server responded with status ${res.status}: ${errorText}`);
+      }
+
+      const result = await res.json();
+      if (result.result === 'success') {
+        setStatus('✅ Message sent successfully!');
         e.target.reset();
       } else {
-        setStatus("❌ Something went wrong, please try again.");
+        setStatus(`❌ Something went wrong: ${result.message}`);
       }
+     
     } catch (error) {
-      console.error("Error:", error);
-      setStatus("❌ Fetch error: " + error.message);
+      console.error('Frontend Error:', error);
+      setStatus(`❌ Error: ${error.message}`);
     }
+    e.target.reset();
   };
 
   return (
@@ -126,8 +136,8 @@ const ContactForm = () => {
         <SubmitButton type="submit">Send Message</SubmitButton>
       </StyledForm>
 
-      {status.includes("success") && <SuccessMessage>{status}</SuccessMessage>}
-      {status.includes("❌") && <ErrorMessage>{status}</ErrorMessage>}
+      {status.includes('success') && <SuccessMessage>{status}</SuccessMessage>}
+      {status.includes('❌') && <ErrorMessage>{status}</ErrorMessage>}
     </FormWrapper>
   );
 };

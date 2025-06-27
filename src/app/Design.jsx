@@ -27,13 +27,11 @@ export default function Design() {
           delay={1.5}
           transition={{ duration: 1 }}
           >
-         <ThreeDObject 
+          <ThreeDObject 
         geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
         size={Math.floor(Math.random() * 2)+2}
-        top="0%"
-        left="0%"
         wireframe
           // Random animation for object 1
       />
@@ -49,8 +47,6 @@ export default function Design() {
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
         size={Math.floor(Math.random() * 2)+2}
-        top="0%"
-        left="0%"
         wireframe
           // Random animation for object 1
       />
@@ -61,13 +57,11 @@ export default function Design() {
           delay={1.5}
           transition={{ duration: 1 }}
           >
-       <ThreeDObject 
+        <ThreeDObject 
         geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
         size={Math.floor(Math.random() * 2)+2}
-        top="0%"
-        left="0%"
         wireframe
           // Random animation for object 1
       />
@@ -83,8 +77,6 @@ export default function Design() {
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
         size={Math.floor(Math.random() * 2)+2}
-        top="0%"
-        left="0%"
         wireframe
           // Random animation for object 1
       />
@@ -99,8 +91,6 @@ export default function Design() {
         material="MeshPhongMaterial"
         color={`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)},0.8)`}  
         size={Math.floor(Math.random() * 2)+2}
-        top="0%"
-        left="0%"
         wireframe
           // Random animation for object 1
       />
