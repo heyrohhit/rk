@@ -9,6 +9,7 @@ import ServicePageItem from "./services/ServicePageItem";
 import ProjectShowcase from "./projects/ProjectShow";
 import {projectsLive,projects} from "./Components/myservices/apis"
 import Design from "./Design";
+import ContactContext from "./contact/ContactContext";
 
 
 
@@ -84,6 +85,7 @@ export default function Home() {
       <ServicePageItem/>
       <ProjectShowcase apis={projectsLive} showOnly={3} title="Live Projects"/>
         <ProjectShowcase apis={projects} showOnly={3} title="Projects"/>
+        <ContactContext/>
     </>
   );
 }       

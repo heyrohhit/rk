@@ -1,0 +1,376 @@
+'use client'
+import Link from 'next/link'
+import styled, { createGlobalStyle } from 'styled-components'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import {FaShareAlt,FaWhatsapp,FaInstagram,FaLinkedin,FaFacebook,FaGithub} from 'react-icons/fa'
+import ContactForm from './ContactForm'
+
+const icons = [
+    {
+        icon: <FaWhatsapp />,
+        link: "https://wa.me/918700750589",
+    },
+    {
+        icon: <FaInstagram />,
+        link: "https://www.instagram.com/rk96x0",
+    },
+    {
+        icon: <FaLinkedin />,
+        link: "https://www.linkedin.com/in/rk96x0",
+    },
+    {
+        icon: <FaFacebook />,
+        link: "https://www.facebook.com/rk96x0",
+    },
+    {
+        icon: <FaGithub />,
+        link: "https://github.com/rk96x0",
+    },
+]
+const GlobalStyle = createGlobalStyle`
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+`
+
+
+const Container = styled.div`
+width:100vw;
+  min-height: 60vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #000;
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.9) 100%
+    ),
+    url('/img/pic01.webp');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  position: relative;
+`
+const TopContent = styled.div`
+padding: 30px;
+width:550px;
+text-align: center;
+color: #fff;
+p{
+color:#aaa;
+}
+@media (max-width: 768px) {
+    width:100%;
+}
+`
+
+const InnerWrapper = styled(motion.div).withConfig({
+  shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'delay'].includes(prop),
+})`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1300px;
+  gap:10px;
+  // background-color: blue;
+  padding:20px;
+  .profileCard{
+   width:400px;
+   display:flex;
+   justify-content:center;
+   align-items:center; 
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`
+const StyleLink = styled(Link)`
+padding: 10px;
+  text-decoration: none;
+  color: inherit;
+`
+
+const ProfileCard = styled.div`
+  max-width: 320px;
+  width: 100%;
+  // background: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  padding:0 0px;
+  max-height: 550px;
+  @media (max-width: 450px) {
+    max-width: 260px;
+    max-height: 400px;
+  }
+`
+
+const Header = styled.div`
+  height: 250px;
+  background: linear-gradient(180deg, #ff5e62 0%, #ff9966 100%);
+  position: relative;
+`
+
+const Corve = styled.div`
+  background: #fff;
+  border-radius: 50%;
+  width: 640px;
+  height: 100%;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+`
+
+const ProfileImageWrapper = styled.div`
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  @media (max-width: 450px) {
+    top: 10%;
+    width: 140px;
+    height: 140px;
+  }
+`
+
+const Stats = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  position: absolute;
+  z-index: 5;
+  top: 26%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 100px;
+
+  @media (max-width: 450px) {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 120px;
+  }
+
+  div {
+    text-align: center;
+    line-height: 1.3;
+  }
+`
+
+const Content = styled.div`
+  // padding: 16px;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  color:#000;
+  @media (max-width: 450px) {
+    // background:red;
+    padding: 0 0.8rem 4rem;
+  }
+`
+
+const Name = styled.h1`
+  font-size: 38px;
+  font-weight: 700;
+  color: #222;
+  
+  @media (max-width: 450px) {
+    font-size: 18px;
+  }
+`
+
+const Bio = styled.p`
+display: flex;
+text-align: center;
+align-items: center;
+justify-content: center;
+font-size: 2rem;
+gap:0.5rem;
+flex-wrap: wrap;
+color: #666;
+line-height: 1.4;
+
+p{
+font-size: 0.8rem;
+padding: 0 1rem;
+}
+a{
+display: flex;
+align-items: center;
+justify-content: center;
+  padding:10px;
+  box-shadow: inset 2px 2px 10px rgba(255, 255, 255, 0.8),
+            2px 2px 10px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  border-radius: 50%;
+  background:rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, .5);
+  transform:scale(0.8);
+  color:#000;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0,1);
+  transition: all .3s ease-in-out;
+}
+a:hover{
+    transform: scale(1.1)
+  }
+    @media (max-width: 450px) {
+    font-size: 16px;
+  }
+`
+
+const ButtonRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 10px;
+  margin-top: 16px;
+  margin-bottom: 26px;
+  @media (max-width: 450px) {
+    gap: 16px;
+  }
+`
+
+const Button = styled.button`
+  flex: 1;
+  background: #000;
+  border: none;
+  padding: 10px 0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 450px) {
+    font-size: 12px;
+  }
+  svg {
+    margin: 0 6px;
+  }
+
+  &:hover {
+  color:#000;
+    background-color: #e0e0e0;
+  }
+`
+
+export default function Page() {
+  return (
+    <>
+      <GlobalStyle />
+      <Container>
+        <TopContent>
+        <h2>Get in touch</h2>
+        <p>"Reach out anytime – I'm just a message away from collaborating, networking, and creating something great together!"</p>
+        </TopContent>
+        <InnerWrapper
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+        <div className="profileCard">
+        <ProfileCard>
+            <Header>
+              <ProfileImageWrapper>
+                <Image
+                  src="/img/pic02.webp"
+                  alt="Profile"
+                  width={150}
+                  height={150}
+                  priority
+                  sizes="(max-width: 450px) 140px, 200px"
+                  style={{
+                    width: '90%',
+                    height: '110%',
+                    position: 'absolute',
+                    bottom: '-20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                  }}
+                />
+              </ProfileImageWrapper>
+            </Header>
+            <Corve />
+            <Stats>
+              <div>
+                3+<br />
+                <span style={{ fontWeight: 400 }}>Years</span>
+              </div>
+              <div>
+                100+<br />
+                <span style={{ fontWeight: 400 }}>Projects</span>
+              </div>
+            </Stats>
+            <Content>
+              <Name>Rohit Kumar</Name>
+              <Bio>
+              <p>"Feel free to reach me through any platform below – Let's build meaningful connections!"</p>
+                {icons.map((icon, index) => (
+                  <span key={index}>
+                    <Link href={icon.link} target="_blank" rel="noopener noreferrer">
+                      {icon.icon}
+                    </Link>
+                  </span>
+                ))}
+              </Bio>
+              <StyleLink href="https://behance.net/anlygl" target="_blank">
+                behance.net/anlygl
+              </StyleLink>
+              <ButtonRow>
+                <Button>
+                  <Link href="https://instagram.com/rk96x0" target="_blank">
+                    View Profile
+                  </Link>
+                </Button>
+                <Button onClick={() => {
+                  const shareData = {
+                    title: 'Rohit Kumar Portfolio',
+                    text: 'Check out this amazing profile!',
+                    url: window.location.href,
+                  }
+                  if (navigator.share) {
+                    navigator.share(shareData).catch(console.error)
+                  } else {
+                    // Fallback share links
+                    const url = encodeURIComponent(window.location.href)
+                    const text = encodeURIComponent('Check out this amazing profile!')
+                    window.open(`https://wa.me/?text=${text}%20${url}`, '_blank')
+                  }
+                }}>
+                  <FaShareAlt style={{ marginRight: '6px' }} />
+                  Share Profile
+                </Button>
+
+              </ButtonRow>
+            </Content>
+          </ProfileCard>
+        </div>
+          <ContactForm/>
+        </InnerWrapper>
+      </Container>
+
+    </>
+  )
+}

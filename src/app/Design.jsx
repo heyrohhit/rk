@@ -31,7 +31,7 @@ export default function Design() {
         geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
-        size={Math.floor(Math.random() * 2)+4}
+        size={Math.floor(Math.random() * 2)+2}
         top="0%"
         left="0%"
         wireframe
@@ -82,7 +82,7 @@ export default function Design() {
         geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`}  
-        size={Math.floor(Math.random() * 2)+3}
+        size={Math.floor(Math.random() * 2)+2}
         top="0%"
         left="0%"
         wireframe
@@ -98,7 +98,7 @@ export default function Design() {
         geometry="TorusGeometry"
         material="MeshPhongMaterial"
         color={`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)},0.8)`}  
-        size={Math.floor(Math.random() * 2)+3}
+        size={Math.floor(Math.random() * 2)+2}
         top="0%"
         left="0%"
         wireframe
@@ -151,33 +151,33 @@ const MainImageSection = styled(motion.div)`
   }
 `
 const ShapeOne = styled(motion.div)`
-  width:${Math.floor(Math.random() * 200)+100}px;
-  height:${Math.floor(Math.random() * 200)+100}px;
+  width:200px;
+  height:200px;
   position:absolute;
   overflow:hidden;
 `
 const ShapeTwo = styled(motion.div)`
-  width:${Math.floor(Math.random() * 160)+100}px;
-  height:${Math.floor(Math.random() * 160)+100}px;
+  width:200px;
+  height:200px;
   position:absolute;
   overflow:hidden;
 `
 const ShapeThree = styled(motion.div)`
-  width:${Math.floor(Math.random() * 120)+100}px;
-  height:${Math.floor(Math.random() * 120)+100}px;
+  width:200px;
+  height:200px;
   position:absolute;
   overflow:hidden;
 `
 const ShapeFour = styled(motion.div)`
-  width:${Math.floor(Math.random() * 80)+100}px;
-  height:${Math.floor(Math.random() * 80)+100}px;
+  width:200px;
+  height:200px;
   position:absolute;
   overflow:hidden;
 `
 
 const ShapeFive = styled(motion.div)`
-  width:${Math.floor(Math.random() * 40)+100}px;
-  height:${Math.floor(Math.random() * 40)+100}px;
+  width:200px;
+  height:200px;
   position:absolute;
   overflow:hidden;
 `
