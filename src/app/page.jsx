@@ -10,6 +10,7 @@ import ProjectShowcase from "./projects/ProjectShow";
 import {projectsLive,projects} from "./Components/myservices/apis"
 import Design from "./Design";
 import ContactContext from "./contact/ContactContext";
+import AboutContent from "./about/AboutContent";
 
 
 
@@ -86,6 +87,7 @@ export default function Home() {
       <ProjectShowcase apis={projectsLive} showOnly={3} title="Live Projects"/>
         <ProjectShowcase apis={projects} showOnly={3} title="Projects"/>
         <ContactContext/>
+        <AboutContent/>
     </>
   );
 }       
