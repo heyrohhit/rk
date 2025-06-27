@@ -83,29 +83,12 @@ const ContactForm = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    try {
-      await fetch('/api/send-whatsapp-message', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-  
-      setSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Error sending WhatsApp message:', error);
-    }
-  };
   
 
   return (
     <FormWrapper>
       <FormTitle>Send me a Message</FormTitle>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm action="https://formsubmit.co/rohitfolio8700@gmail.com" method="POST">
         <InputField
           type="text"
           name="name"
