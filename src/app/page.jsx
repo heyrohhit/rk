@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <>
       <Wrapper>
-        <Design />
+        <Design quantity={6}/>
         <LeftTestSection
   initial={{ opacity: 0, x: "-250px", y: "-250px" }}
   animate={{ opacity: 1, x: "0px", y: "0px" }}

@@ -1,11 +1,20 @@
+"use client"
 import Navbar from "./navbar/page";
-import HeaderSection from "./headerSection/page";
-import FooterPage from "./footer/page";
+import { createGlobalStyle } from "styled-components";
 
 
 const page = () => {
+    const GlobalStyle = createGlobalStyle`
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+  `
   return (
     <>
+    <GlobalStyle />
     <Navbar/>
     </>
   )

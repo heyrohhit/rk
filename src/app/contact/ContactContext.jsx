@@ -94,9 +94,9 @@ const InnerWrapper = styled(motion.div).withConfig({
   }
 `
 const StyleLink = styled(Link)`
-padding: 10px;
+padding: 20px 10px;
   text-decoration: none;
-  color: inherit;
+  color: #444;
 `
 
 const ProfileCard = styled.div`
@@ -335,8 +335,8 @@ export default function Page() {
                   </span>
                 ))}
               </Bio>
-              <StyleLink href="https://behance.net/anlygl" target="_blank">
-                behance.net/anlygl
+              <StyleLink href="https://instagram.com/rk96x0" target="_blank">
+              Let's connect for ideas, growth & future success!
               </StyleLink>
               <ButtonRow>
                 <Button>
