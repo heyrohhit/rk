@@ -76,6 +76,12 @@ const SuccessMessage = styled.p`
   margin-top: 15px;
 `;
 
+const ErrorMessage = styled.p`
+  text-align: center;
+  color: red;
+  margin-top: 15px;
+`;
+
 const ContactForm = () => {
   const [status, setStatus] = useState("");
 
@@ -90,7 +96,7 @@ const ContactForm = () => {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbx8blnBc1cpHYf7SMXupAkboRyWJG8CcEBbPvs0qEM-3AZAMBU8VXa4kqDAwz5tWeVK/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbzizv31vwlN2HsjzALeyc6ivMpt6IXxXYhTKekdbF_bWO0Ofc_eTCXeE-NNQiBirYG2/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -99,14 +105,14 @@ const ContactForm = () => {
       });
 
       if (res.ok) {
-        setStatus("Message sent successfully!");
+        setStatus("✅ Message sent successfully!");
         e.target.reset();
       } else {
-        setStatus("Something went wrong. Try again.");
+        setStatus("❌ Something went wrong, please try again.");
       }
     } catch (error) {
       console.error("Error:", error);
-      setStatus("Failed to send. Check console for errors.");
+      setStatus("❌ Fetch error: " + error.message);
     }
   };
 
@@ -114,26 +120,14 @@ const ContactForm = () => {
     <FormWrapper>
       <FormTitle>Send me a Message</FormTitle>
       <StyledForm onSubmit={handleSubmit}>
-        <InputField
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-        />
-        <InputField
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-        />
-        <TextArea
-          name="message"
-          placeholder="Your Message"
-          required
-        />
+        <InputField type="text" name="name" placeholder="Your Name" required />
+        <InputField type="email" name="email" placeholder="Your Email" required />
+        <TextArea name="message" placeholder="Your Message" required />
         <SubmitButton type="submit">Send Message</SubmitButton>
       </StyledForm>
-      {status && <SuccessMessage>{status}</SuccessMessage>}
+
+      {status.includes("success") && <SuccessMessage>{status}</SuccessMessage>}
+      {status.includes("❌") && <ErrorMessage>{status}</ErrorMessage>}
     </FormWrapper>
   );
 };
