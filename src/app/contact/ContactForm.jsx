@@ -77,44 +77,63 @@ const SuccessMessage = styled.p`
 `;
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("");
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Submitting...");
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+    };
+
+    try {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbx8blnBc1cpHYf7SMXupAkboRyWJG8CcEBbPvs0qEM-3AZAMBU8VXa4kqDAwz5tWeVK/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setStatus("Message sent successfully!");
+        e.target.reset();
+      } else {
+        setStatus("Something went wrong. Try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setStatus("Failed to send. Check console for errors.");
+    }
   };
-  
 
   return (
     <FormWrapper>
       <FormTitle>Send me a Message</FormTitle>
-      <StyledForm action="https://formsubmit.co/rohitfolio8700@gmail.com" method="POST">
+      <StyledForm onSubmit={handleSubmit}>
         <InputField
           type="text"
           name="name"
           placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
           required
         />
         <InputField
           type="email"
           name="email"
           placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
           required
         />
         <TextArea
           name="message"
           placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
           required
         />
         <SubmitButton type="submit">Send Message</SubmitButton>
       </StyledForm>
-      {submitted && <SuccessMessage>Thank you! Your message has been sent.</SuccessMessage>}
+      {status && <SuccessMessage>{status}</SuccessMessage>}
     </FormWrapper>
   );
 };
