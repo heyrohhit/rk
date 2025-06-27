@@ -96,7 +96,7 @@ const ContactForm = () => {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbzizv31vwlN2HsjzALeyc6ivMpt6IXxXYhTKekdbF_bWO0Ofc_eTCXeE-NNQiBirYG2/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbynfAm088aTKAZQLAZD0BzjFHFx-AiiL2tL_DdZQ3l2T_gfdJJHOLQSo9lqjEohKiHN/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
