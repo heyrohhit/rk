@@ -1,155 +1,133 @@
-'use client';
-
-import { useEffect, useRef } from "react";
+"use client";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
-export default function ThreeDObject({
-  geometry = "BoxGeometry",
-  material = "MeshBasicMaterial",
-  color = "white",
-  wireframe = false,
-  size = 1,
-  maxPosition = 1,
-  animation = true,
-  mouseControl = false,
-}) {
+const ThreeDObject = (props) => {
   const mountRef = useRef(null);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [positions, setPositions] = useState([]); // To track positions of objects
 
-  useEffect(() => {
-    const mount = mountRef.current;
-    const width = mount.clientWidth;
-    const height = mount.clientHeight;
+  const Object3D = async () => {
+    const width = mountRef.current.clientWidth;
+    const height = mountRef.current.clientHeight;
 
-    // Renderer
-    const renderer = new THREE.WebGLRenderer({ 
-      alpha: true, 
-      antialias: true,
-      powerPreference: "high-performance", // For mobile WebGL compatibility
-      preserveDrawingBuffer: false // Avoid buffer issues
-    });
-    renderer.setSize(width, height);
-    renderer.setClearColor(0x000000, 0); // Transparent background
-    mount.appendChild(renderer.domElement);
-
-    // Scene and Camera
+    // Create the scene, camera, and renderer
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(70, width / height, 0.1, 1000);
-    camera.position.z = 3;
+    const camera = new THREE.PerspectiveCamera(90, width / height, 0.1, 2000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(width, height);
+    renderer.setClearColor(0x000000, 0);  // Make sure the background is transparent
+    mountRef.current.appendChild(renderer.domElement);
 
-    // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    // Set scene background to transparent (avoid black)
+    scene.background = null; // This makes the scene's background transparent
+
+    // Create the geometry and material for the object
+    const geometry = new THREE[props.geometry]();
+    const material = new THREE[props.material]({ color: props.color, wireframe: props.wireframe });
+    const object = new THREE.Mesh(geometry, material);
+    object.scale.set(1.5, 1.5, 1.5); // Adjust scale if needed
+    scene.add(object);
+
+    // Add light to the scene
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);  // Increased light intensity
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
-    // ✅ Geometry Creation
-    let objectGeometry;
-    switch (geometry) {
-      case "BoxGeometry":
-        objectGeometry = new THREE.BoxGeometry(1, 1, 1);
-        break;
-      case "TetrahedronGeometry":
-        objectGeometry = new THREE.TetrahedronGeometry(1);
-        break;
-      case "SphereGeometry":
-        objectGeometry = new THREE.SphereGeometry(0.7, 32, 32);
-        break;
-      case "DodecahedronGeometry":
-        objectGeometry = new THREE.DodecahedronGeometry(1);
-        break;
-      case "TorusGeometry":
-        objectGeometry = new THREE.TorusGeometry(0.5, 0.2, 16, 100);
-        break;
-      case "TorusKnotGeometry":
-        objectGeometry = new THREE.TorusKnotGeometry(0.5, 0.2, 100, 16);
-        break;
-      default:
-        objectGeometry = new THREE.BoxGeometry(1, 1, 1);
-        break;
-    }
+    // Function to generate random position and avoid overlap
+    const getRandomPosition = () => {
+      const randomX = Math.random() * 2 - 1;  // Random X between -1 and 1
+      const randomY = Math.random() * 2 - 1;  // Random Y between -1 and 1
 
-    // ✅ Material
-    const objectMaterial = new THREE[material]({
-      color,
-      wireframe,
-    });
+      // Ensure no overlap: Check if the random position is too close to any already placed object
+      for (let pos of positions) {
+        if (
+          Math.abs(randomX - pos.x) < 0.2 && // Ensure objects are not too close
+          Math.abs(randomY - pos.y) < 0.2
+        ) {
+          return getRandomPosition(); // Recursively try again if overlap happens
+        }
+      }
 
-    // ✅ Mesh Creation (Fixed: Use objectMaterial instead of material)
-    const mesh = new THREE.Mesh(objectGeometry, objectMaterial);
+      // If no overlap, store the position
+      setPositions((prevPositions) => [...prevPositions, { x: randomX, y: randomY }]);
 
-    // ✅ Scaling based on container size
-    const minDimension = Math.min(width, height);
-    const scaleFactor = (minDimension / 100) * (size / 3); // Fine-tuned
-    mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
-
-    // ✅ Position (Centered)
-    mesh.position.set(0, 0, 0);
-
-    scene.add(mesh);
-
-    // Optional mouse control
-    const onMouseMove = (event) => {
-      if (!mouseControl) return;
-      const rect = mount.getBoundingClientRect();
-      const mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      const mouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-      camera.position.x = mouseX * 2;
-      camera.position.y = mouseY * 2;
-      camera.lookAt(scene.position);
+      return { x: randomX * (props.maxPosition || 10), y: randomY * (props.maxPosition || 10) };
     };
 
-    if (mouseControl) {
-      mount.addEventListener("mousemove", onMouseMove);
-    }
+    // Set the object's random position
+    const { x, y } = getRandomPosition();
+    object.position.set(x, y, Math.floor(Math.random() * 10)); // Random Z position
+
+    // Set the camera position
+    camera.position.z = props.size || 10;
+
+    // Mouse move event listener
+    const onMouseMove = (event) => {
+      const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+      const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+      setMouse({ x: mouseX, y: mouseY });
+
+      // Update the camera position based on mouse movement
+      camera.position.x = mouseX * 5;
+      camera.position.y = -mouseY * 5;
+      camera.lookAt(scene.position);  // Make the camera always look at the center
+    };
+
+    // Add mousemove event listener
+    window.addEventListener("mousemove", onMouseMove);
 
     // Animation loop
     const animate = () => {
+      if(props.animation){
       requestAnimationFrame(animate);
-
-      if (animation) {
-        mesh.rotation.x += 0.01;
-        mesh.rotation.y += 0.01;
+      object.rotation.x += 0.01;
+      object.rotation.y += 0.01;
       }
-
       renderer.render(scene, camera);
     };
 
+    // Start the animation loop immediately
     animate();
 
-    // Resize Handler
+    // Resize function to adjust on window resize
     const handleResize = () => {
-      const newWidth = mount.clientWidth;
-      const newHeight = mount.clientHeight;
-      renderer.setSize(newWidth, newHeight);
-      camera.aspect = newWidth / newHeight;
+      const width = mountRef.current.clientWidth;
+      const height = mountRef.current.clientHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
       camera.updateProjectionMatrix();
     };
 
     window.addEventListener("resize", handleResize);
 
-    // Cleanup
+    // Cleanup event listeners on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (mouseControl) {
-        mount.removeEventListener("mousemove", onMouseMove);
-      }
-      mount.removeChild(renderer.domElement);
-      renderer.dispose();
+      window.removeEventListener("mousemove", onMouseMove);
     };
-  }, [geometry, material, color, wireframe, size, maxPosition, animation, mouseControl]);
+  };
+
+  useEffect(() => {
+    Object3D();
+  }, []);
 
   return (
     <div
       ref={mountRef}
       style={{
-        width: "100%",
-        height: "100%",
-        overflow: "hidden",
-        backgroundColor: "transparent",
-        position: "relative", // Ensure canvas fits container
+        backgroundColor: "transparent",  // Ensure the parent container has a transparent background
+        position: "absolute",  // Ensure correct positioning
+        top: `${props.top}`,
+        left: `${props.left}`,
+        width: "100vw",  // Full width of the container
+        height: "100vh",  // Full height of the container
       }}
     />
   );
-}
+};
+
+export default ThreeDObject;
