@@ -2,17 +2,28 @@
 import styled from 'styled-components'
 import ContactContext from './ContactContext'
 import ContactForm from './ContactForm'
+import ThreeDObject from '../objects/3dScenes'
 
 const Combaine = () => {
   return (
     <Wrapper>
-       
+       <ThreeDObject 
+       geometry="TorusGeometry"
+       material="MeshPhongMaterial"
+       color="red"
+       size={2}
+       wireframe={true}
+       animation={Math.random() > 0.5}
+       position={[0, 0, 0]}
+       rotation={[0, 0, 0]}
+       scale={[1, 1, 1]}
+       />
         <TopContent>
         <h2>Get in touch</h2>
         <p>"Reach out anytime – I'm just a message away from collaborating, networking, and creating something great together!"</p>
         </TopContent>
-    <ContactContext/>
-    <ContactForm/>
+    <ContactContext width="100vw"/>
+    <ContactForm width="100vw"/>
     </Wrapper>
   )
 }
@@ -21,7 +32,7 @@ export default Combaine
 
 const Wrapper = styled.div`
 width:100vw;
-  min-height: 60vh;
+  min-height: 50vh;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

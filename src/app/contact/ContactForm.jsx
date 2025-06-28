@@ -4,18 +4,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 
-const Conatiner = styled.div`
-width:50vw;
-min-height: 60vh;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-wrap: wrap;
-padding:20px;
-@media (max-width: 768px) {
-    width:400px;
-}
-`
 
 const FormWrapper = styled.div`
   width: 350px;
@@ -96,7 +84,7 @@ const ErrorMessage = styled.p`
   margin-top: 15px;
 `;
 
-const ContactForm = () => {
+const ContactForm = (props) => {
   const [status, setStatus] = useState('');
 
   const handleSubmit = async (e) => {
@@ -159,3 +147,18 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+const Conatiner = styled.div`
+width:${props => props.width || '400px'};
+min-height: 60vh;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+position: relative;
+z-index: 1;
+padding:20px;
+@media (max-width: 768px) {
+    width:400px;
+}
+`

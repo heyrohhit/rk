@@ -4,7 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import {FaShareAlt,FaWhatsapp,FaInstagram,FaLinkedin,FaFacebook,FaGithub} from 'react-icons/fa'
-import ContactForm from './ContactForm'
+import ThreeDObject from '../objects/3dScenes'
 
 const icons = [
     {
@@ -37,9 +37,113 @@ body {
 }
 `
 
+export default function Page(props) {
+  return (
+    <>
+      <GlobalStyle />
+       <ThreeDObject 
+             geometry="TorusGeometry"
+             material="MeshPhongMaterial"
+             color="red"
+             size={2}
+             wireframe={true}
+             animation={Math.random() > 0.5}
+             position={[0, 0, 0]}
+             rotation={[0, 0, 0]}
+             scale={[1, 1, 1]}
+             />
+      <Container>
+        <InnerWrapper
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+        <div className="profileCard">
+        <ProfileCard>
+            <Header>
+              <ProfileImageWrapper>
+                <Image
+                  src="/img/pic02.webp"
+                  alt="Profile"
+                  width={150}
+                  height={150}
+                  priority
+                  sizes="(max-width: 450px) 140px, 200px"
+                  style={{
+                    width: '90%',
+                    height: '110%',
+                    position: 'absolute',
+                    bottom: '-20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                  }}
+                />
+              </ProfileImageWrapper>
+            </Header>
+            <Corve />
+            <Stats>
+              <div>
+                3+<br />
+                <span style={{ fontWeight: 400 }}>Years</span>
+              </div>
+              <div>
+                100+<br />
+                <span style={{ fontWeight: 400 }}>Projects</span>
+              </div>
+            </Stats>
+            <Content>
+              <Name>Rohit Kumar</Name>
+              <Bio>
+              <p>"Feel free to reach me through any platform below – Let's build meaningful connections!"</p>
+                {icons.map((icon, index) => (
+                  <span key={index}>
+                    <Link href={icon.link} target="_blank" rel="noopener noreferrer">
+                      {icon.icon}
+                    </Link>
+                  </span>
+                ))}
+              </Bio>
+              <StyleLink href="https://instagram.com/rk96x0" target="_blank">
+              Let's connect for ideas, growth & future success!
+              </StyleLink>
+              <ButtonRow>
+                <Button>
+                  <Link href="https://instagram.com/rk96x0" target="_blank">
+                    View Profile
+                  </Link>
+                </Button>
+                <Button onClick={() => {
+                  const shareData = {
+                    title: 'Rohit Kumar Portfolio',
+                    text: 'Check out this amazing profile!',
+                    url: window.location.href,
+                  }
+                  if (navigator.share) {
+                    navigator.share(shareData).catch(console.error)
+                  } else {
+                    // Fallback share links
+                    const url = encodeURIComponent(window.location.href)
+                    const text = encodeURIComponent('Check out this amazing profile!')
+                    window.open(`https://wa.me/?text=${text}%20${url}`, '_blank')
+                  }
+                }}>
+                  <FaShareAlt style={{ marginRight: '6px' }} />
+                  Share Profile
+                </Button>
+
+              </ButtonRow>
+            </Content>
+          </ProfileCard>
+        </div>
+        </InnerWrapper>
+      </Container>
+
+    </>
+  )
+}
 
 const Container = styled.div`
-width:50vw;
+width:${props => props.width || '100%'};
   min-height: 60vh;
   display: flex;
   justify-content: space-around;
@@ -257,97 +361,3 @@ const Button = styled.button`
     background-color: #e0e0e0;
   }
 `
-
-export default function Page() {
-  return (
-    <>
-      <GlobalStyle />
-      <Container>
-        <InnerWrapper
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-        <div className="profileCard">
-        <ProfileCard>
-            <Header>
-              <ProfileImageWrapper>
-                <Image
-                  src="/img/pic02.webp"
-                  alt="Profile"
-                  width={150}
-                  height={150}
-                  priority
-                  sizes="(max-width: 450px) 140px, 200px"
-                  style={{
-                    width: '90%',
-                    height: '110%',
-                    position: 'absolute',
-                    bottom: '-20px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                  }}
-                />
-              </ProfileImageWrapper>
-            </Header>
-            <Corve />
-            <Stats>
-              <div>
-                3+<br />
-                <span style={{ fontWeight: 400 }}>Years</span>
-              </div>
-              <div>
-                100+<br />
-                <span style={{ fontWeight: 400 }}>Projects</span>
-              </div>
-            </Stats>
-            <Content>
-              <Name>Rohit Kumar</Name>
-              <Bio>
-              <p>"Feel free to reach me through any platform below – Let's build meaningful connections!"</p>
-                {icons.map((icon, index) => (
-                  <span key={index}>
-                    <Link href={icon.link} target="_blank" rel="noopener noreferrer">
-                      {icon.icon}
-                    </Link>
-                  </span>
-                ))}
-              </Bio>
-              <StyleLink href="https://instagram.com/rk96x0" target="_blank">
-              Let's connect for ideas, growth & future success!
-              </StyleLink>
-              <ButtonRow>
-                <Button>
-                  <Link href="https://instagram.com/rk96x0" target="_blank">
-                    View Profile
-                  </Link>
-                </Button>
-                <Button onClick={() => {
-                  const shareData = {
-                    title: 'Rohit Kumar Portfolio',
-                    text: 'Check out this amazing profile!',
-                    url: window.location.href,
-                  }
-                  if (navigator.share) {
-                    navigator.share(shareData).catch(console.error)
-                  } else {
-                    // Fallback share links
-                    const url = encodeURIComponent(window.location.href)
-                    const text = encodeURIComponent('Check out this amazing profile!')
-                    window.open(`https://wa.me/?text=${text}%20${url}`, '_blank')
-                  }
-                }}>
-                  <FaShareAlt style={{ marginRight: '6px' }} />
-                  Share Profile
-                </Button>
-
-              </ButtonRow>
-            </Content>
-          </ProfileCard>
-        </div>
-        </InnerWrapper>
-      </Container>
-
-    </>
-  )
-}

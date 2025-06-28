@@ -86,7 +86,7 @@ export default function Home() {
       <ServicePageItem/>
       <ProjectShowcase apis={projectsLive} showOnly={3} title="Live Projects"/>
         <ProjectShowcase apis={projects} showOnly={3} title="Projects"/>
-        <ContactContext/>
+        <ContactContext width="100vw"/>
         <AboutContent/>
     </>
   );

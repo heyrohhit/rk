@@ -152,6 +152,7 @@ export default function ThreeDObject({
         height: "100%",
         overflow: "hidden",
         backgroundColor: "transparent",
+        position: "absolute",
       }}
     />
   );

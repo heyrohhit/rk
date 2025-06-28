@@ -51,8 +51,9 @@ const ContentWrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  flex: 1;
-  font-size: 2rem;
+width:100%;
+  // flex: 1;
+  font-size: 1.5rem;
   font-weight: 900;
   text-align: center;
   background: linear-gradient(90deg, #60a5fa, #a3bffa);
@@ -62,12 +63,25 @@ const Title = styled.h1`
   letter-spacing: -0.03em;
   text-transform: uppercase;
   animation: ${glow} 3s infinite ease-in-out;
-  @media (min-width: 640px) {
-    font-size: 3rem;
+  position:relative;
+  &::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:10%;
+    height:2px;
+    background:linear-gradient(90deg,#60a5fa,#7dd3fc);
+    opacity:1;
+    transition:all 0.3s ease;
+    animation: ${glow} 3s infinite ease-in-out;
   }
-  @media (min-width: 1024px) {
-    font-size: 4rem;
+  &:hover::before{
+    opacity:1;
+    width:25%;
   }
+  
 `;
 
 const Description = styled.p`
