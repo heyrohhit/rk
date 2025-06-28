@@ -2,20 +2,10 @@
 
 import styled, { createGlobalStyle } from "styled-components";
 import { motion } from "framer-motion";
-import ThreeDObject from "./objects/3dScenes";
+import Background from "./objects/Background";
 
-export default function Design({ quantity = 5 }) {
-  const generateShapes = (count) =>
-    Array.from({ length: count }, () => ({
-      x: `${Math.floor(Math.random() * 600 - 250)}px`,
-      y: `${Math.floor(Math.random() * 100 - 300)}px`,
-      size: Math.floor(Math.random() * 3) + 2,
-      color: `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`,
-      wireframe: Math.random() > 0.5,
-      animation: Math.random() > 0.5,
-    }));
-
-  const shapes = generateShapes(quantity);
+export default function Design() {
+  
 
   const GlobalStyle = createGlobalStyle`
     body {
@@ -44,23 +34,7 @@ export default function Design({ quantity = 5 }) {
             }}
           />
         </MainImageSection>
-        {shapes.map((shape, index) => (
-          <Shape
-            key={index}
-            initial={{ opacity: 0, x: "0%", y: "0%" }}
-            animate={{ opacity: 1, x: shape.x, y: shape.y }}
-            transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
-          >
-            <ThreeDObject
-              geometry="TorusGeometry"
-              material="MeshPhongMaterial"
-              color={shape.color}
-              size={shape.size}
-              wireframe={shape.wireframe}
-              animation={shape.animation}
-            />
-          </Shape>
-        ))}
+            <Background quantity={Math.floor(Math.random() * 10) + 1}/>
       </MainSection>
     </>
   );
@@ -114,15 +88,3 @@ const MainImageSection = styled(motion.div)`
   }
 `;
 
-const Shape = styled(motion.div)`
-  width: 150px;
-  height: 150px;
-  background: rgba(0,0,0,0);
-  position: absolute;
-  overflow: hidden;
-
-  @media (max-width: 768px) {
-    width: 120px;
-    height: 120px;
-  }
-`;

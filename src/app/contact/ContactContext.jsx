@@ -35,30 +35,67 @@ body {
   box-sizing: border-box;
   overflow-x: hidden;
 }
+  .main{
+  width:100vw;
+  height:max-content;
+  position:relative;
+  overflow:hidden;
+  .objects{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    top:0px;
+    left:-30%;
+    z-index:1;
+  }
+  }
+
+  .combine{
+    width:50vw;
+    overflow: hidden;
+     .objects{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    top:0px;
+    left:-30%;
+    z-index:1;
+  }
+  }
+  
 `
 
 export default function Page(props) {
   return (
     <>
       <GlobalStyle />
-       <ThreeDObject 
+      
+      <Container className={props.width}>
+      <div className='objects'>
+          <ThreeDObject 
              geometry="TorusGeometry"
              material="MeshPhongMaterial"
              color="red"
-             size={2}
+             size={0.5}
              wireframe={true}
              animation={Math.random() > 0.5}
-             position={[0, 0, 0]}
-             rotation={[0, 0, 0]}
+             position={[Math.floor(Math.random() * 100 - 20), Math.floor(Math.random() * 100 - 20), Math.floor(Math.random() * 100 - 20)]}
+             rotation={[Math.floor(Math.random() * 360), Math.floor(Math.random() * 360), Math.floor(Math.random() * 360)]}
              scale={[1, 1, 1]}
              />
-      <Container>
+          </div>
         <InnerWrapper
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
+         
         <div className="profileCard">
+          
         <ProfileCard>
             <Header>
               <ProfileImageWrapper>
@@ -143,17 +180,12 @@ export default function Page(props) {
 }
 
 const Container = styled.div`
-width:${props => props.width || '100%'};
-  min-height: 60vh;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
   overflow-x: hidden;
   position: relative;
-  @media (max-width: 768px) {
-    width:400px;
-  }
 `
 
 
@@ -169,6 +201,8 @@ const InnerWrapper = styled(motion.div).withConfig({
   gap:10px;
   // background-color: blue;
   padding:20px;
+  position:relative;
+  z-index:1;
   .profileCard{
    width:400px;
    display:flex;

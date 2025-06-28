@@ -2,13 +2,13 @@
 
 import React from "react";
 import styled, { keyframes ,createGlobalStyle} from "styled-components";
-import {servicesData} from "../Components/myservices/apis"
+import {servicesData} from "../Components/myservices/apis";
+import Background from "../objects/Background";
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background-color: #000;
     color: #fff;
     font-family: 'Poppins', sans-serif;
     overflow-x:hidden;
@@ -34,7 +34,6 @@ const Container = styled.div`
   height:max-content;
   margin: 0 auto;
   text-align: center;
-  background:#000;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -135,6 +134,7 @@ export default function ServicesSection() {
   return (
     <Container>
       <GlobalStyle />
+      <Background quantity={Math.floor(Math.random() * 10) + 1}/>
       <SectionLabel>Our Services</SectionLabel>
       <Heading>What We Offer</Heading>
       <Subheading>

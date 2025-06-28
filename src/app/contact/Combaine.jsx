@@ -3,27 +3,19 @@ import styled from 'styled-components'
 import ContactContext from './ContactContext'
 import ContactForm from './ContactForm'
 import ThreeDObject from '../objects/3dScenes'
+import Background from '../objects/Background'
 
 const Combaine = () => {
   return (
     <Wrapper>
-       <ThreeDObject 
-       geometry="TorusGeometry"
-       material="MeshPhongMaterial"
-       color="red"
-       size={2}
-       wireframe={true}
-       animation={Math.random() > 0.5}
-       position={[0, 0, 0]}
-       rotation={[0, 0, 0]}
-       scale={[1, 1, 1]}
-       />
+      
+       {/* <Background quantity={2}/> */}
         <TopContent>
         <h2>Get in touch</h2>
         <p>"Reach out anytime – I'm just a message away from collaborating, networking, and creating something great together!"</p>
         </TopContent>
-    <ContactContext width="100vw"/>
-    <ContactForm width="100vw"/>
+    <ContactContext width="combine"/>
+    <ContactForm width="combine"/>
     </Wrapper>
   )
 }
@@ -32,7 +24,7 @@ export default Combaine
 
 const Wrapper = styled.div`
 width:100vw;
-  min-height: 50vh;
+  // min-height: 50vh;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -49,6 +41,14 @@ width:100vw;
   background-repeat: no-repeat;
   overflow-x: hidden;
   position: relative;
+  z-index: -99;
+`
+
+const Shapes = styled.div`
+position: absolute;
+width:100%;
+height:100%;
+z-index: 99;
 `
 const TopContent = styled.div`
 padding: 30px;

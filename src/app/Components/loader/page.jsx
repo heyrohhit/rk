@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const LoaderWrapper = styled.div`
   width: 100vw;
-  height: 200vh;
+  height: 100vh;
   text-align: center;
   overflow: hidden;
   position: fixed;

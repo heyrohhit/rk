@@ -7,7 +7,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background-color: #000;
     color: #fff;
     font-family: 'Poppins', sans-serif;
     overflow-x:hidden;
@@ -17,7 +16,6 @@ const Container = styled.div`
   padding: 60px 20px;
   overflow-x: hidden;
   width: 100%;
-  background:#000;
   font-family: 'Poppins', sans-serif;
 `;
 

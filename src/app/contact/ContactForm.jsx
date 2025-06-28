@@ -1,9 +1,24 @@
 'use client';
 
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled,{createGlobalStyle} from 'styled-components';
 
-
+const GlobalStyle = createGlobalStyle`
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+  .combine{
+    width:50vw;
+\
+    @media (max-width: 768px) {
+      width:350px;
+    }
+  }
+  
+`
 
 const FormWrapper = styled.div`
   width: 350px;
@@ -129,7 +144,10 @@ const ContactForm = (props) => {
   };
 
   return (
-   <Conatiner>
+    <>
+    <GlobalStyle/>
+   
+   <Conatiner  className={props.width}>
      <FormWrapper>
       <FormTitle>Send me a Message</FormTitle>
       <StyledForm onSubmit={handleSubmit}>
@@ -143,13 +161,14 @@ const ContactForm = (props) => {
       {status.includes('❌') && <ErrorMessage>{status}</ErrorMessage>}
     </FormWrapper>
    </Conatiner>
+    </>
   );
 };
 
 export default ContactForm;
 
 const Conatiner = styled.div`
-width:${props => props.width || '400px'};
+width:${props => props.width || '50%'};
 min-height: 60vh;
 display: flex;
 justify-content: center;
@@ -159,6 +178,6 @@ position: relative;
 z-index: 1;
 padding:20px;
 @media (max-width: 768px) {
-    width:400px;
+    width:100%;
 }
 `
