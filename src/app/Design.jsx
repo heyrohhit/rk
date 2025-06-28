@@ -67,7 +67,7 @@ export default function Design({ quantity = 5 }) {
 }
 
 const MainSection = styled(motion.div)`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -86,8 +86,8 @@ const MainSection = styled(motion.div)`
 `;
 
 const MainImageSection = styled(motion.div)`
-  width: clamp(200px, 40vw, 350px);
-  height: clamp(200px, 40vw, 350px);
+  width: 350px;
+  height: 350px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -109,20 +109,20 @@ const MainImageSection = styled(motion.div)`
   }
 
   @media (max-width: 768px) {
-    width: clamp(150px, 30vw, 250px);
-    height: clamp(150px, 30vw, 250px);
+    width: 250px;
+    height: 250px;
   }
 `;
 
 const Shape = styled(motion.div)`
-  width: clamp(100px, 20vw, 150px);
-  height: clamp(100px, 20vw, 150px);
+  width: 150px;
+  height: 150px;
   background: rgba(0,0,0,0);
   position: absolute;
   overflow: hidden;
 
   @media (max-width: 768px) {
-    width: clamp(80px, 15vw, 120px);
-    height: clamp(80px, 15vw, 120px);
+    width: 120px;
+    height: 120px;
   }
 `;
