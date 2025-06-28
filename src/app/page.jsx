@@ -130,6 +130,7 @@ h1{
 p{
     
     font-size:1rem;
+    font-weight:100;
 }
 button{
     font-size:0.8rem;
@@ -192,6 +193,7 @@ h1{
 }
 p{
     font-size:1rem;
+    font-weight:100;
 }
 button{
     font-size:0.8rem;
