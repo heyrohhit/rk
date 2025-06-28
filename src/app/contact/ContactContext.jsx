@@ -39,37 +39,19 @@ body {
 
 
 const Container = styled.div`
-width:100vw;
+width:50vw;
   min-height: 60vh;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
-  background: #000;
-  background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.9) 100%
-    ),
-    url('/img/pic01.webp');
-  background-size: contain;
-  background-position: right;
-  background-repeat: no-repeat;
   overflow-x: hidden;
   position: relative;
+  @media (max-width: 768px) {
+    width:400px;
+  }
 `
-const TopContent = styled.div`
-padding: 30px;
-width:550px;
-text-align: center;
-color: #fff;
-p{
-color:#aaa;
-}
-@media (max-width: 768px) {
-    width:100%;
-}
-`
+
 
 const InnerWrapper = styled(motion.div).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'delay'].includes(prop),
@@ -281,10 +263,6 @@ export default function Page() {
     <>
       <GlobalStyle />
       <Container>
-        <TopContent>
-        <h2>Get in touch</h2>
-        <p>"Reach out anytime – I'm just a message away from collaborating, networking, and creating something great together!"</p>
-        </TopContent>
         <InnerWrapper
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -367,7 +345,6 @@ export default function Page() {
             </Content>
           </ProfileCard>
         </div>
-          <ContactForm/>
         </InnerWrapper>
       </Container>
 

@@ -40,15 +40,11 @@ export const metadata = {
 };
 
 
-import ContactContext from './ContactContext'
-import ContactForm from './ContactForm'
+import Combaine from './Combaine'
 
 const page = () => {
   return (
-    <>
-    <ContactContext/>
-
-    </>
+    <Combaine/>
   )
 }
 

@@ -101,7 +101,7 @@ const Wrapper = styled.div`
   align-items: center;
   flex-wrap:wrap;
   position: relative;
-  overflow-x:hidden;
+  // overflow-x:hidden;
 `;
 
 const LeftTestSection = styled(motion.div)`

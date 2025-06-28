@@ -21,13 +21,13 @@ export default function Design({ quantity = 5 }) {
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
+      overflow-x: hidden;
       background-color: black;
     }
     .design {
       margin: 0;
       padding: 0;
-      overflow: hidden;
+      overflow-x: hidden;
     }
   `;
 
@@ -76,9 +76,10 @@ const MainSection = styled(motion.div)`
   background: linear-gradient(to left, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)),
     url("/img/pic01.webp") right center/cover no-repeat;
   flex-wrap: wrap;
-  overflow: hidden;
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
+    overflow-x: hidden;
     height: auto;
     min-height: 100vh;
   }

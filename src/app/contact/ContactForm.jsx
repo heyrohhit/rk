@@ -3,6 +3,20 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+
+const Conatiner = styled.div`
+width:50vw;
+min-height: 60vh;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+padding:20px;
+@media (max-width: 768px) {
+    width:400px;
+}
+`
+
 const FormWrapper = styled.div`
   width: 350px;
   margin: 50px auto;
@@ -127,7 +141,8 @@ const ContactForm = () => {
   };
 
   return (
-    <FormWrapper>
+   <Conatiner>
+     <FormWrapper>
       <FormTitle>Send me a Message</FormTitle>
       <StyledForm onSubmit={handleSubmit}>
         <InputField type="text" name="name" placeholder="Your Name" required />
@@ -139,6 +154,7 @@ const ContactForm = () => {
       {status.includes('success') && <SuccessMessage>{status}</SuccessMessage>}
       {status.includes('❌') && <ErrorMessage>{status}</ErrorMessage>}
     </FormWrapper>
+   </Conatiner>
   );
 };
 
