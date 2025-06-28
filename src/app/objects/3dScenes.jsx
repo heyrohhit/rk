@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
@@ -8,7 +8,7 @@ export default function ThreeDObject({
   material = "MeshBasicMaterial",
   color = "white",
   wireframe = false,
-  size = 1,
+  size = 0.5,
   maxPosition = 1,
   animation = true,
   mouseControl = false,
@@ -17,13 +17,15 @@ export default function ThreeDObject({
 
   useEffect(() => {
     const mount = mountRef.current;
-    const width = mount.clientWidth;
-    const height = mount.clientHeight;
+    if (!mount) return;
+
+    const width = mount.clientWidth || window.innerWidth;
+    const height = mount.clientHeight || window.innerHeight;
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(width, height);
-    renderer.setClearColor(0x000000, 0);
+    renderer.setClearColor(0x000000, 0); // Transparent background
     mount.appendChild(renderer.domElement);
 
     // Scene and Camera
@@ -34,56 +36,65 @@ export default function ThreeDObject({
     // Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
     scene.add(ambientLight);
-
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
-    // ✅ Geometry Creation (Correct params for each type)
+    // Geometry Creation
     let objectGeometry;
-    switch (geometry) {
-      case "BoxGeometry":
-        objectGeometry = new THREE.BoxGeometry(1, 1, 1);
-        break;
-      case "TetrahedronGeometry":
-        objectGeometry = new THREE.TetrahedronGeometry(1);
-        break;
-      case "SphereGeometry":
-        objectGeometry = new THREE.SphereGeometry(0.7, 32, 32);
-        break;
-      case "DodecahedronGeometry":
-        objectGeometry = new THREE.DodecahedronGeometry(1);
-        break;
-      case "TorusGeometry":
-        objectGeometry = new THREE.TorusGeometry(0.5, 0.2, 16, 100);
-        break;
-      case "TorusKnotGeometry":
-        objectGeometry = new THREE.TorusKnotGeometry(0.5, 0.2, 100, 16);
-        break;
-      default:
-        objectGeometry = new THREE.BoxGeometry(1, 1, 1);
-        break;
+    try {
+      switch (geometry) {
+        case "BoxGeometry":
+          objectGeometry = new THREE.BoxGeometry(1, 1, 1);
+          break;
+        case "TetrahedronGeometry":
+          objectGeometry = new THREE.TetrahedronGeometry(1);
+          break;
+        case "SphereGeometry":
+          objectGeometry = new THREE.SphereGeometry(0.7, 32, 32);
+          break;
+        case "DodecahedronGeometry":
+          objectGeometry = new THREE.DodecahedronGeometry(1);
+          break;
+        case "TorusGeometry":
+          objectGeometry = new THREE.TorusGeometry(0.5, 0.2, 16, 100);
+          break;
+        case "TorusKnotGeometry":
+          objectGeometry = new THREE.TorusKnotGeometry(0.5, 0.2, 100, 16);
+          break;
+        default:
+          objectGeometry = new THREE.BoxGeometry(1, 1, 1);
+      }
+    } catch (error) {
+      console.error("Geometry creation failed:", error);
+      mount.style.backgroundColor = "black"; // Fallback background
+      return;
     }
 
-    // ✅ Material
-    const objectMaterial = new THREE[material]({
-      color,
-      wireframe,
-    });
+    // Material
+    let objectMaterial;
+    try {
+      objectMaterial = new THREE[material]({
+        color,
+        wireframe,
+      });
+    } catch (error) {
+      console.error("Material creation failed:", error);
+      mount.style.backgroundColor = "black"; // Fallback background
+      return;
+    }
 
     const mesh = new THREE.Mesh(objectGeometry, objectMaterial);
 
-    // ✅ Scaling based on container size
+    // Scaling
     const minDimension = Math.min(width, height);
-    const scaleFactor = (minDimension / 100) * (size / 3);  // Fine-tuned
+    const scaleFactor = (minDimension / 100) * (size / 3);
     mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
-
-    // ✅ Position (Centered)
     mesh.position.set(0, 0, 0);
 
     scene.add(mesh);
 
-    // Optional mouse control
+    // Mouse Control
     const onMouseMove = (event) => {
       if (!mouseControl) return;
       const rect = mount.getBoundingClientRect();
@@ -99,23 +110,21 @@ export default function ThreeDObject({
     }
 
     // Animation loop
+    let animationFrameId;
     const animate = () => {
-      requestAnimationFrame(animate);
-
+      animationFrameId = requestAnimationFrame(animate);
       if (animation) {
         mesh.rotation.x += 0.01;
         mesh.rotation.y += 0.01;
       }
-
       renderer.render(scene, camera);
     };
-
     animate();
 
     // Resize Handler
     const handleResize = () => {
-      const newWidth = mount.clientWidth;
-      const newHeight = mount.clientHeight;
+      const newWidth = mount.clientWidth || window.innerWidth;
+      const newHeight = mount.clientHeight || window.innerHeight;
       renderer.setSize(newWidth, newHeight);
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
@@ -126,10 +135,11 @@ export default function ThreeDObject({
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (mouseControl) {
-        mount.removeEventListener("mousemove", onMouseMove);
+      if (mouseControl) mount.removeEventListener("mousemove", onMouseMove);
+      cancelAnimationFrame(animationFrameId);
+      if (mount.contains(renderer.domElement)) {
+        mount.removeChild(renderer.domElement);
       }
-      mount.removeChild(renderer.domElement);
       renderer.dispose();
     };
   }, [geometry, material, color, wireframe, size, maxPosition, animation, mouseControl]);

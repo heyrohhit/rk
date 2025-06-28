@@ -4,41 +4,52 @@ import styled, { createGlobalStyle } from "styled-components";
 import { motion } from "framer-motion";
 import ThreeDObject from "./objects/3dScenes";
 
-export default function Design({ quantity }) {
-  // Generate random shape configurations based on quantity
+export default function Design({ quantity = 5 }) {
   const generateShapes = (count) =>
     Array.from({ length: count }, () => ({
-      x: `${Math.floor(Math.random() * 600 - 280)}px`, // Random x between -300px and 300px
-      y: `${Math.floor(Math.random() * 200 - 300)}px`, // Random y between -300px and 300px
-      size: Math.floor(Math.random() * 2) + 1, // Random size between 2 and 4
+      x: `${Math.floor(Math.random() * 600 - 250)}px`,
+      y: `${Math.floor(Math.random() * 100 - 300)}px`,
+      size: Math.floor(Math.random() * 3) + 2,
       color: `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`,
-      wireframe: true,
+      wireframe: Math.random() > 0.5,
       animation: Math.random() > 0.5,
     }));
 
   const shapes = generateShapes(quantity);
 
   const GlobalStyle = createGlobalStyle`
-    .design{
+    body {
       margin: 0;
       padding: 0;
-      overflow-y: hidden;
+      overflow: hidden;
+      background-color: black;
     }
-  `
+    .design {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  `;
 
   return (
     <>
       <GlobalStyle />
       <MainSection className="design">
         <MainImageSection>
-          <img src="/img/pic02.webp" alt="pic02" />
+          <img
+            src="/img/pic02.webp"
+            alt="Main visual"
+            onError={(e) => {
+              e.target.parentElement.style.backgroundColor = "black";
+            }}
+          />
         </MainImageSection>
         {shapes.map((shape, index) => (
           <Shape
             key={index}
             initial={{ opacity: 0, x: "0%", y: "0%" }}
             animate={{ opacity: 1, x: shape.x, y: shape.y }}
-            transition={{ duration: 1, delay: 1.5 }}
+            transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
           >
             <ThreeDObject
               geometry="TorusGeometry"
@@ -64,44 +75,53 @@ const MainSection = styled(motion.div)`
   position: relative;
   background: linear-gradient(to left, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)),
     url("/img/pic01.webp") right center/cover no-repeat;
-  flex-wrap: wrap-reverse;
-  overflow-y: hidden!important;
+  flex-wrap: wrap;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 100vh;
+  }
 `;
 
 const MainImageSection = styled(motion.div)`
-  width: 350px;
-  height: 350px;
+  width: clamp(200px, 40vw, 350px);
+  height: clamp(200px, 40vw, 350px);
   position: absolute;
-  top: 35%;
-  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
   display: flex;
-  overflow-x: visible;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
   justify-content: center;
   align-items: center;
-  z-index: 99;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  overflow: visible;
 
   img {
     width: 100%;
     height: 130%;
-    top: -20%;
-    overflow: visible;
     position: absolute;
+    top: -20%;
+    object-fit: cover;
     z-index: 9;
   }
 
-  @media (max-width: 780px) {
-    width: 250px;
-    height: 250px;
-    top: 30%;
+  @media (max-width: 768px) {
+    width: clamp(150px, 30vw, 250px);
+    height: clamp(150px, 30vw, 250px);
   }
 `;
 
 const Shape = styled(motion.div)`
-  width: 200px;
-  height: 200px;
-  background: transparent;
+  width: clamp(100px, 20vw, 150px);
+  height: clamp(100px, 20vw, 150px);
+  background: rgba(0,0,0,0);
   position: absolute;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: clamp(80px, 15vw, 120px);
+    height: clamp(80px, 15vw, 120px);
+  }
 `;
