@@ -11,6 +11,7 @@ import { projectsLive, projects } from './Components/myservices/apis';
 import Design from './Design';
 import ContactContext from './contact/ContactContext';
 import AboutContent from './about/AboutContent';
+import Background from './objects/Background';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -36,6 +37,7 @@ export default function Home() {
   return (
     <>
       <Wrapper>
+      <Background/>
         <Design quantity={6} />
         <LeftTestSection
           initial={{ opacity: 0, x: '-250px', y: '-250px' }}

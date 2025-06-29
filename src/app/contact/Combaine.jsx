@@ -2,13 +2,12 @@
 import styled from 'styled-components'
 import ContactContext from './ContactContext'
 import ContactForm from './ContactForm'
-import ThreeDObject from '../objects/3dScenes'
 import Background from '../objects/Background'
 
 const Combaine = () => {
   return (
     <Wrapper>
-      
+      <Background/>
        {/* <Background quantity={2}/> */}
         <TopContent>
         <h2>Get in touch</h2>

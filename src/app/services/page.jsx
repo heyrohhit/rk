@@ -26,7 +26,11 @@ export const metadata = {
 };
 
 import ServicePageItem from "./ServicePageItem";
+import Background from "../objects/Background";
 
 export default function ProjectsPage() {
-  return <ServicePageItem />;
+  return <>
+  <Background/>
+  <ServicePageItem />
+  </>;
 }

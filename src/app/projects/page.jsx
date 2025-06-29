@@ -28,10 +28,12 @@ export const metadata = {
 
 import ProjectShowcase from "./ProjectShow";
 import {projectsLive,projects} from "../Components/myservices/apis"
+import Backgrounds from "../Components/backgounds/page";
 
 export default function ProjectsPage() {
   return (
   <>
+  <Backgrounds/>
   <ProjectShowcase apis={projectsLive} showOnly={0} title="Live Projects"/>
   <ProjectShowcase apis={projects} showOnly={0} title="Projects"/>
   </>
