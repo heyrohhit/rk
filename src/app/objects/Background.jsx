@@ -23,8 +23,8 @@ const Background = ({ quantity }) => {
     Array.from({ length: count }, () => {
       const geometry = ["TorusGeometry", "TorusKnotGeometry", "SphereGeometry"][Math.floor(Math.random() * 3)];
       return {
-        x: `${Math.floor(Math.random() * 80)}vw`,
-        y: `${Math.floor(Math.random() * 80)}vh`,
+        x: `${Math.floor(Math.random() * 80-10)}vw`,
+        y: `${Math.floor(Math.random() * 80-10)}vh`,
         size: Math.floor(Math.random() * 3) + 3,
         color: getRandomColor(),
         wireframe: Math.random() > 0.5,

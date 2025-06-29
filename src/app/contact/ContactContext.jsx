@@ -57,12 +57,8 @@ body {
     overflow: hidden;
      .objects{
     position:absolute;
-    top:0;
-    left:0;
     width:100vw;
     height:100vh;
-    top:0px;
-    left:-30%;
     z-index:1;
   }
   }
@@ -74,8 +70,11 @@ export default function Page(props) {
     <>
       <GlobalStyle />
       
-      <Container className={props.width}>
-      <div className='objects'>
+      <Container className={props.width} >
+      <div className='objects' style={{
+        top:Math.floor(Math.random() * 100 - 50) + '%',
+        left:Math.floor(Math.random() * 100 - 50) + '%',
+      }}>
           <ThreeDObject 
              geometry="TorusGeometry"
              material="MeshPhongMaterial"
