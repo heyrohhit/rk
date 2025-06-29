@@ -106,7 +106,7 @@ const Section = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 1.5rem;
-  background: rgba(22, 33, 62, 0.85);
+  background: transparent;
   border-radius: 1rem;
   border: 1px solid rgba(99, 179, 237, 0.2);
   backdrop-filter: blur(12px);
@@ -200,6 +200,7 @@ const ListItem = styled.li`
 const ButtonWrapper = styled.div`
     width:100vw;
   text-align: center;
+  padding:1.5rem;
 `;
 
 const Button = styled.a`

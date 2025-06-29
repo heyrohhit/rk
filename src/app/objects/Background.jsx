@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ThreeDObject from './3dScenes';
 
 const Background = ({ quantity }) => {
-  const allowedGeometries = ["TorusGeometry", "TorusKnotGeometry", "SphereGeometry"];
+  const allowedGeometries = ["TorusGeometry", "TorusKnotGeometry"];
 
   const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
@@ -13,15 +13,15 @@ const Background = ({ quantity }) => {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  };
+  }
 
   const getMaxPosition = () => {
     return Math.random() * 6;
-  };
+  }
 
   const generateShapes = (count) =>
     Array.from({ length: count }, () => {
-      const geometry = ["TorusGeometry", "TorusKnotGeometry", "SphereGeometry"][Math.floor(Math.random() * 3)];
+      const geometry = ["TorusGeometry", "TorusKnotGeometry",][Math.floor(Math.random() * 2)];
       return {
         x: `${Math.floor(Math.random() * 80-10)}vw`,
         y: `${Math.floor(Math.random() * 80-10)}vh`,
@@ -31,9 +31,9 @@ const Background = ({ quantity }) => {
         animation: Math.random() > 0.5,
         geometry: geometry,
       };
-    });
+    })
 
-  const shapes = generateShapes(quantity);
+  const shapes = generateShapes(quantity || 2);
 
   return (
     <div style={{
@@ -70,8 +70,8 @@ const Background = ({ quantity }) => {
         );
       })}
     </div>
-  );
-};
+  )
+}
 
 export default Background;
 

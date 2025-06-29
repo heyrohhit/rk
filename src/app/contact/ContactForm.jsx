@@ -1,24 +1,100 @@
 'use client';
 
 import React, { useState } from 'react';
-import styled,{createGlobalStyle} from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-  .combine{
-    width:50vw;
-\
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .combine {
+    width: 50vw;
+
     @media (max-width: 768px) {
-      width:350px;
+      width: 350px;
     }
   }
-  
-`
+`;
+
+const ContactForm = ({ width }) => {
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('Submitting...');
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+    };
+
+    try {
+      const res = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+
+      if (res.ok && result.result === 'success') {
+        setStatus('✅ Message sent successfully!');
+        e.target.reset();
+      } else {
+        setStatus(`❌ Error: ${result.message || 'Something went wrong.'}`);
+      }
+    } catch (error) {
+      console.error('Frontend Error:', error);
+      setStatus(`❌ Error: ${error.message}`);
+    }
+  };
+
+  return (
+    <>
+      <GlobalStyle />
+
+      <Container width={width}>
+        <FormWrapper>
+          <FormTitle>Send me a Message</FormTitle>
+          <StyledForm onSubmit={handleSubmit}>
+            <InputField type="text" name="name" placeholder="Your Name" required />
+            <InputField type="email" name="email" placeholder="Your Email" required />
+            <TextArea name="message" placeholder="Your Message" required />
+            <SubmitButton type="submit">Send Message</SubmitButton>
+          </StyledForm>
+
+          {status.includes('success') && <SuccessMessage>{status}</SuccessMessage>}
+          {status.includes('❌') && <ErrorMessage>{status}</ErrorMessage>}
+        </FormWrapper>
+      </Container>
+    </>
+  );
+};
+
+export default ContactForm;
+
+/* Styled Components */
+
+const Container = styled.div`
+  width: ${(props) => props.width || '50%'};
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 
 const FormWrapper = styled.div`
   width: 350px;
@@ -47,11 +123,13 @@ const InputField = styled.input`
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
   &:focus {
     background: #333;
     border-color: #007bff;
     outline: none;
+    color: #fff;
   }
 `;
 
@@ -62,12 +140,14 @@ const TextArea = styled.textarea`
   font-size: 1rem;
   min-height: 120px;
   background: transparent;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   resize: vertical;
+
   &:focus {
     background: #333;
     border-color: #007bff;
     outline: none;
+    color: #fff;
   }
 `;
 
@@ -81,6 +161,7 @@ const SubmitButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
+
   &:hover {
     background: #0056b3;
     transform: scale(1.05);
@@ -98,86 +179,3 @@ const ErrorMessage = styled.p`
   color: red;
   margin-top: 15px;
 `;
-
-const ContactForm = (props) => {
-  const [status, setStatus] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('Submitting...');
-
-    const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
-    };
-
-    try {
-      const res = await fetch('/api/submit-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-        mode: 'cors',
-        redirect: 'follow',
-      });
-
-      if (!res.ok) {
-        const errorText = await res.text();
-        throw new Error(`Server responded with status ${res.status}: ${errorText}`);
-      }
-
-      const result = await res.json();
-      if (result.result === 'success') {
-        setStatus('✅ Message sent successfully!');
-        e.target.reset();
-      } else {
-        setStatus(`❌ Something went wrong: ${result.message}`);
-      }
-     
-    } catch (error) {
-      console.error('Frontend Error:', error);
-      setStatus(`❌ Error: ${error.message}`);
-    }
-    e.target.reset();
-  };
-
-  return (
-    <>
-    <GlobalStyle/>
-   
-   <Conatiner  className={props.width}>
-     <FormWrapper>
-      <FormTitle>Send me a Message</FormTitle>
-      <StyledForm onSubmit={handleSubmit}>
-        <InputField type="text" name="name" placeholder="Your Name" required />
-        <InputField type="email" name="email" placeholder="Your Email" required />
-        <TextArea name="message" placeholder="Your Message" required />
-        <SubmitButton type="submit">Send Message</SubmitButton>
-      </StyledForm>
-
-      {status.includes('success') && <SuccessMessage>{status}</SuccessMessage>}
-      {status.includes('❌') && <ErrorMessage>{status}</ErrorMessage>}
-    </FormWrapper>
-   </Conatiner>
-    </>
-  );
-};
-
-export default ContactForm;
-
-const Conatiner = styled.div`
-width:${props => props.width || '50%'};
-min-height: 60vh;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-wrap: wrap;
-position: relative;
-z-index: 1;
-padding:20px;
-@media (max-width: 768px) {
-    width:100%;
-}
-`

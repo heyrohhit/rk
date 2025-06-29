@@ -1,18 +1,17 @@
-
 export const metadata = {
-  title: "My Web Services | RK Web Studio",
-  description: "Explore my web services by RK Web Studio.",
+  title: "Web Services | RK Web Studio",
+  description: "Discover a range of professional web services offered by RK Web Studio including web design, development, and creative digital solutions.",
   openGraph: {
-    title: "RK Web Studio - Services",
-    description: "See our best poster designs, digital art, and creative web work.",
+    title: "Web Services - RK Web Studio",
+    description: "Explore RK Web Studio's best website designs, digital services, and creative development solutions.",
     url: "https://rkwebs.vercel.app/services",
     siteName: "RK Web Studio",
     images: [
       {
-        url: "https://rkwebs.vercel.app/og-image.png", // Replace with your own image
+        url: "https://rkwebs.vercel.app/img/pic02.webp",  // ✅ Using your available image
         width: 1200,
         height: 630,
-        alt: "RK Web Studio Services",
+        alt: "Web Services by RK Web Studio",
       },
     ],
     type: "website",
@@ -20,17 +19,14 @@ export const metadata = {
   robots: "index, follow",
   twitter: {
     card: "summary_large_image",
-    title: "RK Web Studio - Services",
-    description: "Showcasing creative design and tech projects.",
-    images: ["https://rkwebs.vercel.app/og-image.png"], // Same here
+    title: "Web Services - RK Web Studio",
+    description: "Creative web design and development services by RK Web Studio.",
+    images: ["https://rkwebs.vercel.app/img/pic02.webp"],  // ✅ Matching OG image
   },
 };
 
 import ServicePageItem from "./ServicePageItem";
 
 export default function ProjectsPage() {
-  return (
-  <>
-  <ServicePageItem/>
-  </>
-)}
+  return <ServicePageItem />;
+}

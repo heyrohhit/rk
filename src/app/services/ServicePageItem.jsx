@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import styled, { keyframes ,createGlobalStyle} from "styled-components";
-import {servicesData} from "../Components/myservices/apis";
-import Background from "../objects/Background";
+import React, { useMemo } from 'react';
+import styled, { keyframes, createGlobalStyle } from 'styled-components';
+import { servicesData } from '../Components/myservices/apis';
+import Background from '../objects/Background';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     color: #fff;
     font-family: 'Poppins', sans-serif;
-    overflow-x:hidden;
+    overflow-x: hidden;
     scroll-behavior: smooth;
   }
 `;
@@ -29,26 +29,30 @@ const fadeInUp = keyframes`
 
 const Container = styled.div`
   padding: 4rem 2rem;
-  overflow-x:hidden;
+  overflow-x: hidden;
   width: 100vw;
-  height:max-content;
+  height: max-content;
   margin: 0 auto;
   text-align: center;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
   animation: ${fadeInUp} 1s ease forwards;
 `;
 
 const SectionLabel = styled.div`
-  background: #000;
+  background: #ff6b35;
   display: inline-block;
-  padding: 6px 12px;
+  padding: 8px 16px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  animation: ${fadeInUp} 1s ease forwards;
 `;
 
 const Heading = styled.h2`
@@ -64,11 +68,10 @@ const Subheading = styled.p`
 `;
 
 const Grid = styled.div`
-width:100%;
-height:max-content;
-
+  width: 100%;
+  height: max-content;
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
   align-items: center;
@@ -76,10 +79,10 @@ height:max-content;
 `;
 
 const Card = styled.div`
-  width:300px;
-  height:300px;
+  width: 300px;
+  height: 300px;
   background: #fff;
-  overflow-x:hidden;
+  overflow-x: hidden;
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
@@ -131,27 +134,36 @@ const Button = styled.a`
 `;
 
 export default function ServicesSection() {
+  // ✅ Memoized random background quantity to prevent changes on re-render
+  const backgroundQuantity = useMemo(() => Math.floor(Math.random() * 10) + 1, []);
+
   return (
     <Container>
-      <GlobalStyle />
-      <Background quantity={Math.floor(Math.random() * 10) + 1}/>
-      <SectionLabel>Our Services</SectionLabel>
-      <Heading>What We Offer</Heading>
-      <Subheading>
-        We provide smart digital solutions to grow your business—effortlessly and efficiently.
-      </Subheading>
-      <Grid>
-        {servicesData.map((service) => (
-          <Card key={service.id}>
-            <IconWrap>{service.icon}</IconWrap>
-            <Title>{service.title}</Title>
-            <Desc>{service.desc}</Desc>
-            <Button href={service.link} target="_blank" rel="noopener noreferrer">
-              Learn More
-            </Button>
-          </Card>
-        ))}
-      </Grid>
-    </Container>
+    <GlobalStyle />
+    <Background quantity={backgroundQuantity} />
+    <SectionLabel>Our Services</SectionLabel>
+    <Heading>What We Offer</Heading>
+    <Subheading>
+      We provide smart digital solutions to grow your business—effortlessly and efficiently.
+    </Subheading>
+    <Grid>
+      {servicesData.map((service, index) => (
+        <Card
+          key={service.id}
+          style={{
+            animationDelay: `${index * 0.2}s`,
+            animationFillMode: 'both',
+          }}
+        >
+          <IconWrap>{service.icon}</IconWrap>
+          <Title>{service.title}</Title>
+          <Desc>{service.desc}</Desc>
+          <Button href={service.link} target="_blank" rel="noopener noreferrer">
+            Learn More
+          </Button>
+        </Card>
+      ))}
+    </Grid>
+  </Container>
   );
 }

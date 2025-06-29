@@ -28,8 +28,9 @@ import EducationSectionComponent from './EducationSection';
 const page = () => {
     return (
       <>
+      <EducationSectionComponent/>
         <AboutContent />
-        <EducationSectionComponent/>
+        
       </>
     );
   };
