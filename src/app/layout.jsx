@@ -4,6 +4,8 @@ import StyledJsxRegistry from "./registry";
 import Components from "./Components/page";
 import HeaderSection from "./Components/headerSection/page";
 import FooterPage from "./Components/footer/page";
+import Background from "./objects/Background";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,13 +26,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-      
+        
         <StyledJsxRegistry>
          
           <HeaderSection/>
             {children}
             <FooterPage />
             <Components />
+            <Background/>
         </StyledJsxRegistry>
 
       </body>

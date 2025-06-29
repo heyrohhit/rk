@@ -219,7 +219,7 @@ const StyleLink = styled(Link)`
             font-family: 'Papyrus', 'Comic Sans MS', cursive;
             font-weight: 1000;
             font-style: italic;
-            color:rgba(${()=>Math.random() * 255},${()=>Math.random() * 255},${()=>Math.random() * 255},1);
+            color:#fff;
             padding-left:10px;
             &::after {
                 content: "";

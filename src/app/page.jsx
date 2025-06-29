@@ -11,7 +11,7 @@ import {projectsLive,projects} from "./Components/myservices/apis"
 import Design from "./Design";
 import ContactContext from "./contact/ContactContext";
 import AboutContent from "./about/AboutContent";
-import Background from "./objects/Background";
+
 
 
 export default function Home() {
@@ -38,7 +38,6 @@ export default function Home() {
 
   return (
     <>
-    <Background/>
       <Wrapper>
         <Design quantity={6}/>
         <LeftTestSection
@@ -89,6 +88,7 @@ export default function Home() {
         <ProjectShowcase apis={projects} showOnly={3} title="Projects"/>
         <ContactContext width="main"/>
         <AboutContent/>
+    
     </>
   );
 }       
@@ -131,7 +131,7 @@ h1{
 p{
     
     font-size:1rem;
-    font-weight:100;
+    font-weight:500;
 }
 button{
     font-size:0.8rem;
@@ -194,7 +194,7 @@ h1{
 }
 p{
     font-size:1rem;
-    font-weight:100;
+    font-weight:500;
 }
 button{
     font-size:0.8rem;
