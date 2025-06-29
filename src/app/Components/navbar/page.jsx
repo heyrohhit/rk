@@ -1,5 +1,5 @@
-"use client"
-import styled from "styled-components"
+"use client";
+import styled from "styled-components";
 import { useEffect, useState } from "react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -12,7 +12,6 @@ import { motion } from 'framer-motion';
 
 const NavbarSection = () => {
   const [randomBgColor, setRandomBgColor] = useState('');
-  const [clickTrigger, setClickTrigger] = useState(0);  // 👈 Trigger for re-rendering Home only
   const pathname = usePathname();
 
   useEffect(() => {
@@ -20,7 +19,7 @@ const NavbarSection = () => {
     const g = Math.floor(Math.random() * 150);
     const b = Math.floor(Math.random() * 150);
     setRandomBgColor(`rgba(${r}, ${g}, ${b}, 0.4)`);
-  }, [clickTrigger]);  // 👈 Sirf jab clickTrigger badlega tab random color
+  }, []);
 
   const navText = [
     { title: "Service", path: "/services", icon: <SiTheodinproject /> },
@@ -31,39 +30,23 @@ const NavbarSection = () => {
   ];
 
   const handleClick = (path) => {
-    if (path === "/" && pathname === "/") {
-      // ✅ Sirf tab trigger badlega jab Home pe hi ho aur Home pe click kare
-      setClickTrigger((prev) => prev + 1);
+    if (path === "/") {
+      window.location.reload();
+      router.push("/");
     }
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-    >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <NavSection style={{ background: randomBgColor }}>
         <ListContent>
           {navText.map((text, index) => (
             <Li key={index}>
-              <StyleLink
-                href={text.path}
-                onClick={() => handleClick(text.path)}  // 👈 Click pe sirf Home handle
-              >
-                <span
-                  className={`
-                    ${pathname === text.path ? "active" : ""}
-                    icon
-                  `}
-                >
+              <StyleLink href={text.path} onClick={() => handleClick(text.path)}>
+                <span className={`${pathname === text.path ? "active" : ""} icon`}>
                   {text.icon}
                 </span>
-                <span
-                  className={`
-                    ${pathname === text.path ? "textActive" : ""}
-                    text
-                  `}
-                >
+                <span className={`${pathname === text.path ? "textActive" : ""} text`}>
                   {text.title}
                 </span>
               </StyleLink>
@@ -77,7 +60,7 @@ const NavbarSection = () => {
 
 export default NavbarSection;
 
-// 👇👇 Tumhara style bilkul untouched 👇👇
+// ✅ Styling: Bilkul unchanged ✅
 const NavSection = styled.nav`
   display: flex;
   justify-content: center;
@@ -98,6 +81,7 @@ const NavSection = styled.nav`
     padding: 0 10px;
   }
 `;
+
 const ListContent = styled.ul`
   display: flex;
   justify-content: space-around;
@@ -106,6 +90,7 @@ const ListContent = styled.ul`
   width: 100%;
   text-transform: capitalize;
 `;
+
 const Li = styled.li`
   display: flex;
   justify-content: center;
@@ -115,6 +100,7 @@ const Li = styled.li`
   position: relative;
   transition: all 0.3s ease-in-out;
 `;
+
 const StyleLink = styled(Link)`
   position: relative;
   z-index: 99;
@@ -137,12 +123,14 @@ const StyleLink = styled(Link)`
     justify-content: center;
     align-items: center;
     padding-bottom: 20px;
+
     svg {
       position: relative;
       z-index: 2;
       font-size: 15px;
       transition: all linear 0.2s;
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -166,6 +154,7 @@ const StyleLink = styled(Link)`
     color: var(--background);
     opacity: 1;
     background: rgba(${() => Math.random() * 255}, ${() => Math.random() * 255}, ${() => Math.random() * 255}, ${() => Math.random() * 0.9});
+    color: black;
     display: flex;
     font-size: 12px;
     justify-content: center;
