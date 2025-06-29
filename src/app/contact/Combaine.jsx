@@ -41,7 +41,7 @@ width:100vw;
   background-repeat: no-repeat;
   overflow-x: hidden;
   position: relative;
-  z-index: -99;
+  z-index: 1;
 `
 
 const Shapes = styled.div`

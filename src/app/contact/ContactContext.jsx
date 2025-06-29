@@ -24,18 +24,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .main {
-    width: 100vw;
+    width: 100v;w;
     height: max-content;
     position: relative;
     overflow: hidden;
-
     .objects {
       position: absolute;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 1;
     }
   }
 
@@ -46,7 +44,6 @@ const GlobalStyle = createGlobalStyle`
       position: absolute;
       width: 100vw;
       height: 100vh;
-      z-index: 1;
     }
     @media (max-width: 768px) {
       width: 350px;
@@ -162,6 +159,7 @@ const Container = styled.div`
   align-items: center;
   overflow-x: hidden;
   position: relative;
+  z-index:1;
 
 `
 
