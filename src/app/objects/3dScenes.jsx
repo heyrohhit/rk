@@ -30,21 +30,21 @@ export default function ThreeDObject({
       const height = mount.clientHeight || window.innerHeight;
 
       // ✅ Renderer
-      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      renderer.setSize(width, height);
-      renderer.setClearColor(0x000000, 0);
-      mount.appendChild(renderer.domElement);
+      renderer = await new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      await renderer.setSize(width, height);
+      await renderer.setClearColor(0x000000, 0);
+      await mount.appendChild(renderer.domElement);
 
       // ✅ Scene & Camera
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(70, width / height, 0.1, 1000);
+      scene = await new THREE.Scene();
+      camera = await new THREE.PerspectiveCamera(70, width / height, 0.1, 1000);
       camera.position.z = 3;
 
       // ✅ Lights
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+      const ambientLight = await new THREE.AmbientLight(0xffffff, 0.7);
       scene.add(ambientLight);
 
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
+      const directionalLight = await new THREE.DirectionalLight(0xffffff, 0.7);
       directionalLight.position.set(5, 5, 5);
       scene.add(directionalLight);
 
@@ -52,22 +52,22 @@ export default function ThreeDObject({
       let objectGeometry;
       switch (geometry) {
         case "TorusGeometry":
-          objectGeometry = new THREE.TorusGeometry(0.5, 0.2, 16, 100);
+          objectGeometry = await new THREE.TorusGeometry(0.5, 0.2, 16, 100);
           break;
         case "TorusKnotGeometry":
-          objectGeometry = new THREE.TorusKnotGeometry(0.5, 0.2, 100, 16);
+          objectGeometry = await new THREE.TorusKnotGeometry(0.5, 0.2, 100, 16);
           break;
         case "SphereGeometry":
-          objectGeometry = new THREE.SphereGeometry(0.7, 32, 32);
+          objectGeometry = await new THREE.SphereGeometry(0.7, 32, 32);
           break;
         default:
-          objectGeometry = new THREE.BoxGeometry(1, 1, 1);
+          objectGeometry = await new THREE.BoxGeometry(1, 1, 1);
       }
 
       // ✅ Material
       let objectMaterial;
       try {
-        objectMaterial = new THREE[material]({
+        objectMaterial = await new THREE[material]({
           color,
           wireframe,
         });
@@ -77,11 +77,11 @@ export default function ThreeDObject({
       }
 
       // ✅ Mesh
-      mesh = new THREE.Mesh(objectGeometry, objectMaterial);
+      mesh = await new THREE.Mesh(objectGeometry, objectMaterial);
 
       // ✅ Scaling
-      const minDimension = Math.min(width, height);
-      const scaleFactor = (minDimension / 100) * (size / 3);
+      const minDimension = await Math.min(width, height);
+      const scaleFactor = await (minDimension / 100) * (size / 3);
       mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
       scene.add(mesh);
