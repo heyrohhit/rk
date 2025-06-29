@@ -4,9 +4,9 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 export default function ThreeDObject({
-  geometry = "BoxGeometry",
+  geometry = "TorusGeometry",
   material = "MeshBasicMaterial",
-  color = "white",
+  color = "#ffcc70",
   wireframe = false,
   size = 0.5,
   maxPosition = 1,
@@ -152,6 +152,8 @@ export default function ThreeDObject({
         height: "100%",
         overflow: "hidden",
         backgroundColor: "transparent",
+        position:"absolute",
+        zIndex:Math.random() > 0.5 ? 1 : -1, 
       }}
     />
   );

@@ -17,6 +17,8 @@ const Container = styled.div`
   overflow-x: hidden;
   width: 100%;
   font-family: 'Poppins', sans-serif;
+  position:relative;
+  z-index:-1;
 `;
 
 const Title = styled.h2`
@@ -38,6 +40,7 @@ const ProjectList = styled.div`
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  
 `;
 
 // ✅ $reverse prop prevents it from going into DOM

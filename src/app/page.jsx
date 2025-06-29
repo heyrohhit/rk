@@ -11,7 +11,7 @@ import {projectsLive,projects} from "./Components/myservices/apis"
 import Design from "./Design";
 import ContactContext from "./contact/ContactContext";
 import AboutContent from "./about/AboutContent";
-
+import Background from "./objects/Background";
 
 
 export default function Home() {
@@ -38,6 +38,7 @@ export default function Home() {
 
   return (
     <>
+    <Background/>
       <Wrapper>
         <Design quantity={6}/>
         <LeftTestSection
