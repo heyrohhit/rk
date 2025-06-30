@@ -79,4 +79,5 @@ const Shape = styled(motion.span)`
   width: 100px;
   height: 100px;
   position: absolute;
+  z-index:9999;
 `;

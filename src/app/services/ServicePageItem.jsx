@@ -134,13 +134,12 @@ const Button = styled.a`
 `;
 
 export default function ServicesSection() {
-  // ✅ Memoized random background quantity to prevent changes on re-render
-  const backgroundQuantity = useMemo(() => Math.floor(Math.random() * 10) + 1, []);
+
 
   return (
     <Container>
     <GlobalStyle />
-    <Background quantity={backgroundQuantity} />
+    <Background quantity={6}/>
     <SectionLabel>Our Services</SectionLabel>
     <Heading>What We Offer</Heading>
     <Subheading>

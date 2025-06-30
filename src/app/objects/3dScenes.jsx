@@ -73,7 +73,7 @@ export default function ThreeDObject({
         });
       } catch (err) {
         console.error("Material error:", err);
-        objectMaterial = new THREE.MeshBasicMaterial({ color: "#ff0000", wireframe: true });
+        objectMaterial = await new THREE.MeshBasicMaterial({ color: "#000000", wireframe: true });
       }
 
       // ✅ Mesh
@@ -87,9 +87,9 @@ export default function ThreeDObject({
       scene.add(mesh);
 
       // ✅ Mouse Controls (optional)
-      const onMouseMove = (event) => {
+      const onMouseMove = async (event) => {
         if (!mouseControl) return;
-        const rect = mount.getBoundingClientRect();
+        const rect = await mount.getBoundingClientRect();
         const mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
         const mouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
         camera.position.x = mouseX * 2;
@@ -97,28 +97,28 @@ export default function ThreeDObject({
         camera.lookAt(scene.position);
       };
       if (mouseControl) {
-        mount.addEventListener("mousemove", onMouseMove);
+        await mount.addEventListener("mousemove", onMouseMove);
       }
 
       // ✅ Animate
-      const animate = () => {
-        animationFrameId = requestAnimationFrame(animate);
+      const animate = async () => {
+        animationFrameId = await requestAnimationFrame(animate);
         if (animation) {
           mesh.rotation.x += 0.01;
           mesh.rotation.y += 0.01;
         }
-        renderer.render(scene, camera);
+        await renderer.render(scene, camera);
       };
 
       animate();
 
       // ✅ Resize
-      const handleResize = () => {
-        const newWidth = mount.clientWidth || window.innerWidth;
-        const newHeight = mount.clientHeight || window.innerHeight;
-        renderer.setSize(newWidth, newHeight);
-        camera.aspect = newWidth / newHeight;
-        camera.updateProjectionMatrix();
+      const handleResize = async () => {
+        const newWidth = await mount.clientWidth || window.innerWidth;
+        const newHeight = await mount.clientHeight || window.innerHeight;
+        await renderer.setSize(newWidth, newHeight);
+         camera.aspect = newWidth / newHeight;
+        await camera.updateProjectionMatrix();
       };
       window.addEventListener("resize", handleResize);
 
