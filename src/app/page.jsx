@@ -11,7 +11,7 @@ import { projectsLive, projects } from './Components/myservices/apis';
 import Design from './Design';
 import ContactContext from './contact/ContactContext';
 import AboutContent from './about/AboutContent';
-import Background from './objects/Background';
+
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -37,14 +37,13 @@ export default function Home() {
   return (
     <>
       <Wrapper>
-      <Background/>
+      
         <Design/>
         <LeftTestSection
           initial={{ opacity: 0, x: '-250px', y: '-250px' }}
           animate={{ opacity: 1, x: '0px', y: '0px' }}
           transition={{ duration: 1, delay: 1 }}
         >
-          <h3>Welcome!</h3>
           <h1>
             Hi, I'm <span>Rk</span>
           </h1>
@@ -167,16 +166,16 @@ const LeftTestSection = styled(motion.div)`
   }
   @media (max-width: 990px) {
     width: 350px;
-    top: 15%;
+    top: 10%;
   }
   @media (max-width: 660px) {
-    width: 400px;
-    top: 25px;
+    width: 80%;
+    top: -2%;
     border-radius: 0px 20px 20px 0px;
     background: transparent;
     left: 0%;
     p {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   }
 `;
@@ -239,7 +238,7 @@ const RightTestSection = styled(motion.div)`
     right: 0%;
   }
   @media (max-width: 660px) {
-  width: 350px;
+  width: 80%;
     top: 52vh;
     right: 0%;
     border-radius: 20px 0px 0px 20px;

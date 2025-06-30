@@ -22,54 +22,61 @@ const GlobalStyle = createGlobalStyle`
 
 const ContactForm = ({ width }) => {
   const [status, setStatus] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('Submitting...');
-
+    setIsProcessing(true);
+    
     const formData = {
       name: e.target.name.value,
       email: e.target.email.value,
       message: e.target.message.value,
     };
-
+    
     try {
       const res = await fetch('/api/submit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
+      
       const result = await res.json();
 
       if (res.ok && result.result === 'success') {
         setStatus('✅ Message sent successfully!');
         e.target.reset();
       } else {
-        setStatus(`❌ Error: ${result.message || 'Something went wrong.'}`);
+        setStatus(`❌ Error: ${result.message || 'Please check your input and try again.'}`);
       }
     } catch (error) {
       console.error('Frontend Error:', error);
-      setStatus(`❌ Error: ${error.message}`);
+      setStatus('❌ Server down. Please try again later.');
+    } finally {
+      setIsProcessing(false);
     }
   };
 
   return (
     <>
       <GlobalStyle />
-
       <Container width={width}>
         <FormWrapper>
           <FormTitle>Send me a Message</FormTitle>
-          <StyledForm onSubmit={handleSubmit}>
-            <InputField type="text" name="name" placeholder="Your Name" required />
-            <InputField type="email" name="email" placeholder="Your Email" required />
-            <TextArea name="message" placeholder="Your Message" required />
-            <SubmitButton type="submit">Send Message</SubmitButton>
-          </StyledForm>
-
-          {status.includes('success') && <SuccessMessage>{status}</SuccessMessage>}
-          {status.includes('❌') && <ErrorMessage>{status}</ErrorMessage>}
+          {isProcessing ? (
+            <ProcessingMessage>Processing...</ProcessingMessage>
+          ) : (
+            <>
+              <StyledForm onSubmit={handleSubmit}>
+                <InputField type="text" name="name" placeholder="Your Name" required />
+                <InputField type="email" name="email" placeholder="Your Email" required />
+                <TextArea name="message" placeholder="Your Message" required />
+                <SubmitButton type="submit">Send Message</SubmitButton>
+              </StyledForm>
+              {status.includes('success') && <SuccessMessage>{status}</SuccessMessage>}
+              {status.includes('❌') && <ErrorMessage>{status}</ErrorMessage>}
+            </>
+          )}
         </FormWrapper>
       </Container>
     </>
@@ -177,5 +184,12 @@ const SuccessMessage = styled.p`
 const ErrorMessage = styled.p`
   text-align: center;
   color: red;
+  margin-top: 15px;
+`;
+
+const ProcessingMessage = styled.p`
+  text-align: center;
+  color: #007bff;
+  font-weight: bold;
   margin-top: 15px;
 `;

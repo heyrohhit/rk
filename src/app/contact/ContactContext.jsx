@@ -10,9 +10,9 @@ import ThreeDObject from '../objects/3dScenes'
 const icons = [
   { icon: <FaWhatsapp />, link: 'https://wa.me/918700750589' },
   { icon: <FaInstagram />, link: 'https://www.instagram.com/rk96x0' },
-  { icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/rk96x0' },
-  { icon: <FaFacebook />, link: 'https://www.facebook.com/rk96x0' },
-  { icon: <FaGithub />, link: 'https://github.com/rk96x0' }
+  { icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/rohit-kumar-a81326254/' },
+  { icon: <FaFacebook />, link: 'https://www.facebook.com/people/Rohit-Kumar/61554857723358/' },
+  { icon: <FaGithub />, link: 'https://github.com/rk960' },
 ]
 
 const GlobalStyle = createGlobalStyle`
@@ -92,7 +92,7 @@ export default function Page(props) {
               </div>
               <div>
                 100+<br />
-                <span>Projects</span>
+                <span>Assignments</span>
               </div>
             </Stats>
 
@@ -174,7 +174,7 @@ const InnerWrapper = styled(motion.div)`
   padding: 20px;
   position: relative;
   z-index: 1;
-
+  overflow: hidden;
   .profileCard {
     width: 400px;
     display: flex;
@@ -199,7 +199,7 @@ const ProfileCard = styled.div`
   position: relative;
   padding: 0;
   max-height: 550px;
-
+  overflow: hidden;
   @media (max-width: 450px) {
     max-width: 260px;
     max-height: 400px;
@@ -255,15 +255,21 @@ const Stats = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   gap: 100px;
-
-  @media (max-width: 450px) {
-    top: 30%;
-    gap: 120px;
-  }
-
   div {
+  width:50%;
+  color:#000;
     text-align: center;
-    line-height: 1.3;
+    line-height: 1;
+    span{
+      font-size:10px;
+    }
+  }
+    @media (max-width: 450px) {
+    top: 10%;
+    gap: 120px;
+    div{
+    color:#fff;
+    }
   }
 `
 
@@ -272,7 +278,7 @@ const Content = styled.div`
   position: relative;
   z-index: 5;
   color: #000;
-
+  overflow: hidden;
   @media (max-width: 450px) {
     padding: 0 0.8rem 4rem;
   }
