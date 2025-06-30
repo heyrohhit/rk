@@ -29,12 +29,12 @@ const NavbarSection = () => {
     { title: "Projects", path: "/projects", icon: <FaDiagramProject /> },
   ];
 
-  const handleClick = (path) => {
-    if (path === "/") {
-      window.location.reload();
-      router.push("/");
-    }
-  };
+  // const handleClick = (path) => {
+  //   if (path === "/") {
+  //     window.location.reload();
+  //     router.push("/");
+  //   }
+  // };
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -42,7 +42,7 @@ const NavbarSection = () => {
         <ListContent>
           {navText.map((text, index) => (
             <Li key={index}>
-              <StyleLink href={text.path} onClick={() => handleClick(text.path)}>
+              <StyleLink href={text.path}>
                 <span className={`${pathname === text.path ? "active" : ""} icon`}>
                   {text.icon}
                 </span>

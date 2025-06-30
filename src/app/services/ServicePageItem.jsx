@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import styled, { keyframes, createGlobalStyle } from 'styled-components';
 import { servicesData } from '../Components/myservices/apis';
-import Background from '../objects/Background';
+
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -76,13 +76,14 @@ const Grid = styled.div`
   justify-content: center;
   align-items: center;
   text-align: left;
+  overflow: hidden;
 `;
 
 const Card = styled.div`
   width: 300px;
   height: 300px;
   background: #fff;
-  overflow-x: hidden;
+  overflow: hidden;
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
@@ -139,7 +140,6 @@ export default function ServicesSection() {
   return (
     <Container>
     <GlobalStyle />
-    <Background quantity={6}/>
     <SectionLabel>Our Services</SectionLabel>
     <Heading>What We Offer</Heading>
     <Subheading>

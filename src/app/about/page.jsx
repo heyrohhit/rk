@@ -29,7 +29,7 @@ import Background from '../objects/Background';
 const page = () => {
     return (
       <>
-      <Background quantity={5}/>
+      <Background/>
       <EducationSectionComponent/>
         <AboutContent />
         

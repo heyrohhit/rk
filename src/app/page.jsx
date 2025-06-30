@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <>
       <Wrapper>
-      <Background quantity={6}/>
+      <Background/>
         <Design/>
         <LeftTestSection
           initial={{ opacity: 0, x: '-250px', y: '-250px' }}
@@ -167,15 +167,16 @@ const LeftTestSection = styled(motion.div)`
   }
   @media (max-width: 990px) {
     width: 350px;
-    top: 10%;
+    top: 15%;
   }
   @media (max-width: 660px) {
-    top: 15px;
+    width: 400px;
+    top: 25px;
     border-radius: 0px 20px 20px 0px;
     background: transparent;
     left: 0%;
     p {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
   }
 `;
@@ -238,11 +239,12 @@ const RightTestSection = styled(motion.div)`
     right: 0%;
   }
   @media (max-width: 660px) {
-    top: 60vh;
+  width: 350px;
+    top: 52vh;
     right: 0%;
     border-radius: 20px 0px 0px 20px;
     p {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
   }
 `;

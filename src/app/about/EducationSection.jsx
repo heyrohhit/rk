@@ -2,6 +2,14 @@
 
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { FaComputer } from "react-icons/fa6";
+import { PiCertificateFill } from "react-icons/pi";
+
+// Map icon names to react-icons components
+const iconMap = {
+  FaComputer,
+  PiCertificateFill,
+};
 
 // Education Data
 const education = [
@@ -11,7 +19,7 @@ const education = [
     institution: "RIIT INFOTECH PVT. LTD.",
     description: "Computer Application",
     grade: "A Grade",
-    models: "./img/pic01.webp",
+    models: "FaComputer", // React Icons component name
   },
   {
     year: "2017 - 2021",
@@ -19,7 +27,7 @@ const education = [
     institution: "Delhi University",
     description: "B.A Programme",
     grade: "1st Division",
-    models: "./img/pic03.webp",
+    models: "PiCertificateFill", // React Icons component name
   },
 ];
 
@@ -88,6 +96,7 @@ const Timeline = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
   &:before {
     content: '';
     position: absolute;
@@ -108,7 +117,13 @@ const Timeline = styled.div`
 `;
 
 const TimelineItem = styled.div`
+  max-width: 250px;
+  min-height: 150px;
   background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   border: 1px solid rgba(99, 179, 237, 0.2);
   border-radius: 0.75rem;
   padding: 1rem;
@@ -119,6 +134,7 @@ const TimelineItem = styled.div`
   opacity: 0;
   cursor: pointer;
   z-index: 1;
+
   &::before {
     content: '';
     position: absolute;
@@ -142,9 +158,10 @@ const TimelineItem = styled.div`
       right: ${({ index }) => (index % 2 === 0 ? '-0.95rem' : 'auto')};
     }
   }
-    @media (max-width: 768px) {
-    width: 350px;
-    height: max-content;
+
+  @media (max-width: 768px) {
+    max-width: 350px;
+    min-height: max-content;
     background: rgba(99, 179, 237, 0.2);
   }
 `;
@@ -154,6 +171,7 @@ const ContentWrapper = styled.div`
   flex-direction: row;
   gap: 0.75rem;
   align-items: center;
+  width: 100%;
 
   @media (max-width: 640px) {
     flex-direction: row;
@@ -173,7 +191,9 @@ const EducationYear = styled.div`
 `;
 
 const EducationTitle = styled.h3`
-  font-size: 1.1rem;
+  width:100%;
+  
+  word-break: break-word;
   font-weight: 600;
   color: #e2e8f0;
   margin-bottom: 0.25rem;
@@ -185,33 +205,36 @@ const EducationText = styled.p`
   line-height: 1.5;
 `;
 
-const EducationImage = styled.img`
-  width: 70px;
-  height: 70px;
-  border-radius: 0.5rem;
+const EducationIcon = styled(({ icon: Icon, ...props }) => <Icon {...props} />)`
+  width: 80px;
+  height: 100px;
+  color: #60a5fa;
+  padding: 0.5rem;
   transform: scale(0.9);
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1);
   }
 
   @media (min-width: 480px) {
-    width: 100px;
-    height: 120px;
-    cursor: pointer;
+    width: 60px;
+    height: 60px;
   }
 
   @media (min-width: 640px) {
-    width: 120px;
-    height: auto;
+    width: 70px;
+    height: 70px;
   }
 
   @media (min-width: 768px) {
-    width: 150px;
+    width: 80px;
+    height: 80px;
   }
 
   @media (min-width: 1024px) {
-    width: 180px;
+    width: 100px;
+    height: 100px;
   }
 `;
 
@@ -219,7 +242,7 @@ const EducationImage = styled.img`
 const EducationSectionComponent = () => {
   return (
     <EducationSection>
-      <SectionTitle>Other Details</SectionTitle>
+      <SectionTitle>Academic Details</SectionTitle>
       <Timeline>
         {education.map((edu, index) => (
           <TimelineItem key={index} index={index}>
@@ -231,8 +254,11 @@ const EducationSectionComponent = () => {
                 <EducationText><strong>Description:</strong> {edu.description}</EducationText>
                 <EducationText><strong>Grade:</strong> {edu.grade}</EducationText>
               </TextContent>
-              {edu.models && (
-                <EducationImage src={edu.models} alt={`${edu.degree} certificate`} />
+              {edu.models && iconMap[edu.models] && (
+                <EducationIcon
+                  icon={iconMap[edu.models]}
+                  aria-label={`${edu.degree} icon`}
+                />
               )}
             </ContentWrapper>
           </TimelineItem>

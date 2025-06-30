@@ -49,8 +49,8 @@ function Design() {
 export default Design;
 
 const MainSection = styled(motion.div)`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +70,7 @@ const MainImageSection = styled(motion.div)`
   width: 350px;
   height: 350px;
   position: absolute;
-  top: 50%;
+  top: 50vh;
   transform: translateY(-50%);
   z-index: 10;
   display: flex;
@@ -92,5 +92,7 @@ const MainImageSection = styled(motion.div)`
   @media (max-width: 768px) {
     width: 250px;
     height: 250px;
+    top: 40%;
+    transform: translateY(-50%);
   }
 `;

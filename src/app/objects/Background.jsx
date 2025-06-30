@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import ThreeDObject from './3dScenes';
 
-const Background = ({ quantity }) => {
+const Background = () => {
   const allowedGeometries = ["TorusGeometry", "TorusKnotGeometry"];
 
   const getRandomColor = () => {
@@ -33,7 +33,7 @@ const Background = ({ quantity }) => {
       };
     })
 
-  const shapes = generateShapes(quantity || 2);
+  const shapes = generateShapes(2);
 
   return (
     <div style={{
@@ -55,6 +55,8 @@ const Background = ({ quantity }) => {
             key={index}
             initial={{ opacity: 0, x: "0%", y: "0%" }}
             animate={{ opacity: 1, x: shape.x, y: shape.y }}
+            exit={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: index * 0.3, ease: "easeOut" }}
           >
             <ThreeDObject
@@ -75,9 +77,10 @@ const Background = ({ quantity }) => {
 
 export default Background;
 
-const Shape = styled(motion.span)`
+const Shape = styled(motion.div)`
   width: 100px;
   height: 100px;
+  overflow: hidden;
   position: absolute;
   z-index:9999;
 `;
