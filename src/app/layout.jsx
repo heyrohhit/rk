@@ -4,7 +4,6 @@ import StyledJsxRegistry from "./registry";
 import Components from "./Components/page";
 import HeaderSection from "./Components/headerSection/page";
 import FooterPage from "./Components/footer/page";
-import Background from "./objects/Background";
 import Backgrounds from "./Components/backgounds/page";
 
 const geistSans = Geist({
