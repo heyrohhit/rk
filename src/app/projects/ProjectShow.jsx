@@ -1,6 +1,7 @@
 "use client";
 import styled,{createGlobalStyle} from "styled-components";
 import { motion } from "framer-motion";
+import Link from 'next/link';
 
 // 🟡 Styled Components
 const GlobalStyle = createGlobalStyle`
@@ -18,7 +19,7 @@ const Container = styled.div`
   width: 100%;
   font-family: 'Poppins', sans-serif;
   position:relative;
-  z-index:-1;
+  z-index:1;
 `;
 
 const Title = styled.h2`
@@ -142,7 +143,7 @@ export default function ProjectShowcase({ apis = [], showOnly = 0 ,title}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
       <GlobalStyle />
@@ -153,20 +154,21 @@ export default function ProjectShowcase({ apis = [], showOnly = 0 ,title}) {
             <motion.div
               key={project.id}
               initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
               <ProjectItem $reverse={index % 2 !== 0}>
                 <IframeWrapper>
-                  <IframeImage src={project.image} />
+                  <IframeImage src={project.image} alt={project.title}/>
                 </IframeWrapper>
                 <Content>
                   <span>Date:{project.date}</span>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
-                  <a href={project.image} target="_blank" rel="noopener noreferrer">
+                  <Link href={project.image} target="_blank" rel="noopener noreferrer">
                     View Project
-                  </a>
+                  </Link>
                 </Content>
               </ProjectItem>
             </motion.div>

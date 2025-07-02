@@ -19,43 +19,62 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Rohit Kumar | Full Stack Web Developer | Portfolio",
-  description: "Explore Rohit Kumar's portfolio at rkwebs.vercel.app. View web development projects, skills in React, Next.js, and Three.js.",
+  title: "Rohit Kumar | Full Stack Web Developer Portfolio - India",
+  description: "Showcase your digital success with Rohit Kumar’s portfolio at rkwebs.vercel.app. Explore expert React, Next.js, and Three.js web development projects.",
   authors: [{ name: "Rohit Kumar" }],
   keywords: [
-    "Rohit Kumar",
-    "Portfolio",
-    "Full Stack Developer",
-    "Web Developer",
-    "Next.js Developer",
-    "React Developer",
-    "Three.js",
-    "rkwebs",
-    "Frontend Developer",
-    "Backend Developer",
+    "Rohit Kumar portfolio",
+    "full stack developer India",
+    "web developer portfolio India",
+    "React developer India",
+    "Next.js developer India",
+    "Three.js portfolio",
+    "hire full stack developer India",
+    "best web developer India 2025",
+    "web development portfolio India",
+    "freelance web developer India",
+    "responsive web design India",
+    "custom web development India",
+    "front end developer portfolio",
+    "back end developer India",
+    "Rohit Kumar web designer",
+    "portfolio website developer India",
+    "React.js projects India",
+    "Next.js portfolio 2025",
+    "Three.js web development",
+    "web design services India",
+    "full stack developer near me",
+    "modern web development India",
+    "how to hire web developer India",
+    "best portfolio for web developers",
+    "Rohit Kumar rkwebs",
+    "interactive web design India"
   ],
+  alternates: {
+    canonical: "https://rkwebs.vercel.app",
+  },
   openGraph: {
-    title: "Rohit Kumar | Full Stack Web Developer Portfolio",
-    description: "Discover Rohit Kumar's work in web development, React, Next.js and more on rkwebs.vercel.app.",
+    title: "Rohit Kumar | Full Stack Developer Portfolio - India",
+    description: "Discover Rohit Kumar’s innovative web development projects in React, Next.js, and Three.js at rkwebs.vercel.app, crafted for businesses in India.",
     url: "https://rkwebs.vercel.app",
     siteName: "Rohit Kumar Portfolio",
     images: [
       {
-        url: "https://rkwebs.vercel.app/og-image.jpg", // ✅ अपने server पर एक OpenGraph image upload करो (1200x630 recommended)
+        url: "https://rkwebs.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Rohit Kumar Portfolio OpenGraph Image",
+        alt: "Rohit Kumar Full Stack Developer Portfolio",
       },
     ],
-    locale: "en_US",
+    locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rohit Kumar | Full Stack Developer",
-    description: "Explore Rohit Kumar's portfolio and web development work on rkwebs.vercel.app.",
-    creator: "@yourtwitterhandle", // ✅ अगर Twitter handle है तो भर दो, वरना इसको हटा सकते हो
-    images: ["https://rkwebs.vercel.app/twitter-card.jpg"], // ✅ Optional: Upload a twitter card image या हटा दो
+    title: "Rohit Kumar | Full Stack Web Developer India",
+    description: "Explore Rohit Kumar’s portfolio of cutting-edge React, Next.js, and Three.js projects at rkwebs.vercel.app for modern web solutions.",
+    creator: "@yourtwitterhandle", // Replace with your actual Twitter handle or remove if not applicable
+    images: ["https://rkwebs.vercel.app/twitter-card.jpg"],
   },
   icons: {
     icon: "/favicon.ico",

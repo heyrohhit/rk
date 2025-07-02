@@ -1,51 +1,64 @@
-// app/contact/page.tsx (or .js)
 
-export const metadata = {
-  title: "Contact Me | Connect on WhatsApp, Instagram, GitHub, LinkedIn & More",
-  description: "Reach out to me on WhatsApp, Instagram, Facebook, GitHub, and LinkedIn. Let's connect and build meaningful relationships!",
-  keywords: [
-    "Contact",
-    "WhatsApp",
-    "Instagram",
-    "Facebook",
-    "GitHub",
-    "LinkedIn",
-    "Connect with me",
-    "Networking",
-    "Social Media Links",
-    "Developer Contact"
-  ],
-  openGraph: {
-    title: "Contact Me | Connect on Social Platforms",
-    description: "Reach out easily via WhatsApp, Instagram, GitHub, LinkedIn & more. Let's connect!",
-    url: "https://rkwebs.vercel.app/contact",
-    siteName: "RK Webs",
-    images: [
-      {
-        url: "https://rkwebs.vercel.app/og-image/contact-page.png",
-        width: 1200,
-        height: 630,
-        alt: "Contact Me - Social Links"
-      }
-    ],
-    locale: "en_US",
-    type: "website"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Contact Me | Social & Developer Links",
-    description: "DM, ping or connect with me across platforms like WhatsApp, Instagram, GitHub & LinkedIn.",
-    images: ["https://rkwebs.vercel.app/og-image/contact-page.png"]
-  }
-};
-
-
-import Combaine from './Combaine'
+"use client"
+import styled from 'styled-components'
+import ContactContext from './ContactContext'
+import ContactForm from './ContactForm'
+import Background from '../objects/Background'
 
 const page = () => {
   return (
-    <Combaine/>
+    <Wrapper>
+      <Background/>
+       {/* <Background quantity={2}/> */}
+        <TopContent>
+        <h2>Get in touch</h2>
+        <p>"Reach out anytime – I'm just a message away from collaborating, networking, and creating something great together!"</p>
+        </TopContent>
+    <ContactContext width="combine"/>
+    <ContactForm width="combine"/>
+    </Wrapper>
   )
 }
 
 export default page
+
+const Wrapper = styled.div`
+width:100vw;
+  // min-height: 50vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #000;
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.9) 100%
+    ),
+    url('/img/pic01.webp');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+`
+
+const Shapes = styled.div`
+position: absolute;
+width:100%;
+height:100%;
+z-index: 99;
+`
+const TopContent = styled.div`
+padding: 30px;
+width:100%;
+text-align: center;
+color: #fff;
+p{
+color:#aaa;
+}
+@media (max-width: 768px) {
+    width:100%;
+}
+`

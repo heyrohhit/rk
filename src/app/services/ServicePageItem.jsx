@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react';
 import styled, { keyframes, createGlobalStyle } from 'styled-components';
 import { servicesData } from '../Components/myservices/apis';
+import Link from 'next/link';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -115,7 +116,7 @@ const Desc = styled.p`
   margin-bottom: 1rem;
 `;
 
-const Button = styled.a`
+const Button = styled(Link)`
   display: inline-block;
   margin-top: 0.5rem;
   padding: 10px 20px;
