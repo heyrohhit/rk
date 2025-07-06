@@ -1,5 +1,4 @@
 "use client";
-import styled from "styled-components";
 import { useEffect, useState } from "react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -29,207 +28,71 @@ const NavbarSection = () => {
     { title: "Projects", path: "/projects", icon: <FaDiagramProject /> },
   ];
 
-  // const handleClick = (path) => {
-  //   if (path === "/") {
-  //     window.location.reload();
-  //     router.push("/");
-  //   }
-  // };
+  const getRandomIconColor = () => {
+    const r = Math.floor(Math.random() * 150);
+    const g = Math.floor(Math.random() * 150);
+    const b = Math.floor(Math.random() * 150);
+    return `rgba(${r}, ${g}, ${b}, 0.8)`;
+  };
+
+  const getRandomDotColor = () => {
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    return `rgb(${r}, ${g}, ${b})`;
+  };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <NavSection style={{ background: randomBgColor }}>
-        <ListContent>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
+      <nav 
+        className="flex justify-center items-center fixed bottom-6 z-[999] left-1/2 backdrop-blur-xl -translate-x-1/2 -translate-y-[30%] rounded-3xl w-[500px] h-[75px] text-white shadow-[0_0_10px_rgba(0,0,0,0.5)] max-[780px]:w-[95%] max-[780px]:px-5"
+        style={{ background: randomBgColor }}
+      >
+        <ul className="flex justify-around items-center gap-5 w-full capitalize">
           {navText.map((text, index) => (
-            <Li key={index}>
-              <StyleLink href={text.path}>
-                <span className={`${pathname === text.path ? "active" : ""} icon`}>
-                  {text.icon}
+            <li 
+              key={index} 
+              className="flex justify-center items-center text-center w-1/5 relative transition-all duration-300 ease-in-out"
+            >
+              <Link 
+                href={text.path}
+                className="relative z-[99] bottom-0 flex flex-col justify-center items-center m-auto"
+              >
+                <span 
+                  className={`${
+                    pathname === text.path 
+                      ? `w-[50px] h-[50px] rounded-full text-black opacity-100 flex justify-center items-center text-center p-0 overflow-hidden relative z-[9] shadow-[0_8px_10px_rgba(0,0,0,0.5)] -translate-y-[28px] text-shadow-[1px_1px_5px_#000] transition-transform duration-300 before:content-[''] before:absolute before:w-4/5 before:h-4/5 before:top-1/2 before:left-1/2 before:opacity-100 before:shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] before:rounded-full before:bg-white before:z-[1] before:-translate-x-1/2 before:-translate-y-1/2 before:scale-100 before:transition-all before:duration-300 before:ease-in-out`
+                      : `icon w-[35px] h-[35px] rounded-full text-[var(--foreground)] text-center relative z-[2] flex justify-center items-center pb-5 translate-y-[-15px] before:content-[''] before:absolute before:w-4/5 before:h-4/5 before:top-1/2 before:left-1/2 before:opacity-0 before:shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] before:rounded-full before:bg-white before:z-[1] before:-translate-x-1/2 before:-translate-y-1/2 before:scale-100 before:transition-all before:duration-300 before:ease-in-out`
+                  }`}
+               
+                >
+                  <span 
+                    className={`${
+                      pathname === text.path 
+                        ? `text-[25px]`
+                        : `text-[20px]`
+                    } relative z-[2] transition-all duration-200`}
+                    style={pathname === text.path ? { color: getRandomIconColor() } : {}}
+                  >
+                    {text.icon}
+                  </span>
                 </span>
-                <span className={`${pathname === text.path ? "textActive" : ""} text`}>
+                <span 
+                  className={`${
+                    pathname === text.path 
+                      ? `top-1 left-5 -translate-x-[23px] -translate-y-[30px] relative transition-all duration-300 ease-in-out text-shadow-[1px_1px_5px_#000] font-['Papyrus','Comic_Sans_MS',cursive] font-black italic text-white pl-2.5 before:content-[''] before:absolute before:w-[7px] before:h-[8px] before:bottom-[-40%] before:rounded-full before:z-0 before:left-1/2 before:shadow-[1px_1px_5px_rgba(0,0,0,1)] before:scale-100 before:translate-x-1/2 before:transition-transform before:duration-300 before:ease-in-out before:bg-green-500 max-[660px]:text-[22px]`
+                      : `text-[var(--foreground)] absolute flex justify-center items-center text-center -mt-[15px] translate-y-3 text-[15px] before:content-[''] before:absolute before:w-[8px] before:h-[8px] before:bottom-[-40%] before:rounded-full before:z-0 before:left-[40%] before:scale-0`
+                  }`}
+                >
                   {text.title}
                 </span>
-              </StyleLink>
-            </Li>
+              </Link>
+            </li>
           ))}
-        </ListContent>
-      </NavSection>
+        </ul>
+      </nav>
     </motion.div>
   );
 };
 
 export default NavbarSection;
-
-// ✅ Styling: Bilkul unchanged ✅
-const NavSection = styled.nav`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  bottom: 25px;
-  z-index: 999;
-  left: 50%;
-  backdrop-filter: blur(10px);
-  transform: translate(-50%, -30%);
-  border-radius: 25px;
-  width: 500px;
-  height: 75px;
-  color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  @media(max-width:780px){
-    width:360px;
-    padding: 0 10px;
-  }
-`;
-
-const ListContent = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  text-transform: capitalize;
-`;
-
-const Li = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 20%;
-  position: relative;
-  transition: all 0.3s ease-in-out;
-`;
-
-const StyleLink = styled(Link)`
-  position: relative;
-  z-index: 99;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: auto;
-
-  .icon {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    color: var(--foreground);
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 20px;
-
-    svg {
-      position: relative;
-      z-index: 2;
-      font-size: 15px;
-      transition: all linear 0.2s;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 80%;
-      height: 80%;
-      top: 50%;
-      left: 50%;
-      opacity: 0;
-      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
-      border-radius: 50%;
-      background-color: #fff;
-      z-index: 1;
-      transform: translate(-50%, -50%) scale(1);
-      transition: all 0.3s ease-in-out;
-    }
-  }
-
-  .active {
-    width: 50px;
-    height: 50px;
-    color: var(--background);
-    opacity: 1;
-    background: rgba(${() => Math.random() * 255}, ${() => Math.random() * 255}, ${() => Math.random() * 255}, ${() => Math.random() * 0.9});
-    color: black;
-    display: flex;
-    font-size: 12px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-bottom: 0;
-    overflow: hidden;
-    position: relative;
-    z-index: 9;
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
-    transform: translate(0px, -35px);
-    text-shadow: 1px 1px 5px #000;
-    transition: transform 0.3s linear;
-
-    svg {
-      font-size: 25px;
-      color: rgba(${() => Math.random() * 150}, ${() => Math.random() * 150}, ${() => Math.random() * 150}, 0.8);
-    }
-
-    &::after {
-      opacity: 1;
-    }
-  }
-
-  .text {
-    color: var(--foreground);
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: -15px;
-    transform: translate(0px, 20px);
-    font-size: 12px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      bottom: -40%;
-      border-radius: 50%;
-      z-index: 0;
-      left: 40%;
-      transform: scale(0);
-    }
-  }
-
-  .textActive {
-    top: 20px;
-    left: 20px;
-    transform: translate(-23px, -30px);
-    position: relative;
-    font-size: 15px;
-    transition: all 0.3s ease-in-out;
-    text-shadow: 1px 1px 5px #000;
-    font-family: 'Papyrus', 'Comic Sans MS', cursive;
-    font-weight: 1000;
-    font-style: italic;
-    color: #fff;
-    padding-left: 10px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 5px;
-      height: 6px;
-      bottom: -40%;
-      border-radius: 50%;
-      background: rgb(${() => Math.random() * 255}, ${() => Math.random() * 255}, ${() => Math.random() * 255});
-      z-index: 0;
-      left: 50%;
-      box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
-      transform: scale(1) translate(50%, 0px);
-      transition: transform 0.3s ease-in-out;
-    }
-  }
-`;
