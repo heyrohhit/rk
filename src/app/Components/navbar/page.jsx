@@ -45,7 +45,7 @@ const NavbarSection = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
       <nav 
-        className="flex justify-center items-center fixed bottom-6 z-[999] left-1/2 backdrop-blur-xl -translate-x-1/2 -translate-y-[30%] rounded-3xl w-[500px] h-[75px] text-white shadow-[0_0_10px_rgba(0,0,0,0.5)] max-[780px]:w-[95%] max-[780px]:px-5"
+        className="flex justify-center items-center fixed bottom-6 z-[999] left-1/2 backdrop-blur-xl -translate-x-1/2 -translate-y-[30%] rounded-3xl w-[500px] h-[75px] text-white shadow-[0_0_10px_rgba(0,0,0,0.5)] max-[780px]:w-[480px] max-[780px]:px-5 max-[660px]:w-[95%] max-[660px]:px-5"
         style={{ background: randomBgColor }}
       >
         <ul className="flex justify-around items-center gap-5 w-full capitalize">
