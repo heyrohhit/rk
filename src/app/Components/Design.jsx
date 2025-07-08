@@ -16,7 +16,7 @@ function Design() {
           src="/img/pic02.webp"
           alt="Main visual"
           loading="lazy"
-          className="w-full h-[130%] absolute -top-[20%] object-cover z-[9]"
+          className="w-full h-[130%] absolute -top-[20%] object-cover z-[9] max-[660px]:h-[120%] max-[660px]:top-[-20%] max-[660px]:w-[250px] max-[660px]:left-[-30%]"
           onError={(e) => {
             const target = e.target;
             if (target instanceof HTMLImageElement && target.parentElement) {

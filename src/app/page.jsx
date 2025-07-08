@@ -1,9 +1,8 @@
 'use client';
 
-import styled from 'styled-components';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Loader from './Components/loader/page';
 import ServicePageItem from './services/ServicePageItem';
 import ProjectShowcase from './projects/ProjectShow';
@@ -35,16 +34,22 @@ export default function Home() {
 
   return (
     <>
-    
-      <Wrapper>
-            <Design />
-        <LeftTestSection
+      <div className="w-screen h-screen flex justify-around items-center flex-wrap relative overflow-x-hidden 
+                      max-[990px]:h-[80vh] max-[660px]:h-[75vh] max-[990px]:overflow-hidden">
+        <Design />
+        <motion.div
           initial={{ opacity: 0, x: '-250px', y: '-250px' }}
           animate={{ opacity: 1, x: '0px', y: '0px' }}
           transition={{ duration: 1, delay: 1 }}
-          className="text-white backdrop-blur-lg bg-opacity-30 border border-white/10 shadow-xl rounded-2xl p-6 flex flex-col items-start gap-4 animate-fade-in-up"
+          className="w-[550px] max-h-max p-5 bg-black/10 backdrop-blur-lg border border-white/10 shadow-xl 
+                     rounded-2xl absolute top-0 left-0 z-[1] flex flex-col items-start gap-4 animate-fade-in-up
+                     min-[990px]:top-[15%] min-[990px]:left-[10%]
+                     max-[990px]:w-[500px] max-[990px]:top-[10%]
+                     max-[660px]:w-[80%] max-[660px]:top-[2%] max-[660px]:rounded-tl-none max-[660px]:rounded-bl-none max-[660px]:bg-transparent max-[660px]:left-0 max-[660px]:p-2"
+                     style={{ padding: '0.8rem' }}
         >
-          <h1 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-green-300 via-blue-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_2px_5px_rgba(255,255,255,0.25)]">
+          <h1 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-green-300 via-blue-400 to-purple-500 
+                        text-transparent bg-clip-text drop-shadow-[0_2px_5px_rgba(255,255,255,0.25)]">
             Hi, I'm <span className="ml-2 text-yellow-300 text-2xl">Rk</span>
           </h1>
 
@@ -68,29 +73,34 @@ export default function Home() {
             Let’s create something <span className="text-pink-400 font-bold">great</span> together!
           </p>
 
-          <button className="mt-4 px-6 py-2 text-md font-bold rounded-full border border-yellow-300 bg-gradient-to-r from-yellow-300 to-orange-400 text-black hover:scale-105 hover:shadow-[0_0_15px_rgba(255,204,112,0.6)] transition-all duration-300">
+          <button className="mt-4 px-6 py-2 text-md font-bold rounded-full border border-yellow-300 
+                            bg-gradient-to-r from-yellow-300 to-orange-400 text-black 
+                            hover:scale-105 hover:shadow-[0_0_15px_rgba(255,204,112,0.6)] transition-all duration-300"
+                            style={{ padding: '0.5rem 1rem' }}>
             <Link href="/contact" className="no-underline text-inherit">
               Start a chats 💬
             </Link>
           </button>
-        </LeftTestSection>
+        </motion.div>
 
-
-
-
-        <RightTestSection
+        <motion.div
           initial={{ opacity: 0, x: '250px', y: '250px' }}
           animate={{ opacity: 1, x: '0px', y: '0px' }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="flex flex-wrap justify-center items-center gap-6 p-4"
+          className="w-[550px] max-h-max p-5 absolute bottom-[-100px] right-[-20px] z-[1] rounded-2xl 
+                     flex flex-wrap justify-center items-center gap-6 text-sm
+                     min-[990px]:top-[45%] min-[990px]:right-[5%] min-[990px]:text-base
+                     max-[990px]:w-[60%] max-[990px]:top-[60%] max-[990px]:right-0
+                     max-[660px]:w-[80%] max-[660px]:top-[52vh] max-[660px]:right-0 
+                     max-[660px]:rounded-tr-none max-[660px]:rounded-br-none"
         >
           {[
-            'text-yellow-400',
-            'text-pink-400',
-            'text-blue-400',
-            'text-green-400',
-            'text-purple-400',
-            'text-red-400',
+            'text-yellow-400 border-yellow-400',
+            'text-pink-400 border-pink-400',
+            'text-blue-400 border-blue-400',
+            'text-green-400 border-green-400',
+            'text-purple-400 border-purple-400',
+            'text-red-400 border-red-400',
           ].map((color, index) => (
             <motion.div
               key={index}
@@ -100,10 +110,11 @@ export default function Home() {
                 duration: 0.6, delay: index * 1, repeat: Infinity,
                 repeatType: 'loop',
               }}
-              className={`rounded-full p-5 border-2 ${color} border-current w-20 h-20 flex items-center justify-center shadow-md hover:scale-110 transition-all duration-300`}
+              className={`rounded-full p-5 border-2 ${color} w-20 h-20 flex items-center justify-center 
+                         shadow-md hover:scale-110 transition-all duration-300`}
             >
               <svg
-                className={`w-8 h-8 ${color}`}
+                className={`w-8 h-8 ${color.split(' ')[0]}`}
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -117,103 +128,15 @@ export default function Home() {
               </svg>
             </motion.div>
           ))}
-        </RightTestSection>
-       
-      </Wrapper>
+        </motion.div>
+      </div>
 
-      <ServicePageItem />
-     
+      
       <ProjectShowcase apis={projectsLive} showOnly={3} title="Live Projects" />
       <ProjectShowcase apis={projects} showOnly={3} title="Projects" />
+      <ServicePageItem />
       <ContactContext width="main" />
       <AboutContent />
-      
     </>
   );
 }
-
-const leftBgColor = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(
-  Math.random() * 255
-)}, ${Math.floor(Math.random() * 255)}, 0.1)`;
-
-
-
-const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  overflow-x: hidden;
-  button{
-    padding: 10px 20px;
-    margin-top: 10px;
-  }
-  @media(max-width:990px){
-  overflow: hidden;
-    height:80vh;
-  }
-    @media(max-width:660px){
-    height:75vh;
-    }
-`;
-
-const LeftTestSection = styled(motion.div)`
-  width: 550px;
-  height: max-content;
-  padding: 20px;
-  background: ${leftBgColor};
-  position: absolute;
-  top: 0px;
-  left: 0;
-  z-index: 1;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-
-  @media (min-width: 990px) {
-    top: 15%;
-    left: 10%;
-  }
-  @media (max-width: 990px) {
-    width: 500px;
-    top: 10%;
-  }
-  @media (max-width: 660px) {
-    width: 80%;
-    top: 2%;
-    border-radius: 0px 20px 20px 0px;
-    background: transparent;
-    left: 0%;
-  }
-`;
-
-const RightTestSection = styled(motion.div)`
-  width: 550px;
-  height: max-content;
-  padding: 20px;
-  position: absolute;
-  bottom: -100px;
-  right: -20px;
-  z-index: 1;
-  border-radius: 20px;
-  font-size: 0.8rem;
-
-  @media (min-width: 990px) {
-    top: 45%;
-    right: 5%;
-    font-size: 1rem;
-  }
-  @media (max-width: 990px) {
-    width: 60%;
-    top: 60%;
-    right: 0%;
-  }
-  @media (max-width: 660px) {
-    width: 80%;
-    top: 52vh;
-    right: 0%;
-    border-radius: 20px 0px 0px 20px;
-  }
-`;

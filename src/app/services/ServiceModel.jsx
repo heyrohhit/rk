@@ -17,7 +17,7 @@ const ServiceModal = ({ service, onClose }) => {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.3 }}
-        className="relative bg-[#000] p-4 sm:p-6 md:p-8 rounded-2xl w-full max-w-md sm:max-w-lg md:max-w-2xl shadow-xl"
+        className="relative top-0 bg-[#000] p-4 sm:p-6 md:p-8 rounded-2xl w-full max-w-md sm:max-w-lg md:max-w-3xl shadow-xl max-[660px]:text-[0.5rem] max-[660px]:top-[-5%]"
         style={{ padding: '1rem' }}
       >
         <button
@@ -32,11 +32,11 @@ const ServiceModal = ({ service, onClose }) => {
           {service.icon}
         </div>
 
-        <h3 className="text-lg sm:text-xl md:text-2xl text-left mb-2 sm:mb-3 font-semibold text-white">
+        <h3 className="text-lg sm:text-xl md:text-2xl text-left mb-2 sm:mb-3 font-semibold text-[#ff6b35]">
           {service.title}
         </h3>
 
-        <p className="text-xs sm:text-sm md:text-base text-left mb-3 sm:mb-4 leading-relaxed text-white">
+        <p className="text-xs md:text-base text-left mb-3 sm:mb-4 leading-relaxed text-white max-[480px]:text-[0.8rem]">
           {service.desc}
         </p>
 
