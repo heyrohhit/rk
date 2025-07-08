@@ -25,6 +25,8 @@
     "three-js": "^79.0.0"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^2.1.4"
+    "babel-plugin-styled-components": "^2.1.4",
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4"
   }
 }

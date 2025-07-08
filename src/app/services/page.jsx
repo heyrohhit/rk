@@ -1,10 +1,10 @@
 
 import ServicePageItem from "./ServicePageItem";
-import Background from '../objects/Background';
+import SkillsShowcase from "./SkillsShowcase";
 
 export default function ProjectsPage() {
   return <> 
-  <Background quantity={6}/>
   <ServicePageItem />
+  <SkillsShowcase />
   </>;
 }

@@ -10,8 +10,8 @@ const HeaderSection = styled.div`
   position: sticky;
   top: 0;
   font-family: "Papyrus", "Comic Sans MS", cursive;
-  text-align: center;
-  font-size: 0.8rem;
+  text-align: right;
+  font-size: 1.5rem;
   z-index: 9999;
   backdrop-filter: blur(10px);
 `;

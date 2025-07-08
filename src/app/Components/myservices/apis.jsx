@@ -1,50 +1,76 @@
 import { FaLaptopCode, FaBullhorn, FaChartLine, FaDatabase, FaEnvelopeOpenText, FaFileExcel } from "react-icons/fa";
+import { FaGoogle, FaPaintBrush, FaServer } from 'react-icons/fa';
 
 // API Object Data for services with expanded 250-word descriptions
+
+
 const servicesData = [
   {
-    id: 6,
-    icon: <FaFileExcel />,
-    title: "Excel Data Management",
-    desc: "In today’s data-driven world, managing large volumes of information efficiently is essential for business success...",
+    id: 1,
+    icon: <FaLaptopCode />,
+    title: "Web Design",
+    desc: "Transform your online presence with our cutting-edge Web Design service. Your website is your digital storefront—make it unforgettable with stunning visuals, intuitive navigation, and seamless user experiences. Our expert designers craft responsive, aesthetically pleasing websites tailored to your brand’s identity, ensuring they captivate visitors and drive conversions. From sleek landing pages to comprehensive e-commerce platforms, we blend creativity with functionality to deliver pixel-perfect designs optimized for all devices. Using the latest technologies like HTML5, CSS3, and modern frameworks, we ensure fast load times, accessibility, and SEO readiness. Our collaborative approach involves understanding your business goals to create a website that not only looks exceptional but also aligns with your marketing strategy. Whether you're a startup or an established enterprise, we empower you to stand out in a crowded digital landscape with a website that reflects your vision and engages your audience effectively. Let us help you make a lasting first impression that converts visitors into loyal customers. Contact us today to elevate your brand’s online identity!",
     link: "https://wa.me/918700750589",
   },
   {
-    id: 5,
-    icon: <FaEnvelopeOpenText />,
-    title: "E-mail Scraping",
-    desc: "Email marketing remains one of the most powerful tools in digital outreach—when it’s backed by accurate and relevant data...",
+    id: 2,
+    icon: <FaDatabase />,
+    title: "Web Development",
+    desc: "Bring your digital vision to life with our robust Web Development solutions. We build high-performance, scalable websites and applications tailored to your unique business needs. Our developers leverage cutting-edge technologies like React, Next.js, and Node.js to create secure, fast, and dynamic platforms that drive results. From custom CMS to complex e-commerce systems, we ensure seamless functionality, cross-browser compatibility, and mobile responsiveness. Our process begins with a deep dive into your goals, followed by meticulous coding and rigorous testing to deliver flawless performance. We prioritize clean code, robust security, and SEO optimization to enhance user experience and search engine rankings. Whether you need a corporate website, a web app, or an API-driven platform, our solutions are built to scale with your business. With a focus on user-centric design and backend efficiency, we empower you to engage customers and streamline operations. Let us turn your ideas into a powerful digital reality—connect with us today!",
     link: "https://wa.me/918700750589",
   },
   {
     id: 3,
     icon: <FaChartLine />,
-    title: "Facebook & Instagram Management",
-    desc: "Social media isn't just about posting—it's about building a digital presence that connects, engages, and grows...",
-    link: "https://wa.me/918700750589",
-  },
-  {
-    id: 2,
-    icon: <FaBullhorn />,
-    title: "Social Media Ads Campaigns",
-    desc: "Reaching your target audience with precision is essential in today’s competitive market...",
-    link: "https://wa.me/918700750589",
-  },
-  {
-    id: 1,
-    icon: <FaLaptopCode />,
-    title: "Web Design",
-    desc: "Your website is often the first impression your audience gets—make it unforgettable with our Web Design service...",
+    title: "Social Media Marketing",
+    desc: "Amplify your brand’s reach with our dynamic Social Media Marketing (SMM) services. In today’s digital age, platforms like Facebook, Instagram, Twitter, and LinkedIn are more than just social spaces—they’re powerful tools for building connections and driving growth. Our expert team crafts tailored SMM strategies to boost engagement, increase followers, and convert audiences into loyal customers. We create compelling content, including eye-catching visuals, engaging videos, and strategic posts, designed to resonate with your target demographic. By leveraging data-driven insights, we optimize campaigns for maximum ROI, ensuring every post aligns with your brand’s voice and goals. From community management to influencer collaborations, we handle it all to elevate your online presence. Our advanced analytics track performance, allowing us to refine strategies in real-time for better results. Whether you’re launching a new product or growing your brand, our SMM expertise ensures you stand out in a crowded digital space. Let’s ignite your social media success—contact us today!",
     link: "https://wa.me/918700750589",
   },
   {
     id: 4,
-    icon: <FaDatabase />,
-    title: "Web Development",
-    desc: "We bring your digital ideas to life with robust, high-performance web development solutions tailored to your needs...",
+    icon: <FaBullhorn />,
+    title: "Facebook & Google Ads",
+    desc: "Supercharge your growth with our expertly crafted Facebook & Google Ads campaigns. Reach your ideal audience with precision through targeted ads that drive clicks, conversions, and revenue. Our team designs high-impact ad creatives and leverages advanced targeting tools to ensure your message reaches the right people at the right time. On Facebook, we create engaging ads tailored to demographics, interests, and behaviors, maximizing engagement and leads. For Google Ads, we optimize search, display, and shopping campaigns to boost visibility and drive traffic to your website. Our data-driven approach includes keyword research, A/B testing, and performance tracking to deliver measurable results. We focus on cost-effective strategies to maximize your ad spend, whether you’re aiming for brand awareness or sales. From campaign setup to ongoing optimization, we handle every detail to ensure your ads perform at their peak. Ready to dominate the digital advertising space? Connect with us today to launch campaigns that deliver!",
+    link: "https://wa.me/918700750589",
+  },
+  {
+    id: 5,
+    icon: <FaGoogle />,
+    title: "Digital Marketing",
+    desc: "Unleash your brand’s potential with our comprehensive Digital Marketing services. We craft holistic strategies that blend SEO, content marketing, PPC, and social media to drive traffic, engagement, and conversions. Our team starts by understanding your business goals, then designs customized campaigns to reach your target audience across digital channels. From optimizing your website for search engines to creating compelling content that resonates, we ensure every touchpoint builds your brand’s authority. Our PPC expertise delivers targeted ads that maximize ROI, while our email marketing campaigns nurture leads into loyal customers. With advanced analytics, we track performance and refine strategies to keep you ahead of the competition. Whether you’re a small business or a global brand, our innovative solutions are designed to scale your online presence and deliver measurable results. Let’s take your digital strategy to the next level—contact us now!",
+    link: "https://wa.me/918700750589",
+  },
+  {
+    id: 6,
+    icon: <FaPaintBrush />,
+    title: "UI/UX Design",
+    desc: "Create unforgettable user experiences with our top-tier UI/UX Design services. We design intuitive, visually stunning interfaces that captivate users and drive engagement. Our process begins with in-depth user research to understand your audience’s needs, followed by wireframing, prototyping, and pixel-perfect design. We blend aesthetics with functionality to create seamless experiences across websites, apps, and digital products. Our designs are responsive, accessible, and optimized for performance, ensuring users stay engaged on any device. Using tools like Figma and Adobe XD, we craft interfaces that align with your brand and business goals. From e-commerce platforms to mobile apps, our UI/UX solutions enhance user satisfaction and boost conversions. We also conduct usability testing to refine designs for maximum impact. Elevate your digital products with designs that users love—reach out today to get started!",
+    link: "https://wa.me/918700750589",
+  },
+  {
+    id: 7,
+    icon: <FaServer />,
+    title: "SMM Servers",
+    desc: "Power up your social media strategy with our cutting-edge SMM Servers. Our robust server solutions are designed to supercharge your social media marketing campaigns, ensuring seamless performance and scalability. We provide high-speed, secure servers optimized for managing large-scale social media tasks, from automated posting to real-time analytics. Our servers support multi-platform integration, allowing you to manage campaigns across Facebook, Instagram, Twitter, and more from a single dashboard. With advanced features like load balancing and uptime guarantees, we ensure your campaigns run smoothly, even during peak traffic. Our team customizes server setups to meet your specific needs, whether you’re handling thousands of posts or analyzing massive datasets. Security is paramount—our servers are fortified with encryption and regular backups to protect your data. Scale your SMM efforts effortlessly and stay ahead of the competition with our reliable server solutions. Contact us today to boost your social media performance!",
+    link: "https://wa.me/918700750589",
+  },
+  {
+    id: 8,
+    icon: <FaFileExcel />,
+    title: "Excel Data Management",
+    desc: "Master your data with our advanced Excel Data Management services. In today’s fast-paced, data-driven world, efficient information management is the backbone of business success. Our experts transform complex datasets into actionable insights using powerful Excel tools and automation. From data cleaning and organization to advanced formulas, pivot tables, and macros, we streamline your workflows to save time and boost productivity. We create custom dashboards and reports tailored to your business needs, enabling smarter decision-making. Whether you’re managing sales data, customer records, or financial metrics, our solutions ensure accuracy and efficiency. We also provide training and support to empower your team to leverage Excel’s full potential. Our secure, scalable processes handle large datasets with ease, ensuring your data is always ready for analysis. Take control of your data and unlock its full potential—connect with us today!",
+    link: "https://wa.me/918700750589",
+  },
+  {
+    id: 9,
+    icon: <FaEnvelopeOpenText />,
+    title: "Email Scraping & Marketing",
+    desc: "Revolutionize your outreach with our Email Scraping & Marketing services. We deliver targeted, high-quality email lists to fuel your marketing campaigns, ensuring you connect with the right audience. Our ethical scraping techniques gather accurate, relevant email data while complying with regulations. Paired with our email marketing expertise, we craft personalized campaigns that drive engagement and conversions. From compelling subject lines to responsive email templates, we design messages that resonate with your audience. Our team uses advanced segmentation and automation to deliver emails at the perfect time, maximizing open rates and ROI. We also provide detailed analytics to track performance and refine strategies. Whether you’re nurturing leads or promoting products, our end-to-end solutions make email marketing effortless and effective. Boost your outreach with precision—contact us today to get started!",
     link: "https://wa.me/918700750589",
   },
 ];
+
+export default servicesData;
 
 
 // Projects (Design) Data
