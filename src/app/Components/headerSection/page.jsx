@@ -21,7 +21,7 @@ const Page = () => {
   return (
   
       <HeaderSection>
-        <h1>Rk.. Portfolio</h1>
+        <h1 className={`text-red-${Math.floor(Math.random() * 800)}`}>Rk.. Portfolio</h1>
       </HeaderSection>
   );
 };

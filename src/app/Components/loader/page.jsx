@@ -18,6 +18,7 @@ const LoaderWrapper = styled.div`
   font-weight: bold;
   z-index: 9999;
   flex-direction: column;
+  overflow:hidden;
 `;
 
 const ProgressText = styled.div`
@@ -29,6 +30,7 @@ const ProgressText = styled.div`
   justify-content: center;
   font-family: 'Papyrus', 'Comic Sans MS', cursive;
   text-align: center;
+  overflow:hidden;
 `;
 
 const ProgressBarContainer = styled.div`
