@@ -21,7 +21,7 @@ const NavbarSection = () => {
   }, []);
 
   const navText = [
-    { title: "Service", path: "/services", icon: <SiTheodinproject /> },
+    { title: "Learning", path: "/learn", icon: <SiTheodinproject /> },
     { title: "About", path: "/about", icon: <BsFillPersonFill /> },
     { title: "Home", path: "/", icon: <AiFillHome /> },
     { title: "Contact", path: "/contact", icon: <IoMdContact /> },

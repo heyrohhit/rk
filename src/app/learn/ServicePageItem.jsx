@@ -29,10 +29,10 @@ const ServicesSection = () => {
         Our Services
       </div>
 
-      <h2 className="text-[2.5rem] mb-2 text-[#ccc]">What We Offer</h2>
+      <h2 className="text-[2.5rem] mb-2 text-[#ccc]">What we learn</h2>
 
       <p className="text-base text-[#aaa] mb-12">
-        We provide smart digital solutions to grow your business—effortlessly and efficiently.
+      Our smart learning methods make studying easier and more efficient, helping students prepare for future success.
       </p>
 
       <div className="w-full h-max flex flex-wrap gap-8 justify-center items-center text-left overflow-hidden">
@@ -53,13 +53,13 @@ const ServicesSection = () => {
             <h3 className="w-full text-2xl text-[#fff] mb-2">{service.title}</h3>
 
             <p className="text-[1rem] text-[#aaa] mb-2">
-              {service.desc.slice(0, 250)}...
+              {service.desc.slice(0, 150)}...
             </p>
 
             <button
               onClick={() => openModal(service)}
-              className="inline-block mt-2 bg-[#ff6b35] text-white rounded-lg transition-colors duration-300 hover:bg-[#e85c2e] cursor-pointer"
-              style={{ padding: '0.5rem 1rem' }}
+              className="inline-block bg-[#ff6b35] text-white rounded-lg transition-colors duration-300 hover:bg-[#e85c2e] cursor-pointer"
+              style={{ padding: '0.5rem 1rem', marginTop: '1rem',alignSelf: `${index % 2 === 0 ? 'flex-start' : 'flex-end'}`}}
             >
               Learn More
             </button>

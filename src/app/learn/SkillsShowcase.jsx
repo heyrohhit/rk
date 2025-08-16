@@ -1,36 +1,36 @@
 'use client';
 
 import React from 'react';
-import { FaReact, FaNodeJs, FaPaintBrush, FaDatabase } from 'react-icons/fa';
+import { FaDatabase, FaBullhorn, FaChartLine, FaLaptopCode } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const skills = [
   {
-    icon: <FaReact className="text-sky-400" size={32} />,
-    title: 'React Mastery',
-    desc: 'Expertise in building reusable components and dynamic UIs using React & Hooks.',
+    icon: <FaLaptopCode className="text-sky-400" size={32} />,
+    title: 'Basic & Advance Computer Courses',
+    desc: 'I am a Computer Science student with a strong foundation in programming and a passion for web development.',
   },
   {
-    icon: <FaNodeJs className="text-green-500" size={32} />,
-    title: 'Node.js & APIs',
-    desc: 'Skilled in building fast, scalable backend systems and RESTful APIs.',
+    icon: <FaDatabase className="text-green-500" size={32} />,
+    title: 'Web Design',
+    desc: 'I am a Computer Science student with a strong foundation in programming and a passion for web development.',
   },
   {
-    icon: <FaDatabase className="text-yellow-400" size={32} />,
-    title: 'Database Management',
-    desc: 'Experience with SQL & NoSQL databases like MongoDB and PostgreSQL.',
+    icon: <FaBullhorn className="text-pink-400" size={32} />,
+    title: 'Digital Marketing',
+    desc: 'I am a Computer Science student with a strong foundation in programming and a passion for web development.',
   },
   {
-    icon: <FaPaintBrush className="text-pink-400" size={32} />,
-    title: 'Creative UI/UX',
+    icon: <FaChartLine className="text-yellow-400" size={32} />,
+    title: 'Web Development',
     desc: 'Design-focused approach using Figma, Tailwind CSS, and smooth interactions.',
   },
 ];
 
 const stats = [
-  { number: 50, label: 'Projects' },
-  { number: 5, label: 'Years Exp' },
-  { number: 120, label: 'Happy Clients' },
+  { number: 50, label: 'Assignments' },
+  { number: 2, label: 'Years Exp' },
+  { number: 120, label: 'Happy Students' },
 ];
 
 export default function SkillsShowcase() {
@@ -41,9 +41,9 @@ export default function SkillsShowcase() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="text-2xl md:text-4xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-500"
-     style={{
-      padding: '1rem',
-    }} >
+        style={{
+          padding: '1rem',
+        }} >
         My Skill Arsenal 🚀
       </motion.h1>
 
@@ -66,12 +66,12 @@ export default function SkillsShowcase() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 * index }}
             className="bg-white/5 border flex flex-col items-center justify-center border-white/10 rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300 backdrop-blur-sm"
-          style={{
-            padding: '1rem',
-          }}>
+            style={{
+              padding: '1rem',
+            }}>
             <div className="mb-4">{skill.icon}</div>
-            <h3 className="text-lg font-semibold mb-2 text-yellow-100">{skill.title}</h3>
-            <p className="text-sm text-gray-400">{skill.desc}</p>
+            <h3 className="text-md font-semibold mb-2 text-yellow-100">{skill.title}</h3>
+            <p className="text-sm text-gray-400 text-left">{skill.desc}</p>
           </motion.div>
         ))}
       </div>

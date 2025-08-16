@@ -112,7 +112,7 @@ const FooterPage = () => {
           <SectionItem><Link href="/contact">Contact</Link></SectionItem>
         </Section>
         <Section>
-          <SectionTitle >Services</SectionTitle>
+          <SectionTitle >what i do</SectionTitle>
           <SectionItem><Link href={pathname === "/services" ? "#excelDataManagement" : "/services#excelDataManagement"}>Excel Data Management</Link></SectionItem>
           <SectionItem><Link href={pathname === "/services" ? "#emailScraping" : "/services#emailScraping"}>Email Scraping</Link></SectionItem>
           <SectionItem><Link href={pathname ===  "/services" ? "#socialMediaAdsCampaigns" : "/services#socialMediaAdsCampaigns"}>Social Media Ads Campaigns</Link></SectionItem>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Loader from './Components/loader/page';
-import ServicePageItem from './services/ServicePageItem';
+import Service from './learn/page';
 import ProjectShowcase from './projects/ProjectShow';
 import { projectsLive, projects } from './Components/myservices/apis';
 import Design from './Components/Design';
@@ -134,7 +134,7 @@ export default function Home() {
       
       <ProjectShowcase apis={projectsLive} showOnly={3} title="Live Projects" />
       <ProjectShowcase apis={projects} showOnly={3} title="Projects" />
-      <ServicePageItem />
+      <Service />
       <ContactContext width="main" />
       <AboutContent />
     </>

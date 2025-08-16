@@ -244,48 +244,49 @@ const Button = styled.a`
 const AboutContent = () => {
   return (
     <Container>
-      <ContentWrapper>
-        <Title>About RK Webs</Title>
-        <Description>
-          Welcome to RK Webs, where innovation meets creativity. We are a passionate team dedicated to crafting exceptional web experiences that empower businesses and individuals alike.
-        </Description>
-        
-        <Section>
-          <SectionTitle>Our Mission</SectionTitle>
-          <SectionText>
-            At RK Webs, our mission is to deliver cutting-edge web solutions that drive growth, enhance user experiences, and create lasting impact. We believe in building websites that are not just functional but also visually stunning and user-friendly.
-          </SectionText>
-        </Section>
-        
-        <Section>
-          <SectionTitle>Our Vision</SectionTitle>
-          <SectionText>
-            To be a global leader in web development, transforming ideas into digital realities with innovation, reliability, and excellence at the core of everything we do.
-          </SectionText>
-        </Section>
-        
-        <Section>
-          <SectionTitle>Our Team</SectionTitle>
-          <SectionText>
-            Our team comprises skilled developers, designers, and strategists who bring diverse expertise to the table. We work collaboratively to ensure every project reflects our commitment to quality and innovation.
-          </SectionText>
-        </Section>
-        
-        <Section>
-          <SectionTitle>Why Choose Us?</SectionTitle>
-          <List>
-            <ListItem>Customized web solutions tailored to your needs ?</ListItem>
-            <ListItem>Responsive and modern designs powered by the latest technologies ?</ListItem>
-            <ListItem>Dedicated support and maintenance for seamless performance ?</ListItem>
-            <ListItem>Privacy-focused analytics to optimize user experience ?</ListItem>
-          </List>
-        </Section>
-        
-        <ButtonWrapper>
-          <Button href="/contact">Get in Touch</Button>
-        </ButtonWrapper>
-      </ContentWrapper>
-    </Container>
+  <ContentWrapper>
+    <Title>About RK Webs</Title>
+    <Description>
+      Welcome to RK Webs — a learning space where technology meets curiosity. We're a dedicated team focused on helping students explore, learn, and grow through hands-on digital skills in web design, development, and marketing.
+    </Description>
+
+    <Section>
+      <SectionTitle>Our Mission</SectionTitle>
+      <SectionText>
+        At RK Webs, our mission is to make learning practical and accessible. We aim to equip students with real-world digital skills through guided learning, mentorship, and interactive projects — preparing them for future careers in tech and digital innovation.
+      </SectionText>
+    </Section>
+
+    <Section>
+      <SectionTitle>Our Vision</SectionTitle>
+      <SectionText>
+        To become a leading student-focused platform where learners from all backgrounds can discover their potential, master digital tools, and confidently step into the world of technology.
+      </SectionText>
+    </Section>
+
+    <Section>
+      <SectionTitle>Our Team</SectionTitle>
+      <SectionText>
+        Our team includes developers, designers, and educators who are passionate about teaching and mentoring. We combine technical expertise with an educational mindset to create a supportive and engaging learning environment for all students.
+      </SectionText>
+    </Section>
+
+    <Section>
+      <SectionTitle>Why Learn with Us?</SectionTitle>
+      <List>
+        <ListItem>Student-friendly courses designed for beginners and advanced learners</ListItem>
+        <ListItem>Project-based learning to build real-world skills and confidence</ListItem>
+        <ListItem>Responsive support and guidance from experienced mentors</ListItem>
+        <ListItem>Up-to-date content aligned with industry tools and technologies</ListItem>
+      </List>
+    </Section>
+
+    <ButtonWrapper>
+      <Button href="/contact">Join the Learning</Button>
+    </ButtonWrapper>
+  </ContentWrapper>
+</Container>
+
   );
 };
 

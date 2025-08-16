@@ -165,7 +165,7 @@ export default function ProjectShowcase({ apis = [], showOnly = 0 ,title}) {
                 <Content>
                   <span>Date:{project.date}</span>
                   <h3>{project.title}</h3>
-                  <p>{project.description}</p>
+                  <p >{project.description}</p>
                   <Link href={project.image} target="_blank" rel="noopener noreferrer">
                     View Project
                   </Link>
