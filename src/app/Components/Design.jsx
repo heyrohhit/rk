@@ -32,7 +32,7 @@ function Design() {
 export default Design;
 
 const MainSection = styled(motion.div)`
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)),
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1)),
     url('/img/pic01.webp') right center/cover no-repeat;
   background-size: cover;
 `;

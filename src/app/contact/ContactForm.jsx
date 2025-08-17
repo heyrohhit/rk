@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import { CiMicrophoneOn } from "react-icons/ci";
+import { FaMicrophoneAltSlash } from "react-icons/fa";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -23,24 +25,67 @@ const GlobalStyle = createGlobalStyle`
 const ContactForm = ({ width }) => {
   const [status, setStatus] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const recognitionRef = useRef(null);
+  const textareaRef = useRef(null);
+
+  const handleStartSpeech = () => {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert("Speech recognition is not supported in this browser.");
+      return;
+    }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+
+    recognition.onresult = (event) => {
+      const transcript = Array.from(event.results)
+        .map(result => result[0].transcript)
+        .join('');
+      if (textareaRef.current) {
+        textareaRef.current.value = transcript;
+      }
+    };
+
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event);
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+    };
+
+    recognition.start();
+    recognitionRef.current = recognition;
+    setIsListening(true);
+  };
+
+  const handleStopSpeech = () => {
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsProcessing(true);
-    
+
     const formData = {
       name: e.target.name.value,
       email: e.target.email.value,
       message: e.target.message.value,
     };
-    
+
     try {
       const res = await fetch('/api/submit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      
+
       const result = await res.json();
 
       if (res.ok && result.result === 'success') {
@@ -70,7 +115,15 @@ const ContactForm = ({ width }) => {
               <StyledForm onSubmit={handleSubmit}>
                 <InputField type="text" name="name" placeholder="Your Name" required />
                 <InputField type="email" name="email" placeholder="Your Email" required />
-                <TextArea name="message" placeholder="Your Message" required />
+                <div className='relative w-[100%]'>
+                  <TextArea name="message" placeholder="Your Message" required ref={textareaRef} />
+                  
+                  {!isListening ? (
+                    <Icons onClick={handleStartSpeech}><CiMicrophoneOn /></Icons>
+                  ) : (
+                    <Icons onClick={handleStopSpeech}><FaMicrophoneAltSlash /></Icons>
+                  )}
+                </div>
                 <SubmitButton type="submit">Send Message</SubmitButton>
               </StyledForm>
               {status.includes('success') && <SuccessMessage>{status}</SuccessMessage>}
@@ -88,7 +141,7 @@ export default ContactForm;
 /* Styled Components */
 
 const Container = styled.div`
-  width: ${(props) => props.width || '50%'};
+  width: ${(props) => props.width || '50%'}; 
   min-height: 60vh;
   display: flex;
   justify-content: center;
@@ -146,9 +199,11 @@ const TextArea = styled.textarea`
   border-radius: 8px;
   font-size: 1rem;
   min-height: 120px;
+  width: 100%;
   background: transparent;
   transition: all 0.3s ease-in-out;
   resize: vertical;
+  position: relative;
 
   &:focus {
     background: #333;
@@ -192,4 +247,13 @@ const ProcessingMessage = styled.p`
   color: #007bff;
   font-weight: bold;
   margin-top: 15px;
+`;
+
+const Icons = styled.span`
+  padding: 12px 15px;
+  border-radius: 8px;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  cursor: pointer;
 `;

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import Loader from './Components/loader/page';
 import Service from './learn/page';
 import ProjectShowcase from './projects/ProjectShow';
+import ProjectCase from './projects/ProjectCase';
 import { projectsLive, projects } from './Components/myservices/apis';
 import Design from './Components/Design';
 import ContactContext from './contact/ContactContext';
@@ -132,7 +133,7 @@ export default function Home() {
       </div>
 
       
-      <ProjectShowcase apis={projectsLive} showOnly={3} title="Live Projects" />
+      <ProjectCase apis={projectsLive} showOnly={3} title="Live Projects" />
       <ProjectShowcase apis={projects} showOnly={3} title="Projects" />
       <Service />
       <ContactContext width="main" />
