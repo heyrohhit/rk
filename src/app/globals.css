@@ -76,3 +76,25 @@ a {
   animation: pulse-slow 5s ease-in-out infinite;
 }
 
+
+.IframeWrapper {
+  width: 300px;
+  height: 350px;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+}
+.IframeImage{
+  width: 260%;
+  height: 250%;
+  border: none;
+  transform: scale(0.4); /* Zoom out effect */
+  transform-origin: top left;
+  pointer-events: none; /* Disable interactions */
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+

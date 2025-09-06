@@ -5,13 +5,13 @@ import { FaGoogle, FaPaintBrush, FaServer } from 'react-icons/fa';
 
 
 const servicesData = [
-  {
-    id: 1,
-    icon: <FaLaptopCode />,
-    title: "Web Design",
-    desc: "Learn how to design modern, responsive websites with a focus on user experience and visual appeal. This course introduces students to layout design, color theory, typography, and mobile-first principles using HTML5, CSS3, and design tools like Figma. Ideal for beginners looking to build a strong foundation in front-end design.",
-    link: "https://wa.me/918700750589",
-  },
+  // {
+  //   id: 1,
+  //   icon: <FaLaptopCode />,
+  //   title: "Web Design",
+  //   desc: "Learn how to design modern, responsive websites with a focus on user experience and visual appeal. This course introduces students to layout design, color theory, typography, and mobile-first principles using HTML5, CSS3, and design tools like Figma. Ideal for beginners looking to build a strong foundation in front-end design.",
+  //   link: "https://wa.me/918700750589",
+  // },
   {
     id: 2,
     icon: <FaDatabase />,
@@ -26,13 +26,13 @@ const servicesData = [
     desc: "Understand how social media platforms work and how to use them for brand building and engagement. Learn how to create content, analyze audience behavior, and run basic campaigns on platforms like Instagram, Facebook, and LinkedIn. Ideal for students interested in digital branding and content strategy.",
     link: "https://wa.me/918700750589",
   },
-  {
-    id: 4,
-    icon: <FaBullhorn />,
-    title: "Facebook & Google Ads",
-    desc: "Learn the basics of online advertising through Facebook and Google platforms. This course helps students understand ad targeting, budgeting, keyword strategy, and performance analysis. A great starting point for anyone looking to explore digital advertising or pursue a marketing career.",
-    link: "https://wa.me/918700750589",
-  },
+  // {
+  //   id: 4,
+  //   icon: <FaBullhorn />,
+  //   title: "Facebook & Google Ads",
+  //   desc: "Learn the basics of online advertising through Facebook and Google platforms. This course helps students understand ad targeting, budgeting, keyword strategy, and performance analysis. A great starting point for anyone looking to explore digital advertising or pursue a marketing career.",
+  //   link: "https://wa.me/918700750589",
+  // },
   {
     id: 5,
     icon: <FaGoogle />,
@@ -40,20 +40,20 @@ const servicesData = [
     desc: "Explore the core areas of digital marketing including SEO, content marketing, PPC, email marketing, and analytics. This course helps students build strategic thinking and practical skills to grow any online presence. Perfect for those aiming to work in marketing or run their own projects.",
     link: "https://wa.me/918700750589",
   },
-  {
-    id: 6,
-    icon: <FaPaintBrush />,
-    title: "UI/UX Design",
-    desc: "Learn how to create intuitive and attractive user interfaces for websites and apps. This course covers user research, wireframing, prototyping, and interface design using tools like Adobe XD and Figma. Designed for students who want to understand how design impacts user behavior.",
-    link: "https://wa.me/918700750589",
-  },
-  {
-    id: 7,
-    icon: <FaServer />,
-    title: "SMM Servers",
-    desc: "Understand the technical side of social media marketing by learning how SMM (Social Media Marketing) servers work. Students will explore automation tools, data management, and multi-platform scheduling used in large-scale digital campaigns. Great for those interested in marketing tech and systems.",
-    link: "https://wa.me/918700750589",
-  },
+  // {
+  //   id: 6,
+  //   icon: <FaPaintBrush />,
+  //   title: "UI/UX Design",
+  //   desc: "Learn how to create intuitive and attractive user interfaces for websites and apps. This course covers user research, wireframing, prototyping, and interface design using tools like Adobe XD and Figma. Designed for students who want to understand how design impacts user behavior.",
+  //   link: "https://wa.me/918700750589",
+  // },
+  // {
+  //   id: 7,
+  //   icon: <FaServer />,
+  //   title: "SMM Servers",
+  //   desc: "Understand the technical side of social media marketing by learning how SMM (Social Media Marketing) servers work. Students will explore automation tools, data management, and multi-platform scheduling used in large-scale digital campaigns. Great for those interested in marketing tech and systems.",
+  //   link: "https://wa.me/918700750589",
+  // },
   {
     id: 8,
     icon: <FaFileExcel />,

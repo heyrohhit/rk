@@ -159,11 +159,10 @@ export default function ProjectShowcase({ apis = [], showOnly = 0, title }) {
               transition={{ duration: 0.5 }}
             >
               <ProjectItem $reverse={index % 2 !== 0}>
-                <IframeWrapper $isLarge={index === 0}>
+                <IframeWrapper>
                   <IframeImage
                     src={project.image}
                     alt={project.title}
-                    $isLarge={index === 0}
                   />
                 </IframeWrapper>
                 <Content>
