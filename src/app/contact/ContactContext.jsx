@@ -5,7 +5,7 @@ import Image from 'next/image'
 import styled, { createGlobalStyle } from 'styled-components'
 import { motion } from 'framer-motion'
 import { FaShareAlt, FaWhatsapp, FaInstagram, FaLinkedin, FaFacebook, FaGithub } from 'react-icons/fa'
-import ThreeDObject from '../objects/3dScenes'
+
 
 const icons = [
   { icon: <FaWhatsapp />, link: 'https://wa.me/918700750589' },
