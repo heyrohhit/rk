@@ -77,46 +77,74 @@ export default servicesData;
 // Projects (Design) Data
 const projects = [
   {
+    id:10,
+    title:"Photoshop Poster Design Demo",
+    description:"This project showcases a creative demo of Photoshop poster design, featuring vibrant colors, modern aesthetics, and visual appeal for marketing and promotions. It highlights skills in layout, typography, and image editing to create visually compelling posters that capture attention and communicate messages effectively. The demo reflects a deep understanding of design principles, such as balance, contrast, and hierarchy, tailored for digital and print media alike.",
+    image:"https://drive.google.com/file/d/17RyFNZ32vsxxKVWuWQPeOxSJFDXDHcFD/preview",
+    date:"2025-06-26"
+  },
+  {
+    id:11,
+    title:"Photoshop Poster Design Demo",
+    description:"This project showcases a creative demo of Photoshop poster design, featuring vibrant colors, modern aesthetics, and visual appeal for marketing and promotions. It highlights skills in layout, typography, and image editing to create visually compelling posters that capture attention and communicate messages effectively. The demo reflects a deep understanding of design principles, such as balance, contrast, and hierarchy, tailored for digital and print media alike.",
+    image:"https://drive.google.com/file/d/17Dy938TR5rHOlqAqlSLhajzspYfHu5wd/preview",
+    date:"2025-05-13"
+  },
+  {
     id: 1,
     title: "Photoshop Poster Design Demo",
     description: "This project showcases a creative demo of Photoshop poster design, featuring vibrant colors, modern aesthetics, and visual appeal for marketing and promotions. It highlights skills in layout, typography, and image editing to create visually compelling posters that capture attention and communicate messages effectively. The demo reflects a deep understanding of design principles, such as balance, contrast, and hierarchy, tailored for digital and print media alike.",
     image: "https://drive.google.com/file/d/1z7ByWfvyTNT2TMAzyTdLi4eCeAVRPDn0/preview",
-    date:"2025-06-26"
+    date:"2022-08-06"
   },
   {
     id: 3,
     title: "Photoshop Poster Design Demo",
     description: "A visually stunning Photoshop poster demo emphasizing clean design, color harmony, and modern graphics tailored for advertisements. The project demonstrates mastery of Photoshop tools, layering techniques, and effects that result in professional-grade promotional material, perfect for branding, product launches, and event announcements.",
     image: "https://drive.google.com/file/d/1ANWjpI-hjgAr359mQsFs4PGGU4gp4I_2/preview",
-    date:"2025-06-26"
+    date:"2022-08-06"
   },
   {
     id: 5,
     title: "Photoshop Poster Design Demo",
     description: "A poster design project that explores the creative use of color palettes and visual storytelling through Photoshop. It reflects expertise in graphic composition and branding through detailed mockups aimed at enhancing marketing campaigns.",
     image: "https://drive.google.com/file/d/1bJfgrzG33_BBhBXAGqLkekAJhFpQSCb-/preview",
-    date:"2025-06-26"
+    date:"2023-02-26"
   },
   {
     id: 7,
     title: "Photoshop Poster Design Demo",
     description: "A creative poster design showcasing illustrative graphics and impactful typography. Designed using Photoshop, it demonstrates how effective visuals can help convey a brand’s message and attract the desired audience.",
     image: "https://drive.google.com/file/d/1r2M33BbfJrdh8bOlg6trHSArt0kX-9wp/preview",
-    date:"2025-06-26"
+    date:"2024-06-26"
+  },
+  {
+    id:12,
+    title:"Logo Design",
+    description:"This logo design project, created in CorelDRAW, reflects brand identity with professional use of blue and green tones. The design process focuses on simplicity, memorability, and versatility while showcasing creativity and conceptual thinking vital in building strong visual brands.",
+    image:"https://drive.google.com/file/d/17CekstJ81Nd2hU2tgWVdlI4-7oMYkeeC/preview",
+    date:"2025-02-26"
+  },
+  {
+    id:9,
+    title: "CorelDRAW Logo Design",
+    description: "This logo design project, created in CorelDRAW, reflects brand identity with professional use of blue and green tones. The design process focuses on simplicity, memorability, and versatility while showcasing creativity and conceptual thinking vital in building strong visual brands.",
+    image:"https://drive.google.com/file/d/1fBdTJQu22FRObe8tB3aNr7e29VtusPPi/preview",
+    date:"2024-06-26"
   },
   {
     id: 8,
     title: "CorelDRAW Logo Design",
     description: "This logo design project, created in CorelDRAW, reflects brand identity with professional use of blue and green tones. The design process focuses on simplicity, memorability, and versatility while showcasing creativity and conceptual thinking vital in building strong visual brands.",
     image: "https://drive.google.com/file/d/1XMwxIzCf-jhms-cXll3hNOeBMnXNBrNE/preview",
-    date:"2025-06-26"
+    date:"2024-10-16"
   },
   {
     id: 2,
     title: "CorelDRAW Logo Design",
     description: "A professional logo crafted using CorelDRAW to reflect innovation, clarity, and brand consistency. The use of colors, shapes, and typographic elements in this logo showcases thoughtful visual strategy and execution.",
     image: "https://drive.google.com/file/d/1Q52acYUW4VQlOJer6mfDFUgax0M0mXKW/preview",
-    date:"2025-06-26"
+    date:"2025-02-26"
   },
 ];
 

@@ -8,22 +8,22 @@ const skills = [
   {
     icon: <FaLaptopCode className="text-sky-400" size={32} />,
     title: 'Basic & Advance Computer Courses',
-    desc: 'I am a Computer Science student with a strong foundation in programming and a passion for web development.',
+    desc: 'I am a B.A. student with a basic understanding of programming and computer applications through a DCA course. I am currently exploring web development and continuously learning new skills to build creative and functional websites.',
   },
   {
     icon: <FaDatabase className="text-green-500" size={32} />,
     title: 'Web Design',
-    desc: 'I am a Computer Science student with a strong foundation in programming and a passion for web development.',
+    desc: 'I am a B.A. student with a basic understanding of programming and a growing interest in web design. Through my DCA course, I have developed foundational skills in creating user-friendly and visually appealing websites.',
   },
   {
     icon: <FaBullhorn className="text-pink-400" size={32} />,
     title: 'Digital Marketing',
-    desc: 'I am a Computer Science student with a strong foundation in programming and a passion for web development.',
+    desc: 'I am a B.A. student with a basic understanding of computer applications and a strong interest in digital marketing. I am currently learning how to use online tools and platforms to promote brands effectively.',
   },
   {
     icon: <FaChartLine className="text-yellow-400" size={32} />,
     title: 'Web Development',
-    desc: 'Design-focused approach using Figma, Tailwind CSS, and smooth interactions.',
+    desc: 'I am a B.A. student with a basic understanding of programming, gained through a Diploma in Computer Applications (DCA). I have a growing interest in web development and am currently learning technologies like HTML, CSS, and JavaScript to build responsive and user-friendly websites',
   },
 ];
 
