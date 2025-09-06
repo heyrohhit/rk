@@ -9,9 +9,9 @@ import ThreeDObject from '../objects/3dScenes'
 
 const icons = [
   { icon: <FaWhatsapp />, link: 'https://wa.me/918700750589' },
-  { icon: <FaInstagram />, link: 'https://www.instagram.com/rk96x0' },
+  { icon: <FaInstagram />, link: 'https://www.instagram.com/heyrohhitt?igsh=OXMwMno0dWxvcWdh' },
   { icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/rohit-kumar-a81326254/' },
-  { icon: <FaFacebook />, link: 'https://www.facebook.com/people/Rohit-Kumar/61554857723358/' },
+  { icon: <FaFacebook />, link: 'https://www.facebook.com/share/1BfhN2tW9L/' },
   { icon: <FaGithub />, link: 'https://github.com/rk960' },
 ]
 
