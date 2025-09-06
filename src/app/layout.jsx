@@ -5,6 +5,7 @@ import Components from "./Components/page";
 import HeaderSection from "./Components/headerSection/page";
 import FooterPage from "./Components/footer/page";
 import Backgrounds from "./Components/backgounds/page";
+import { ThemeProvider } from 'next-themes';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -84,18 +85,22 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
       <meta name="google-site-verification" content="9h1Qm51n6eTEBXQjBEnlf9JXXnspjpIaAAgTHPCtt7w" />
       </head>
       <body>
+        
         <StyledJsxRegistry>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
           <HeaderSection />
           <main>{children}</main>
           <FooterPage />
           <Components />
           <Backgrounds />
+          </ThemeProvider>
         </StyledJsxRegistry>
+        
       </body>
     </html>
   );

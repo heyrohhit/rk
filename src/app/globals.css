@@ -18,6 +18,8 @@ body {
   max-width: 100vw;
   position: relative;
   scroll-behavior: smooth;
+  background: var(--background); 
+  color: var(--foreground);
 }
 html > * h1,body > * h1,html > * button,body > * button{
   font-family: 'Papyrus', 'Comic Sans MS', cursive;

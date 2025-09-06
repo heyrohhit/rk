@@ -35,14 +35,14 @@ export default function Home() {
 
   return (
     <>
-      <div className="w-screen h-screen flex justify-around items-center flex-wrap relative overflow-x-hidden 
+      <div className="w-screen h-screen flex justify-around items-center text-[var(--foreground)] flex-wrap relative overflow-x-hidden 
                       max-[990px]:h-[80vh] max-[660px]:h-[75vh] max-[990px]:overflow-hidden">
         <Design />
         <motion.div
           initial={{ opacity: 0, x: '-250px', y: '-250px' }}
           animate={{ opacity: 1, x: '0px', y: '0px' }}
           transition={{ duration: 1, delay: 1 }}
-          className="w-[550px] max-h-max p-5 bg-black/10 backdrop-blur-lg border border-white/10 shadow-xl 
+          className="w-[550px] text-[var(--foreground)] max-h-max p-5 bg-[var(--background)] backdrop-blur-lg border border-white/10 shadow-xl 
                      rounded-2xl absolute top-0 left-0 z-[1] flex flex-col items-start gap-4 animate-fade-in-up
                      min-[990px]:top-[15%] min-[990px]:left-[10%]
                      max-[990px]:w-[500px] max-[990px]:top-[10%]
@@ -54,7 +54,7 @@ export default function Home() {
             Hi, I'm <span className="ml-2 text-yellow-300 text-2xl">Rk</span>
           </h1>
 
-          <h2 className="text-xl md:text-2xl font-bold text-yellow-100 flex items-center gap-2">
+          <h2 className="text-xl md:text-2xl font-bold text-yellow-500 flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-blue-400 animate-bounce"
@@ -67,7 +67,7 @@ export default function Home() {
             Frontend Web Developer
           </h2>
 
-          <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+          <p className="text-sm md:text-base text-[var(--foreground)] leading-relaxed">
             Thank you for stopping by! I specialize in building
             <span className="text-cyan-300 font-semibold"> responsive</span> and
             <span className="text-green-400 font-semibold"> user-friendly</span> web interfaces. I help bring ideas to life with clean code and modern design.
@@ -88,7 +88,7 @@ export default function Home() {
           initial={{ opacity: 0, x: '250px', y: '250px' }}
           animate={{ opacity: 1, x: '0px', y: '0px' }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="w-[550px] max-h-max p-5 absolute bottom-[-100px] right-[-20px] z-[1] rounded-2xl 
+          className="w-[550px] text-[var(--foreground)] max-h-max p-5 absolute bottom-[-100px] right-[-20px] z-[1] rounded-2xl 
                      flex flex-wrap justify-center items-center gap-6 text-sm
                      min-[990px]:top-[45%] min-[990px]:right-[5%] min-[990px]:text-base
                      max-[990px]:w-[60%] max-[990px]:top-[60%] max-[990px]:right-0
