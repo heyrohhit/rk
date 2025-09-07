@@ -1,23 +1,26 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import styled from 'styled-components';
-import { useTheme } from 'next-themes';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import styled from "styled-components";
+import { useTheme } from "next-themes";
 
 export default function Design() {
-  const { theme } = useTheme();
+  const { theme } = useTheme("dark");
   const [mounted, setMounted] = useState(false);
 
-  // Yeh hydration mismatch avoid karta hai
+  // Hydration mismatch avoid करने के लिए
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // render mat karo jab tak theme ready nahi hai
+  if (!mounted) return null;
 
   return (
-    <MainSection themeMode={theme}>
+    <MainSection
+      className={theme === "light" ? "darkMode" : "lightMode"} // 👈 यहाँ class pass कर दी
+      themeMode={theme}
+    >
       <MainImageSection
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -31,7 +34,7 @@ export default function Design() {
           onError={(e) => {
             const target = e.target;
             if (target instanceof HTMLImageElement && target.parentElement) {
-              target.parentElement.style.backgroundColor = 'black';
+              target.parentElement.style.backgroundColor = "black";
             }
           }}
         />
@@ -51,12 +54,6 @@ const MainSection = styled(motion.div)`
   flex-wrap: wrap;
   min-height: 100vh;
   color: var(--foreground);
-  background: ${({ themeMode }) =>
-    themeMode === 'light'
-      ? `linear-gradient(to left, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 1)), url('/img/pic01.webp') right center/cover no-repeat`
-      : `linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0,0,0, 1)), url('/img/pic01.webp') right center/cover no-repeat`};
-  background-size: cover;
-  transition: background 0.5s ease-in-out;
 `;
 
 const MainImageSection = styled(motion.div)`

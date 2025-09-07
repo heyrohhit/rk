@@ -2,15 +2,16 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Loader from './Components/loader/page';
-import Service from './learn/page';
-import ProjectShowcase from './projects/ProjectShow';
-import ProjectCase from './projects/ProjectCase';
-import { projectsLive, projects } from './Components/myservices/apis';
 import Design from './Components/Design';
-import ContactContext from './contact/ContactContext';
-import AboutContent from './about/AboutContent';
+import { projectsLive, projects, logo } from './Components/myservices/apis';
+
+// ✅ Lazy imports
+const Service = lazy(() => import('./learn/page'));
+const ProjectShowcase = lazy(() => import('./projects/ProjectShow'));
+const ContactContext = lazy(() => import('./contact/ContactContext'));
+const AboutContent = lazy(() => import('./about/AboutContent'));
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -35,9 +36,13 @@ export default function Home() {
 
   return (
     <>
-      <div className="w-screen h-screen flex justify-around items-center text-[var(--foreground)] flex-wrap relative overflow-x-hidden 
-                      max-[990px]:h-[80vh] max-[660px]:h-[75vh] max-[990px]:overflow-hidden">
+      <div
+        className="w-screen h-screen flex justify-around items-center text-[var(--foreground)] flex-wrap relative overflow-x-hidden 
+                      max-[990px]:h-[80vh] max-[660px]:h-[75vh] max-[990px]:overflow-hidden"
+      >
         <Design />
+
+        {/* Left Card */}
         <motion.div
           initial={{ opacity: 0, x: '-250px', y: '-250px' }}
           animate={{ opacity: 1, x: '0px', y: '0px' }}
@@ -47,7 +52,7 @@ export default function Home() {
                      min-[990px]:top-[15%] min-[990px]:left-[10%]
                      max-[990px]:w-[500px] max-[990px]:top-[10%]
                      max-[660px]:w-[80%] max-[660px]:top-[2%] max-[660px]:rounded-tl-none max-[660px]:rounded-bl-none max-[660px]:bg-transparent max-[660px]:left-0 max-[660px]:p-2"
-                     style={{ padding: '0.8rem' }}
+          style={{ padding: '0.8rem' }}
         >
           <h1 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-green-300 via-blue-400 to-purple-500 
                         text-transparent bg-clip-text drop-shadow-[0_2px_5px_rgba(255,255,255,0.25)]">
@@ -74,16 +79,19 @@ export default function Home() {
             Let’s create something <span className="text-pink-400 font-bold">great</span> together!
           </p>
 
-          <button className="mt-4 px-6 py-2 text-md font-bold rounded-full border border-yellow-300 
+          <button
+            className="mt-4 px-6 py-2 text-md font-bold rounded-full border border-yellow-300 
                             bg-gradient-to-r from-yellow-300 to-orange-400 text-black 
                             hover:scale-105 hover:shadow-[0_0_15px_rgba(255,204,112,0.6)] transition-all duration-300"
-                            style={{ padding: '0.5rem 1rem' }}>
+            style={{ padding: '0.5rem 1rem' }}
+          >
             <Link href="/contact" className="no-underline text-inherit">
               Start a chats 💬
             </Link>
           </button>
         </motion.div>
 
+        {/* Right Circles */}
         <motion.div
           initial={{ opacity: 0, x: '250px', y: '250px' }}
           animate={{ opacity: 1, x: '0px', y: '0px' }}
@@ -108,7 +116,9 @@ export default function Home() {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{
-                duration: 0.6, delay: index * 1, repeat: Infinity,
+                duration: 0.6,
+                delay: index * 1,
+                repeat: Infinity,
                 repeatType: 'loop',
               }}
               className={`rounded-full p-5 border-2 ${color} w-20 h-20 flex items-center justify-center 
@@ -121,23 +131,37 @@ export default function Home() {
                 strokeWidth="2"
                 viewBox="0 0 24 24"
               >
-                <path
-                  d="M12 4v16m8-8H4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+                <path d="M12 4v16m8-8H4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </motion.div>
           ))}
         </motion.div>
       </div>
 
-      
-      <ProjectCase apis={projectsLive} showOnly={3} title="Live Projects" />
-      <ProjectShowcase apis={projects} showOnly={3} title="Projects" />
-      <Service />
-      <ContactContext width="main" />
-      <AboutContent />
+      {/* ✅ Suspense wrappers */}
+      <Suspense fallback={<Loader />}>
+        <ProjectShowcase apis={projectsLive} showOnly={3} title="Live Projects" discription="Responsive web apps and tools built with modern tech, showcasing design and coding skills."/>
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <ProjectShowcase apis={projects} showOnly={3} title="Poster Projects" discription="Creative Photoshop posters with bold colors, clean layouts, and modern visual storytelling."/>
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <ProjectShowcase apis={logo} showOnly={3} title="Logo Projects" discription="Professional CorelDRAW logos focusing on brand identity, clarity, and lasting impact."/>
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <Service />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <ContactContext width="main" />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <AboutContent />
+      </Suspense>
     </>
   );
 }

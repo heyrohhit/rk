@@ -49,6 +49,24 @@ a {
   overflow: hidden;
 }
 
+.darkMode{
+  width:100lvw;
+  height: 100lvh;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 9)), url('/img/pic01.webp');
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.lightMode{
+  width:100lvw;
+  height: 100lvh;
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.8), rgba(255, 255, 255,1)), url('/img/pic01.webp');
+  background-position:right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -80,16 +98,19 @@ a {
 
 
 .IframeWrapper {
-  width: 300px;
-  height: 350px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
   overflow: hidden;
-  padding: 20px;
+  margin: 2rem;
   border-radius: 15px;
   position: relative;
+  background: transparent;
 }
 .IframeImage{
   width: 260%;
   height: 250%;
+  /* padding: 3rem; */
   border: none;
   transform: scale(0.4); /* Zoom out effect */
   transform-origin: top left;
@@ -100,3 +121,18 @@ a {
   left: 0;
 }
 
+.IframeImageFirst{
+  width: 200%;
+  height: 200%;
+  scroll-behavior: none;
+  /* padding: 3rem; */
+  border: none;
+  transform: scale(0.7); /* Zoom out effect */
+  transform-origin: top left;
+  pointer-events: none; /* Disable interactions */
+  user-select: none;
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  /* transform: translate(-50%, -50%); */
+}
