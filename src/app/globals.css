@@ -102,10 +102,12 @@ a {
  justify-content: center;
  align-items: center;
   overflow: hidden;
-  margin: 2rem;
+  margin: 0.5rem;
   border-radius: 15px;
-  position: relative;
+  /* position: relative; */
   background: transparent;
+  z-index:999;
+  cursor:pointer;
 }
 .IframeImage{
   width: 260%;
@@ -134,5 +136,18 @@ a {
   position: absolute;
   top: -20%;
   left: -20%;
+  cursor:pointer;
+  z-index:999;
   /* transform: translate(-50%, -50%); */
+}
+
+.IframeWrapper .texts{
+  background:rgba(0,0,0,0.9);
+  transform:translateY(-10000%);
+  transition: all 0.5s linear;
+}
+
+.IframeWrapper:hover .texts{
+  transform:translateY(0%);
+  transition: all 0.5s linear;
 }
