@@ -6,22 +6,22 @@ import styled from "styled-components";
 import { useTheme } from "next-themes";
 
 export default function Design() {
-  const { theme } = useTheme("dark");
+  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Hydration mismatch avoid करने के लिए
   useEffect(() => {
     setMounted(true);
   }, []);
-
+  
   if (!mounted) return null;
 
   return (
     <MainSection
-      className={theme === "light" ? "darkMode" : "lightMode"} // 👈 यहाँ class pass कर दी
-      themeMode={theme}
+      className={"darkMode"}
     >
       <MainImageSection
+        themeMode={theme}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 1 }}
@@ -61,7 +61,7 @@ const MainImageSection = styled(motion.div)`
   height: 350px;
   position: absolute;
   overflow: visible;
-  background: rgba(0, 0, 0, 0.3);
+  background: ${({ themeMode }) => (themeMode === "dark" ? "rgba(0, 0, 0, 0.3)" : "rgba(255, 255, 255, 0.6)")};
   border-radius: 50%;
 
   @media (min-width: 340px) {

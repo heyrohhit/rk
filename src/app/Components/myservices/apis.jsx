@@ -80,42 +80,42 @@ const projects = [
     id:11,
     title:"Photoshop Poster Design Demo",
     description:"Creative Photoshop poster with modern layout, colors, and typography for branding impact.",
-    image:"https://drive.google.com/file/d/17Dy938TR5rHOlqAqlSLhajzspYfHu5wd/preview",
+    image:"https://drive.google.com/thumbnail?id=17Dy938TR5rHOlqAqlSLhajzspYfHu5wd",
     date:"2025-05-13"
   },
   {
     id:10,
     title:"Photoshop Poster Design Demo",
     description:"A vibrant poster demo highlighting design balance, contrast, and effective visual messaging.",
-    image:"https://drive.google.com/file/d/17RyFNZ32vsxxKVWuWQPeOxSJFDXDHcFD/preview",
+    image:"https://drive.google.com/thumbnail?id=17RyFNZ32vsxxKVWuWQPeOxSJFDXDHcFD",
     date:"2025-06-26"
   },
   {
     id:1,
     title:"Photoshop Poster Design Demo",
     description:"Poster demo showcasing Photoshop skills in layout, typography, and modern visual effects.",
-    image:"https://drive.google.com/file/d/1z7ByWfvyTNT2TMAzyTdLi4eCeAVRPDn0/preview",
+    image:"https://drive.google.com/thumbnail?id=1z7ByWfvyTNT2TMAzyTdLi4eCeAVRPDn0",
     date:"2022-08-06"
   },
   {
     id:3,
     title:"Photoshop Poster Design Demo",
     description:"Clean poster demo with color harmony, effects, and modern design for ads and promotions.",
-    image:"https://drive.google.com/file/d/1ANWjpI-hjgAr359mQsFs4PGGU4gp4I_2/preview",
+    image:"https://drive.google.com/thumbnail?id=1ANWjpI-hjgAr359mQsFs4PGGU4gp4I_2",
     date:"2022-08-06"
   },
   {
     id:5,
     title:"Photoshop Poster Design Demo",
     description:"Poster project exploring storytelling with Photoshop using creative colors and composition.",
-    image:"https://drive.google.com/file/d/1bJfgrzG33_BBhBXAGqLkekAJhFpQSCb-/preview",
+    image:"https://drive.google.com/thumbnail?id=1bJfgrzG33_BBhBXAGqLkekAJhFpQSCb-",
     date:"2023-02-26"
   },
   {
     id:7,
     title:"Photoshop Poster Design Demo",
     description:"Creative poster featuring impactful typography and illustrations for strong brand presence.",
-    image:"https://drive.google.com/file/d/1r2M33BbfJrdh8bOlg6trHSArt0kX-9wp/preview",
+    image:"https://drive.google.com/thumbnail?id=1r2M33BbfJrdh8bOlg6trHSArt0kX-9wp",
     date:"2024-06-26"
   },
 ];
@@ -123,32 +123,32 @@ const projects = [
 
 //Lpgo Prohect 
 const logo = [
-  {
-    id:12,
-    title:"Logo Design",
-    description:"CorelDRAW logo design with blue-green tones, focusing on brand identity and simplicity.",
-    image:"https://drive.google.com/file/d/17CekstJ81Nd2hU2tgWVdlI4-7oMYkeeC/preview",
-    date:"2025-02-26"
-  },
+  // {
+  //   id:12,
+  //   title:"Logo Design",
+  //   description:"CorelDRAW logo design with blue-green tones, focusing on brand identity and simplicity.",
+  //   image:"https://drive.google.com/thumbnail?id=17CekstJ81Nd2hU2tgWVdlI4-7oMYkeeC",
+  //   date:"2025-02-26"
+  // },
   {
     id:9,
     title:"CorelDRAW Logo Design",
     description:"Modern CorelDRAW logo using clean shapes and colors to represent clarity and identity.",
-    image:"https://drive.google.com/file/d/1fBdTJQu22FRObe8tB3aNr7e29VtusPPi/preview",
+    image:"https://drive.google.com/thumbnail?id=1fBdTJQu22FRObe8tB3aNr7e29VtusPPi",
     date:"2024-06-26"
   },
   {
     id:8,
     title:"CorelDRAW Logo Design",
     description:"Professional CorelDRAW logo with versatility, creativity, and strong visual appeal.",
-    image:"https://drive.google.com/file/d/1XMwxIzCf-jhms-cXll3hNOeBMnXNBrNE/preview",
+    image:"https://drive.google.com/thumbnail?id=1XMwxIzCf-jhms-cXll3hNOeBMnXNBrNE",
     date:"2024-10-16"
   },
   {
     id:2,
     title:"CorelDRAW Logo Design",
     description:"Logo crafted in CorelDRAW reflecting innovation, brand consistency, and clarity.",
-    image:"https://drive.google.com/file/d/1Q52acYUW4VQlOJer6mfDFUgax0M0mXKW/preview",
+    image:"https://drive.google.com/thumbnail?id=1Q52acYUW4VQlOJer6mfDFUgax0M0mXKW",
     date:"2025-02-26"
   },
 ];
@@ -159,7 +159,7 @@ const projectsLive = [
     id:8,
     title:"DigiMark",
     description:"Digital marketing tool for SEO, speed, and engagement analysis with user-friendly design.",
-    image:"https://rk960.github.io/digimark/",
+    image:"https://heyrohhit.github.io/digimark/",
     date:"2024-06-04"
   },
   {
@@ -180,56 +180,56 @@ const projectsLive = [
     id:3,
     title:"Diecs Game",
     description:"A fun dice game built with HTML, CSS, JS featuring scoring, randomness, and interactivity.",
-    image:"https://rk960.github.io/DiecsGame/",
+    image:"https://heyrohhit.github.io/DiecsGame/",
     date:"2023-08-01"
   },
   {
     id:1,
     title:"Portfolio Website",
     description:"Next.js portfolio with projects, resume, and contact; modern, responsive, and clean UI.",
-    image:"https://rk960.github.io/itsme/",
+    image:"https://heyrohhit.github.io/itsme/",
     date:"2023-05-07"
   },
   {
     id:5,
     title:"Image Search Tool",
     description:"Real-time image search app with API integration, responsive design, and clean UI.",
-    image:"https://rk960.github.io/imgsearch/",
+    image:"https://heyrohhit.github.io/imgsearch/",
     date:"2023-06-08"
   },
   {
     id:7,
     title:"Books Manager",
     description:"Simple CRUD web app to manage books, with add, edit, and delete functionality.",
-    image:"https://rk960.github.io/booksmanager/",
+    image:"https://heyrohhit.github.io/booksmanager/",
     date:"2023-06-30"
   },
   {
     id:10,
     title:"Projects",
     description:"Hub of small projects including tools, calculators, and experiments for learning.",
-    image:"https://rk960.github.io/projects/",
+    image:"https://heyrohhit.github.io/projects/",
     date:"2023-05-28"
   },
   {
     id:4,
     title:"Notes Management System",
     description:"Lightweight note app for creating, editing, and managing personal notes easily.",
-    image:"https://rk960.github.io/userListProject/",
+    image:"https://heyrohhit.github.io/userListProject/",
     date:"2024-02-20"
   },
   {
     id:9,
     title:"My Report",
     description:"Portfolio variant with resume, skills, and narrative design for personal branding.",
-    image:"https://rk960.github.io/myreport/",
+    image:"https://heyrohhit.github.io/myreport/",
     date:"2022-03-07"
   },
   {
     id:6,
     title:"Weather App",
     description:"Real-time weather app using API to show temperature, conditions, and humidity.",
-    image:"https://rk960.github.io/weatherApps/",
+    image:"https://heyrohhit.github.io/weatherApps/",
     date:"2023-06-30"
   },
 ];

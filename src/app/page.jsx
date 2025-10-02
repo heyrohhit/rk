@@ -6,6 +6,7 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import Loader from './Components/loader/page';
 import Design from './Components/Design';
 import { projectsLive, projects, logo } from './Components/myservices/apis';
+import PosterShow from './projects/posterShow';
 
 // ✅ Lazy imports
 const Service = lazy(() => import('./learn/page'));
@@ -47,7 +48,7 @@ export default function Home() {
           initial={{ opacity: 0, x: '-250px', y: '-250px' }}
           animate={{ opacity: 1, x: '0px', y: '0px' }}
           transition={{ duration: 1, delay: 1 }}
-          className="w-[550px] text-[var(--foreground)] max-h-max p-5 bg-[var(--background)] backdrop-blur-lg border border-white/10 shadow-xl 
+          className="w-[550px] bg-[var(--background)] text-[var(--foreground)] max-h-max p-5 backdrop-blur-lg border border-white/10 shadow-xl 
                      rounded-2xl absolute top-0 left-0 z-[1] flex flex-col items-start gap-4 animate-fade-in-up
                      min-[990px]:top-[15%] min-[990px]:left-[10%]
                      max-[990px]:w-[500px] max-[990px]:top-[10%]
@@ -56,7 +57,7 @@ export default function Home() {
         >
           <h1 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-green-300 via-blue-400 to-purple-500 
                         text-transparent bg-clip-text drop-shadow-[0_2px_5px_rgba(255,255,255,0.25)]">
-            Hi, I'm <span className="ml-2 text-yellow-300 text-2xl">Rk</span>
+            Hi, I'm <span className="ml-2 text-yellow-800 text-2xl">Rk</span>
           </h1>
 
           <h2 className="text-xl md:text-2xl font-bold text-yellow-500 flex items-center gap-2">
@@ -72,7 +73,7 @@ export default function Home() {
             Frontend Web Developer
           </h2>
 
-          <p className="text-sm md:text-base text-[var(--foreground)] leading-relaxed">
+          <p className="text-sm text-[var(--foreground)] md:text-base leading-relaxed">
             Thank you for stopping by! I specialize in building
             <span className="text-cyan-300 font-semibold"> responsive</span> and
             <span className="text-green-400 font-semibold"> user-friendly</span> web interfaces. I help bring ideas to life with clean code and modern design.
@@ -144,11 +145,11 @@ export default function Home() {
       </Suspense>
 
       <Suspense fallback={<Loader />}>
-        <ProjectShowcase apis={projects} showOnly={3} title="Poster Projects" discription="Creative Photoshop posters with bold colors, clean layouts, and modern visual storytelling."/>
+        <PosterShow apis={projects} showOnly={3} title="Poster Projects" discription="Creative Photoshop posters with bold colors, clean layouts, and modern visual storytelling."/>
       </Suspense>
 
       <Suspense fallback={<Loader />}>
-        <ProjectShowcase apis={logo} showOnly={3} title="Logo Projects" discription="Professional CorelDRAW logos focusing on brand identity, clarity, and lasting impact."/>
+        <PosterShow apis={logo} showOnly={3} title="Logo Projects" discription="Professional CorelDRAW logos focusing on brand identity, clarity, and lasting impact."/>
       </Suspense>
 
       <Suspense fallback={<Loader />}>
