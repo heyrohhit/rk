@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect, lazy, Suspense } from 'react';
 import Loader from './Components/loader/page';
 import Design from './Components/Design';
-import { projectsLive, projects, logo } from './Components/myservices/apis';
+import { projectsLive, projects } from './Components/myservices/apis';
 import PosterShow from './projects/posterShow';
 
 // ✅ Lazy imports
@@ -148,9 +148,7 @@ export default function Home() {
         <PosterShow apis={projects} showOnly={3} title="Poster Projects" discription="Creative Photoshop posters with bold colors, clean layouts, and modern visual storytelling."/>
       </Suspense>
 
-      <Suspense fallback={<Loader />}>
-        <PosterShow apis={logo} showOnly={3} title="Logo Projects" discription="Professional CorelDRAW logos focusing on brand identity, clarity, and lasting impact."/>
-      </Suspense>
+     
 
       <Suspense fallback={<Loader />}>
         <Service />

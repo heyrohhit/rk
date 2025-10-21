@@ -80,12 +80,13 @@ const PosterShow = ({ apis = [], title = "Showcase", discription = "", showOnly 
       {/* Header */}
       <div className="w-[100svw] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-2 mb-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+          <h2 className="relative text-3xl md:text-4xl font-extrabold tracking-tight " style={{padding:"0.5rem 0.8rem",fontFamily:"Poppins"}}>
             {title}
+            <span className="text-yellow-500 absolute top-5 left-0 w-full h-full">..........</span>
           </h2>
           {discription ? (
-            <p className="w-[100svw] text-sm md:text-base opacity-80 mx-auto">
-              {discription}
+            <p className="w-[100svw] flex justify-center items-center text-center text-sm md:text-base opacity-80 mx-auto" style={{padding:"0.5rem 0.8rem"}}>
+              <span className="w-[80svw]">{discription}</span>
             </p>
           ) : null}
         </div>
@@ -99,10 +100,10 @@ const PosterShow = ({ apis = [], title = "Showcase", discription = "", showOnly 
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               whileHover={{ y: -6, rotate: -0.2 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="group w-[300px]  relative rounded-t-3xl overflow-hidden border border-white/10 bg-white/5 dark:bg-white/5 flex items-center justify-center flex-col backdrop-blur-xl shadow-[0_8px_40px_-12px_RGBA(0,0,0,0.35)] hover:shadow-[0_14px_60px_-18px_RGBA(0,0,0,0.55)] transition-all duration-300"
+              className="group w-[300px] h-[400px]  relative rounded-t-3xl overflow-hidden border border-white/10 bg-white/5 dark:bg-white/5 flex items-center justify-center flex-col backdrop-blur-xl shadow-[0_8px_40px_-12px_RGBA(0,0,0,0.35)] hover:shadow-[0_14px_60px_-18px_RGBA(0,0,0,0.55)] transition-all duration-300"
             >
               {/* Media */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <div className="relative aspect-[2/3] w-full overflow-hidden">
                 <img
                   src={getImageSrc(item.image, 1600)}
                   srcSet={`
@@ -176,7 +177,7 @@ const PosterShow = ({ apis = [], title = "Showcase", discription = "", showOnly 
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.98, y: 8, opacity: 0 }}
               transition={{ type: "spring", stiffness: 260, damping: 22 }}
-              className="relative z-[999] w-full max-w-5xl rounded-t-3xl overflow-hidden border border-white/10 bg-[var(--background)] text-[var(--foreground)] shadow-2xl min-[660px]:flex min-[660px]:items-center min-[660px]:justify-center min-[660px]:gap-8"
+              className="relative z-[999] w-[80svw] h-[65svh] max-w-5xl rounded-t-3xl overflow-hidden border border-white/10 bg-[var(--background)] text-[var(--foreground)] shadow-2xl min-[660px]:flex min-[660px]:items-center min-[660px]:justify-center min-[660px]:gap-8"
               style={{padding:"20px"}}>
               <div className="relative">
                 <img
@@ -187,9 +188,9 @@ const PosterShow = ({ apis = [], title = "Showcase", discription = "", showOnly 
                     ${getImageSrc(selected.image, 1600)} 1600w,
                     ${getImageSrc(selected.image, 2000)} 2000w
                   `}
-                  sizes="(max-width: 768px) 100vw, 70vw"
+                  sizes="(max-width: 768px) 100vw, 100vw"
                   alt={selected.title || title}
-                  className="w-full rounded-2xl max-h-[50vh] object-contain bg-black min-[660px]:w-[280px]"
+                  className="w-full rounded-2xl max-h-[60vh] object-contain min-[660px]:w-[280px] max-[660px]:h-[44vh]"
                   decoding="async"
                 />
                

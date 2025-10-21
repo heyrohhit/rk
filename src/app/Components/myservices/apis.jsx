@@ -121,37 +121,37 @@ const projects = [
 ];
 
 
-//Lpgo Prohect 
-const logo = [
-  // {
-  //   id:12,
-  //   title:"Logo Design",
-  //   description:"CorelDRAW logo design with blue-green tones, focusing on brand identity and simplicity.",
-  //   image:"https://drive.google.com/thumbnail?id=17CekstJ81Nd2hU2tgWVdlI4-7oMYkeeC",
-  //   date:"2025-02-26"
-  // },
-  {
-    id:9,
-    title:"CorelDRAW Logo Design",
-    description:"Modern CorelDRAW logo using clean shapes and colors to represent clarity and identity.",
-    image:"https://drive.google.com/thumbnail?id=1fBdTJQu22FRObe8tB3aNr7e29VtusPPi",
-    date:"2024-06-26"
-  },
-  {
-    id:8,
-    title:"CorelDRAW Logo Design",
-    description:"Professional CorelDRAW logo with versatility, creativity, and strong visual appeal.",
-    image:"https://drive.google.com/thumbnail?id=1XMwxIzCf-jhms-cXll3hNOeBMnXNBrNE",
-    date:"2024-10-16"
-  },
-  {
-    id:2,
-    title:"CorelDRAW Logo Design",
-    description:"Logo crafted in CorelDRAW reflecting innovation, brand consistency, and clarity.",
-    image:"https://drive.google.com/thumbnail?id=1Q52acYUW4VQlOJer6mfDFUgax0M0mXKW",
-    date:"2025-02-26"
-  },
-];
+// //Lpgo Prohect 
+// const logo = [
+//   // {
+//   //   id:12,
+//   //   title:"Logo Design",
+//   //   description:"CorelDRAW logo design with blue-green tones, focusing on brand identity and simplicity.",
+//   //   image:"https://drive.google.com/thumbnail?id=17CekstJ81Nd2hU2tgWVdlI4-7oMYkeeC",
+//   //   date:"2025-02-26"
+//   // },
+//   {
+//     id:9,
+//     title:"CorelDRAW Logo Design",
+//     description:"Modern CorelDRAW logo using clean shapes and colors to represent clarity and identity.",
+//     image:"https://drive.google.com/thumbnail?id=1fBdTJQu22FRObe8tB3aNr7e29VtusPPi",
+//     date:"2024-06-26"
+//   },
+//   {
+//     id:8,
+//     title:"CorelDRAW Logo Design",
+//     description:"Professional CorelDRAW logo with versatility, creativity, and strong visual appeal.",
+//     image:"https://drive.google.com/thumbnail?id=1XMwxIzCf-jhms-cXll3hNOeBMnXNBrNE",
+//     date:"2024-10-16"
+//   },
+//   {
+//     id:2,
+//     title:"CorelDRAW Logo Design",
+//     description:"Logo crafted in CorelDRAW reflecting innovation, brand consistency, and clarity.",
+//     image:"https://drive.google.com/thumbnail?id=1Q52acYUW4VQlOJer6mfDFUgax0M0mXKW",
+//     date:"2025-02-26"
+//   },
+// ];
 
 // Live Projects Data
 const projectsLive = [
