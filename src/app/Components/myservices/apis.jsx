@@ -272,4 +272,4 @@ const education = [
   }
 ];
 
-export { servicesData, projects, projectsLive, education, logo };
+export { servicesData, projects, projectsLive, education };
