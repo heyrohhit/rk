@@ -12,7 +12,7 @@ const icons = [
   { icon: <FaInstagram />, link: 'https://www.instagram.com/heyrohhitt?igsh=OXMwMno0dWxvcWdh' },
   { icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/rohit-kumar-a81326254/' },
   { icon: <FaFacebook />, link: 'https://www.facebook.com/share/1BfhN2tW9L/' },
-  { icon: <FaGithub />, link: 'https://github.com/rk960' },
+  { icon: <FaGithub />, link: 'https://github.com/heyrohhit' },
 ]
 
 const GlobalStyle = createGlobalStyle`
@@ -294,7 +294,7 @@ const Name = styled.h1`
   }
 `
 
-const Bio = styled.p`
+const Bio = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
